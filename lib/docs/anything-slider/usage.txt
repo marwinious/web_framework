@@ -1,0 +1,89 @@
+http://css-tricks.com/examples/AnythingSlider/#
+
+
+Features
+
+    Panels are HTML Content (can be anything).
+    Multiple AnythingSliders allowable per-page.
+    Infinite/Continuous sliding (always slides in the direction you are going, even at "last" slide).
+    Optionally resize each panel (specified per panel in css).
+    Optional Next / Previous Panel Arrows.
+    Use keyboard navigation or tabs that are built and added dynamically (any number of panels).
+    Link to specific slides or go forward or back one slide from static text links - go to Slide 4 (Quote #2) in second example.
+    Each panel has a hashtag (can link directly to specific panels).
+    Optional custom function for formatting navigation text.
+    Auto-playing slideshow (optional feature, can start playing or stopped)
+    Pauses playing YouTube videos when not in view and resumes them when in view (only in non-IE browsers & if files are hosted on the web).
+    Pauses slideshow on hover (optional).
+    Optionally play the slideshow once through, stopping on the last page.
+
+Default Options
+
+    $('#slider1, #slider2').anythingSlider({
+      // Appearance
+      width               : null,      // Override the default CSS width
+      height              : null,      // Override the default CSS height
+      resizeContents      : true,      // If true, solitary images/objects in the panel will expand to fit the viewport
+
+      // Navigation
+      startPanel          : 1,         // This sets the initial panel
+      hashTags            : true,      // Should links change the hashtag in the URL?
+      buildArrows         : true,      // If true, builds the forwards and backwards buttons
+      buildNavigation     : true,      // If true, buildsa list of anchor links to link to each panel
+      navigationFormatter : null,      // Details at the top of the file on this use (advanced use)
+      forwardText         : "&raquo;", // Link text used to move the slider forward (hidden by CSS, replaced with arrow image)
+      backText            : "&laquo;", // Link text used to move the slider back (hidden by CSS, replace with arrow image)
+
+      // Slideshow options
+      autoPlay            : true,      // This turns off the entire slideshow FUNCTIONALY, not just if it starts running or not
+      startStopped        : false,     // If autoPlay is on, this can force it to start stopped
+      pauseOnHover        : true,      // If true & the slideshow is active, the slideshow will pause on hover
+      resumeOnVideoEnd    : true,      // If true & the slideshow is active & a youtube video is playing, it will pause the autoplay until the video has completed
+      stopAtEnd           : false,     // If true & the slideshow is active, the slideshow will stop on the last page
+      playRtl             : false,     // If true, the slideshow will move right-to-left
+      startText           : "Start",   // Start button text
+      stopText            : "Stop",    // Stop button text
+      delay               : 3000,      // How long between slideshow transitions in AutoPlay mode (in milliseconds)
+      animationTime       : 600,       // How long the slideshow transition takes (in milliseconds)
+      easing              : "swing"    // Anything other than "linear" or "swing" requires the easing plugin
+    });
+
+Usage
+
+    Getting current slide number:
+
+        var current = $('#slider1').data('AnythingSlider').currentPage; // returns page #
+
+    Setting current slide (external link example):
+
+        <a href="#" id="slide-jump">Slide 4</a>
+
+        $("#slide-jump").click(function(){
+          $('#slider2').anythingSlider(4);
+        });
+
+    External Slideshow Control
+
+        $('#slider1').data('AnythingSlider').startStop(true);  // start the slideshow
+        $('#slider2').data('AnythingSlider').startStop(false); // stops the slideshow
+        $('#slider1').data('AnythingSlider').goForward();      // go forward one slide
+        $('#slider1').data('AnythingSlider').goBack();         // go back one slide
+
+    Formatting Navigation Text
+    To use the navigationFormatter option, you must have a function that accepts two parameters, and returns a string of HTML text.
+
+        index = integer index (1 based);
+        panel = jQuery wrapped LI item this tab references.
+        Function must return a string of HTML/Text.
+        Here is a sample formatter (view this page source for another example):
+
+            $('#slider').anythingSlider({
+             navigationFormatter : function(index, panel){
+              return " Panel #" + index; // This would have each tab with the text 'Panel #X' where X = index
+             }
+            })
+
+
+To hide the "Start/Stop" button:
+
+$(".start-stop").hide();

@@ -1,0 +1,22 @@
+http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/12/install-the-jw-player-for-flash-v5
+http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/14/building-skins
+
+In framework:
+
+*NOTE: All paths can also be absolute
+
+<div id="mediaplayer"></div>
+
+<script type="text/javascript">
+<!--
+jwplayer('mediaplayer').setup({
+	'flashplayer': 'lib/js/jw-player/player.swf',
+	'id': 'player1',
+	'width': '480',
+	'height': '270',
+	'file': 'lib/js/jw-player/video.mp4',
+	'image': '/thumbs/bunny.jpg', // STILL PREVIEW IMAGE
+    'skin': '/skins/stormtrooper/stormtrooper.zip' // OPTIONAL SKIN
+});
+// -->
+</script>

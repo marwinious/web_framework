@@ -1,0 +1,17 @@
+body {
+	overflow: auto;
+}
+
+/* RIBBON STYLES */
+.info_container .triangle-l {
+	border-color: transparent #186496 transparent transparent;
+}
+
+.info_container .triangle-r {
+	border-color: transparent transparent transparent #186496;
+}
+
+.ribbon_trans {
+	background: #3198DD !important;
+}
+/* END RIBBON STYLES */

@@ -1,0 +1,1 @@
+<?PHP$base = dirname(dirname(dirname(__FILE__)));require($base."/config.php");$backup = new backup();$backup->backup_mysql();?>

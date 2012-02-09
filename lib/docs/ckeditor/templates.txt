@@ -1,0 +1,44 @@
+With CKEditor content writers can select a template from a list by clicking the Templates button in the toolbar. A template is a predefined piece of HTML that is inserted into a document. Using this feature, the user does not need to start formatting the text from scratch. Designers can prepare well designed templates which helps avoid user errors before they happen.
+Template Definition Files
+
+CKEditor comes preinstalled with three sample templates that are there just to show the way this feature works. They are defined in the plugins/templates/templates/default.js file. Developers should most definitely modify the default templates as they are not particularly useful to end users.
+
+Note that a template definition file is a JavaScript file that is loaded when opening the Content Templates dialog window for the first time. This file may be modified to include custom templates, or you can create a separate template file outside the editor installation directory and configure the editor to use it.
+Pointing the Editor to a Custom Templates Definition File
+
+Suppose you have created a custom template definition file named mytemplates.js (starting from a copy of default.js) and placed it in the root directory of your website. You can now add the following setting in the editor configuration:
+
+config.templates_files = [ '/mytemplates.js' ];
+
+Note that the templates_files setting accepts an array, which means that more than one template file can be used at any time.
+Template Definition File Contents
+
+Below you will find a sample template definition file that defines two simple templates.
+
+// Register a template definition set named "default".
+CKEDITOR.addTemplates( 'default',
+{
+	// The name of the subfolder that contains the preview images of the templates.
+	imagesPath : CKEDITOR.getUrl( CKEDITOR.plugins.getPath( 'templates' ) + 'templates/images/' ),
+ 
+	// Template definitions.
+	templates :
+		[
+			{
+				title: 'My Template 1',
+				image: 'template1.gif',
+				description: 'Description of My Template 1.',
+				html:
+					'<h2>Template 1</h2>' +
+					'<p><img src="/logo.png" style="float:left" />Type your text here.</p>'
+			},
+			{
+				title: 'My Template 2',
+				html:
+					'<h3>Template 2</h3>' +
+					'<p>Type your text here.</p>'
+			}
+		]
+});
+
+The above example contains pure JavaScript code. It is based on a call to the CKEDITOR.addTemplates function that registers the templates under a unique name (default). This name can be later used by the templates setting. 

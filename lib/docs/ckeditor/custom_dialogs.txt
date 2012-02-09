@@ -1,0 +1,50 @@
+The architecture in CKEditor allows for very flexible customization of the contents of the dialogs without any need to change the source files.
+
+In order to see some examples, please, take a look at the _samples/api_dialog.html file of the distribution.
+
+This is another example, showing how to use some the options that existed in FCKeditor:
+
+CKEDITOR.on( 'dialogDefinition', function( ev )
+	{
+		// Take the dialog name and its definition from the event data.
+		var dialogName = ev.data.name;
+		var dialogDefinition = ev.data.definition;
+ 
+		// Check if the definition is from the dialog we're
+		// interested on (the Link dialog).
+		if ( dialogName == 'link' )
+		{
+			// FCKConfig.LinkDlgHideAdvanced = true
+			dialogDefinition.removeContents( 'advanced' );
+ 
+			// FCKConfig.LinkDlgHideTarget = true
+			dialogDefinition.removeContents( 'target' );
+/*
+Enable this part only if you don't remove the 'target' tab in the previous block.
+ 
+			// FCKConfig.DefaultLinkTarget = '_blank'
+			// Get a reference to the "Target" tab.
+			var targetTab = dialogDefinition.getContents( 'target' );
+			// Set the default value for the URL field.
+			var targetField = targetTab.get( 'linkTargetType' );
+			targetField[ 'default' ] = '_blank';
+*/
+		}
+ 
+		if ( dialogName == 'image' )
+		{
+			// FCKConfig.ImageDlgHideAdvanced = true	
+			dialogDefinition.removeContents( 'advanced' );
+			// FCKConfig.ImageDlgHideLink = true
+			dialogDefinition.removeContents( 'Link' );
+		}
+ 
+		if ( dialogName == 'flash' )
+		{
+			// FCKConfig.FlashDlgHideAdvanced = true
+			dialogDefinition.removeContents( 'advanced' );
+		}
+ 
+	});
+
+By listening to the dialogDefinition event of CKEditor it's possible to customize the dialogs removing tabs or changing the default values

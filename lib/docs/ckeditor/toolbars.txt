@@ -1,0 +1,109 @@
+While CKEditor is a full-featured WYSIWYG editor, not all of its options may be needed in all cases. Because of this, toolbar customization is one of the most common and required tasks when dealing with CKEditor.
+Contents
+
+    Toolbar Definition
+        Toolbar Button Groups
+        Forcing Row Break
+    Toolbar Customization
+
+Toolbar Definition
+
+A toolbar definition is a JavaScript array that contains the elements to be displayed in all toolbar rows available in the editor.
+
+The toolbar configuration can be defined in CKEditor using one of the following methods:
+
+    The toolbar setting.
+    The toolbar_name setting, where the name element is the name used to identify the toolbar in the toolbar setting. 
+
+The following code snippet contains the default CKEditor toolbar setting.
+
+config.toolbar = 'Full';
+ 
+config.toolbar_Full =
+[
+	{ name: 'document', items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },
+	{ name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+	{ name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },
+	{ name: 'forms', items : [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 
+ 
+         'HiddenField' ] },
+	'/',
+	{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+	{ name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv','-
+ 
+        ','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
+	{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+	{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
+	'/',
+	{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+	{ name: 'colors', items : [ 'TextColor','BGColor' ] },
+	{ name: 'tools', items : [ 'Maximize', 'ShowBlocks','-','About' ] }
+];
+ 
+config.toolbar_Basic =
+[
+	['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','-','About']
+];
+
+Note that in the code above (just like in the default CKEditor configuration) two toolbar definitions have been defined. The first one is named Full and the second one is Basic. The toolbar was set to use the Full definition.
+Toolbar Button Groups
+
+Every toolbar definition is composed of a series of toolbar button groups. Each toolbar group has a label (name) and the listing of buttons that belong to the group, placed in square brackets ([ ]). The toolbar group items move together to new rows when the editor is resized.
+
+The group label will be used by assisstive devices such as screen readers. It is added in the name attribute and is first looked up in the CKEditor language file (under the editor.lang.toolbarGroups.group_name entry). When its definition is found, the text value of this entry is used. If the name attribute value does not appear in the language file, it is taken as a literal toolbar group label and read aloud.
+
+As visible in the code above, each toolbar button group is defined as a separate JavaScript array of strings. Every string stands for a single toolbar item to be used. Toolbar items are defined by plugins.
+
+You can also include a separator in the toolbar group by including a dash ("-") character in it.
+Forcing Row Break
+
+The Full definition contains numerous slash ("/") characters that were placed between toolbar button groups. They can be used to force a break at the point where they were placed, rendering the next toolbar group in a new row. This placement will not be changed when CKEditor is resized.
+Toolbar Customization
+
+A simple way to configure the toolbars of all CKEditor instances is to add a custom toolbar definition inside the config.js file, or even better — in a separate custom configuration file (see Setting Configuration). The easiest way to do that is to copy the default Full toolbar definition, and strip it down to your needs.
+
+For example, the following is a good recommended toolbar definition that can be placed in the config.js file:
+
+CKEDITOR.editorConfig = function( config )
+{
+	config.toolbar = 'MyToolbar';
+ 
+	config.toolbar_MyToolbar =
+	[
+		{ name: 'document', items : [ 'NewPage','Preview' ] },
+		{ name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+		{ name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt' ] },
+		{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'
+                 ,'Iframe' ] },
+                '/',
+		{ name: 'styles', items : [ 'Styles','Format' ] },
+		{ name: 'basicstyles', items : [ 'Bold','Italic','Strike','-','RemoveFormat' ] },
+		{ name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote' ] },
+		{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+		{ name: 'tools', items : [ 'Maximize','-','About' ] }
+	];
+};
+
+Inside the configuration file you can create as many toolbar definitions as you need. Later, based on some criteria, you can choose the toolbar to use for each CKEditor instance. Each toolbar definition can be used as many times as required (or not used at all, for that matter). For example, with the following code, two editors are created on the page and each one is using a different toolbar:
+
+CKEDITOR.replace( 'editor1',
+	{
+		toolbar : 'MyToolbar'
+	});
+ 
+CKEDITOR.replace( 'editor2',
+	{
+		toolbar : 'Basic'
+	});
+
+It is also possible to set the toolbar definition in-page, at the same time when you create an editor instance. If this is the case, assign the toolbar setting directly to the editor instance, like in the example below:
+
+CKEDITOR.replace( 'editor1',
+	{
+		toolbar :
+		[
+			{ name: 'basicstyles', items : [ 'Bold','Italic' ] },
+			{ name: 'paragraph', items : [ 'NumberedList','BulletedList' ] },
+			{ name: 'tools', items : [ 'Maximize','-','About' ] }
+		]
+	});

@@ -1,0 +1,141 @@
+Web Framework v4.8.7
+Created and maintained by Darius Babcock, Greener Web Design
+
+
+## Version 4.8.7 ##
+	- Added expire headers, gzip, and etag options to default htaccess file
+	- Added js_constants option to config.php to duplicate PHP constants in JS on page load
+
+## Version 4.8.6 ##
+	- Added the 'opacity' class to class.css for cross-browser opacity settings
+
+## Version 4.8.5 ##
+	- Modified class.email.php to accept variables one-at-a-time rather than all on construct
+	- Created 'settings' folder in 'lib' to house sensitive info for site. Folder permissions can be changed.
+
+## Version 4.8.4 ##
+	- Fixed a bug in class.css that caused -webkit-box-shadow not to blur correctly
+
+## Version 4.8.3 ##
+	- Fixed a bug that prevented dates in 'DD-MM-YYYY' format from converting properly in class.standards
+
+## Version 4.8.2 ##
+	- Added scan_dir method to class.misc for retreiving file lists of directories
+	- Added a load_xml method to class.misc for reading in XML files
+
+## Version 4.8.1 ##
+	- Added mobile browser checking function to class.misc. Returns true or false.
+	- Added fluid versions of 960 for fluid width sites.
+	- Added 'viewport' meta tag for mobile
+
+## Version 4.8.0 ##
+	- Added CKEditor as a WYSIWYG option along with documentation in the lib/docs folder
+	- Updated error documents to be cleaner and all in one folder (lib/error_documents)
+
+## Version 4.7.3 ##
+	- Fixed a bug in class.css::border_radius that caused an extra corner to be rounded for "RIGHT"
+
+## Version 4.7.2 ##
+	- Changed meta tag output to support infinite meta tags
+	- Added header and footer tags to header.php and footer.php
+
+## Version 4.7.1 ##
+	- Fixed a bug in class.security::clean that caused an error if cleaning arrays within arrays
+	- Added 'stripslashes' function to clean::uncode
+
+## Version 4.7.0 ##
+	- Fixed bug in class.session that caused script error on load
+	- Added a "transition" method to class.css for easy transitions
+
+## Version 4.6.0 ##
+	- Fixed a bug in button method of class.standards that prevented 'class' from working in options argument
+	- Added default class for overlays in style.php
+	- Added some 'close' icons to the images folder
+	- Fixed a bug in class.session that cause a script error when logging in with bad credentials
+	- Changed all "CR" returns to "CRLF" returns in config.php. This will need to be done to future files created to 	  prevent certain PHP errors on some servers.
+
+## Version 4.5.0 ##
+	- Fixed a bug that prevented is_logged() method of session from working if logged out
+
+## Version 4.4.9 ##
+	- Added class.pagination to generate pagers for long results
+	- Removed hard-coded "[]" from the checkbox input type in class.standards::input
+	- Standardize/clarified date function names in class.standards (i.e. dateTo....)
+	- Updated the code in class.session to be more elegant
+	- Fixed bug in output method of class.security::clean causing entities to show as text
+
+## Version 4.4.8 ##
+	- Fixed a bug in class.email that prevented CC emails from sending correctly
+	- Added an 'output' function in class.security to echo out clean text and prevent spec. char. errors
+
+## Version 4.4.7 ##
+	- Added "target" options for border_radius of class.css. I.E. "top", "right", etc.
+	- Added "TEMPLATES" constant in config.php
+
+## Version 4.4.6 ##
+	- Removed the default 'px' hard-coded units from class.css. Now any unit can be used, not just 'px'.
+	- Removed the '#' from all colors in class.css so that other color variants could be used
+	- Fixed a type in a variable preventing text_shadow from working properly in class.css
+	- Fixed a bug in style.php and fonts.php that prevented class.css from loading when compression disabled
+	- Fixed a bug that prevented text_shadow from outputing to a php stylesheet from class.css
+	- Added 'inset' option for box_shadow in class.css
+
+## Version 4.4.5 ##
+	- Tweaked "clean" class for better cleaning
+	- Added an "uncode" function to the "clean" class to output non-entity text
+
+
+## Version 4.4.4 ##
+	- Added array support for the mysql function of class 'clean' in class.security.php
+	- Added a 'load_array' option in mysql function of class.database.php to toggle array return
+
+## Version 4.4.3 ##
+	- Added PHP version of fonts.css
+	- Added fonts() method to class.css to allow for fast font squirrel generation
+
+## Version 4.4.2 ##
+	- Enhanced gradient() function in class.css to support wider range of browsers and bgcolor fallback.
+	- Added text_shadow() function to class.css
+	- Added transform() function to class.css
+
+## Version 4.4.1 ##
+	- Modified security class for cleaner security standards. Removed fixQuotes from standards class.
+
+## Version 4.4 ##
+	- Added "JW Player" for HTML5/Flash video integration. No jQuery required.
+
+## Version 4.3 ##
+	- Added "FlowPlayer" for jQuery as an easy video integration system. 
+
+## Version 4.2 ##
+	- Added "Anything Slider" for jquery and documentation
+
+## Version 4.1.1 ##
+	- Added static function 'hex2rgba' to class.css.php for Hexidecimal color to rgba conversion
+	- Updated #mask rule in general.php to use new hex2rgba function
+	- Changed "general.css" and "general.php" to "style.css" and "style.php" respectively
+
+
+## Version 4.1 ##
+	- Added ability to use PHP CSS files. (Enable in config.php)
+	- Added a css class to quickly add cumbersome css elements (i.e. border-radius)
+	- Added local timezone default in config.xml (America/New York)
+	- Updated jquery, nivo slider, jquery ui to latest versions
+	- Fixed a bug in the email class that prevented some variables from reading properly
+	- Tweaked the database class slightly and added options for mssql and odbc connections
+	- Added "mask" div to footer.php and accomanying styles in general.css/general.php\
+	- Added "section #main" to page template and index.php
+	- Changed the default favicon to a more generic "star"
+	- Added print_break style to print.css
+
+
+## Version 4.0 ##
+	- Re-structured the head_check routine to be more automated/cleaner
+	- Re-structured compression variables to be cleaner
+	- Changed PHP folder to CLASSES folder
+	- Added a TEMPLATES folder
+	- Converted everything to common naming convention: class.x.php, ajax.x.php, template.x.php, etc
+	- Added page caching option (Enable in config.xml)
+	- Added a backup class for easily backing up mysql databases
+	- Added a cron folder and mysql cron job to work with backup class
+	- Added the Ubuntu font

@@ -1,0 +1,3 @@
+# go away
+User-agent: * #specifies all agents
+Disallow: / #prevents everything on the site from being access by robots. Use folder/file structure to specify individual files/folders
