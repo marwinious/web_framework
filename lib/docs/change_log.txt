@@ -5,6 +5,7 @@ Created and maintained by Darius Babcock, Greener Web Design
 ## Version 4.8.7 ##
 	- Added expire headers, gzip, and etag options to default htaccess file
 	- Added js_constants option to config.php to duplicate PHP constants in JS on page load
+	- Added a 'fix_empty_dates' method to class.standards for handling date fields easily
 
 ## Version 4.8.6 ##
 	- Added the 'opacity' class to class.css for cross-browser opacity settings

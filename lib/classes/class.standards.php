@@ -115,5 +115,17 @@ class standards {
 		$button = "<button type=\"$type\" ".$options.">$text</button>";
 		return $button;
 	}
+	
+	// FIX EMPTY DATES
+	function fix_empty_date($date,$replace_with='') {
+		if($date == '0000-00-00' || $date == '00/00/0000' || $date == '0000-00-00 00:00:00' || $date == '1969-12-31' || $date == '1969-12-31 00:00:00') {
+			$date = '';
+		}
+		else {
+			$date = standards::dateToHuman($date);
+		}
+		
+		return $date;
+	}
 }
 ?>
