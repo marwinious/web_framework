@@ -1,5 +1,9 @@
-Web Framework v4.8.7
+Web Framework v4.8.8
 Created and maintained by Darius Babcock, Greener Web Design
+
+## Version 4.8.8 ##
+	- Added class.social_media.php (in progress) for generating common social network elements. FB only for now
+	- Added style_checker.php in root to display current styles for various elements at a glance
 
 
 ## Version 4.8.7 ##
