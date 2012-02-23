@@ -14,9 +14,13 @@ header, section, article, footer, nav, aside {
 /* END HTML 5 PRESETS */
 
 /* MAIN STYLES */
+html {
+	font-size: 62.5%;
+}
+
 body {
 	font-family: arial;
-	font-size: 62.5%;
+	font-size: 1.2em;
 	color: #5D5D5D;
 	overflow: scroll;
 }
@@ -31,8 +35,8 @@ a:hover {
 	text-decoration: none;
 }
 
-p {
-	font-size: 1.2em;
+p, ul, ol, td, th, caption {
+	
 }
 
 #mask {
@@ -71,121 +75,106 @@ p {
 	right: 10px;
 	cursor: pointer;
 }
+/* END MAIN STYLES */
 
-
-/* CSS3 STRUCTURES AND USAGE */
-/*
-
-//  BORDER RADIUS //
-Set the pixels equal to the size of the radius desired.
-Larger numbers make more pronounced/rounded borders.
-On a square box, set to 50px to make a circle.
-
-	-webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-
-
-// BOX SHADOW //
-Gives a shadow to a container.
-Usage: {x-offet} {y-offset} {blur} {shadow-color}
-
-	-webkit-box-shadow: 1px 1px 3px #292929;
-	-moz-box-shadow: 1px 1px 3px #292929;
-	box-shadow: 1px 1px 3px #292929;
-
-Can utilize mulitple shadows for unique effects:
-
-	-webkit-box-shadow: 1px 1px 3px green, -1px -1px blue;
-	-moz-box-shadow: 1px 1px 3px green,-1px -1px blue;
-	box-shadow: 1px 1px 3px green, -1px -1px blue;
-
-
-// TEXT SHADOW //
-Add shadows to text elements.
-Usage: {x-offet} {y-offset} {blur} {shadow-color}
-
-	text-shadow: 0 1px 0 white;
-
-Can be used to outline text as well.
-
-	text-shadow: 0 1px 0 black, 0 -1px 0 black, 1px 0 0 black, -1px 0 0 black;
-
-
-// TEXT STROKE //
-Adds a stroke to the text.
-CAUTION: AS OF 12/4/2010, THIS EFFECT IS WEBKIT ONLY!!
-
-	-webkit-text-stroke: 3px black;
-
-	
-// BACKGROUND GRADIENT //
-Creates a CSS gradient
-
-	background-image: -moz-linear-gradient(100% 100% 90deg, #E5E5E5, #FFFFFF); // Bottom color, Top color
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#E5E5E5)); // Top color, Bottom color
-	
-	
-// MULTIPLE BACKGROUNDS //
-Puts 2 or more background images inside a single container
-Usage: {image-path} {left-offset} {top-offset} {repeat}
-
-	background: url(image/path.jpg) 0 0 no-repeat, url(image2/path.jpg) 100% 0 no-repeat;
-
-
-// BACKGROUND SIZE //
-Sets the size of the background image.
-Usage: {x-size} {y-size}
-
-	background: url(path/to/image.jpg) no-repeat;
-	-moz-background-size: 100% 100%;
-	-o-background-size: 100% 100%;
-	-webkit-background-size: 100% 100%;
-	background-size: 100% 100%;
-
-	
-// TEXT OVERFLOW //
-This property can be used to cut off text that exceeds its container, while still providing a bit of feedback for the user, like an ellipsis.
-
-	-o-text-overflow: ellipsis;
-	text-overflow:ellipsis;
-	overflow:hidden;
-	white-space:nowrap;
-
-
-// FLEXIBLE BOX MODEL //
-The Flexible Box Model, will finally allow us to get away from those mangy floats.
-This uses the display: box style to overcome the nead for floats.
-EXAMPLE:
-
-<div id="container">
-	<div id="main"> Main content here </div>
-	<aside> Aside content here </aside>
-</div>
-
-#container {
-    width: 960px;
-    height: 500px; // DEMO SIZE ONLY. NORMALLY CONTENT WILL DICTATE HEIGHT //
-
-    background: #e3e3e3;
-    margin: auto;
-
-    display: -moz-box;
-    display: -webkit-box;
-    display: box;
+/* FORM STYLES */
+input, textarea, select {
+	border: solid 1px #d8d8d8;
+	color: #016c8b;
 }
 
-#main {
-   background: yellow;
-   width: 800px;
-}   
-
-aside {
-	display: block;
-    background: red;
-    -moz-box-flex: 1;
-    -webkit-box-flex: 1;
-    box-flex: 1;
+input:focus, textarea:focus {
+	background: #ffffb0;
 }
 
-*/
+input[type='checkbox'], input[type='radio'] {
+	border: none;
+}
+
+label {
+	font-weight: bold;
+}
+
+::-webkit-input-placeholder {
+	color: #bebebe;
+}
+
+:-moz-placeholder {
+	color: #bebebe;
+}
+
+.print_break {
+	display: none;
+}
+/* END FORM STYLES */
+
+/* BUTTON STYLES */
+	/* LIGHT BUTTON STYLES (DEFAULT) */
+.button {
+	display: inline;
+	cursor: pointer;
+	line-height: 1em;
+	margin: 3px 0;
+	padding: 5px 10px;
+	border: solid 1px #dbdbdb;
+	color: #4f4f4f;
+	background: #fefefe;
+	outline: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
+	-moz-box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
+	-webkit-box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
+	<?PHP echo css::border_radius('5px');?>
+	<?PHP echo css::text_shadow('0px','1px','0px','#FFFFFF');?>
+	<?PHP echo css::gradient('#eaeaea','#cecece');?>
+}
+
+.button_hover, .button:hover {
+	<?PHP echo css::gradient('#ffffff','#fafafa');?>
+}
+
+.button_active, .button_disabled, .button[disabled="disabled"], .button:active {
+	margin-top: 5px;
+	margin-bottom: 1px;
+	<?PHP echo css::box_shadow('0px','0px','0px','#b6b6b6');?>
+	<?PHP echo css::gradient('#f3f3f3','#ffffff');?>
+}
+
+.button.busy {
+	color: #b42121;
+}
+
+.button_disabled, .button[disabled="disabled"] {
+	color: #d1d1d1;
+}
+	/* DARK BUTTON STYLES */
+.button.dark {
+	color: #FFFFFF;
+	border-color: #959595;
+	box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
+	-moz-box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
+	-webkit-box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
+	<?PHP echo css::text_shadow('0px','-1px','0px','#000000');?>
+	<?PHP echo css::gradient('#9c9c9c','#838483');?>
+}
+
+.dark.button_hover, .dark.button:hover {
+	<?PHP echo css::gradient('#c6c6c6','#adadad');?>
+}
+
+.dark.button_active, .button[disabled="disabled"].dark, .dark.button:active {
+	margin-top: 5px;
+	margin-bottom: 1px;
+	<?PHP echo css::box_shadow('0px','0px','0px','#b6b6b6');?>
+	<?PHP echo css::gradient('#7d7d7d','#949494');?>
+}
+
+.dark.button.busy {
+	color: #ffff80;
+}
+
+.button_disabled, .button[disabled="disabled"].dark {
+	color: #b1b1b1;
+}
+/* END BUTTON STYLES */

@@ -118,9 +118,26 @@ require("header.php");
 		<div class="notice">Notification message</div><br />
 		<div class="inform">Informative message</div><br />
 		
+		<div class="grid_4 alpha">
+			<?PHP echo standards::button('button','Default State');?><br />
+			<?PHP echo standards::button('button','Hover State',"class='button_hover'");?><br />
+			<?PHP echo standards::button('button','Active State',"class='button_active'");?><br />
+			<?PHP echo standards::button('button','Busy State',"class='busy'");?><br />
+			<?PHP echo standards::button('button','Disabled State',"disabled='disabled'");?><br />
+		</div>
+		<div class="grid_4 omega">
+			<?PHP echo standards::button('button','Default State',"class='dark'");?><br />
+			<?PHP echo standards::button('button','Hover State',"class='button_hover dark'");?><br />
+			<?PHP echo standards::button('button','Active State',"class='button_active dark'");?><br />
+			<?PHP echo standards::button('button','Busy State',"class='busy dark'");?><br />
+			<?PHP echo standards::button('button','Disabled State',"disabled='disabled' class='dark'");?><br />
+		</div>
+		
 		</form>
 	</div>
 	<div class="clear"></div>
+	
+	<br /><br /><br /><br /><br />
 </section>
 
 <script type="text/javascript">
