@@ -81,10 +81,12 @@ p, ul, ol, td, th, caption {
 input, textarea, select {
 	border: solid 1px #d8d8d8;
 	color: #016c8b;
+	padding: 5px;
+	<?PHP echo css::border_radius('5px');?>
 }
 
 input:focus, textarea:focus {
-	background: #ffffb0;
+	background: #FFFFCC;
 }
 
 input[type='checkbox'], input[type='radio'] {
@@ -93,6 +95,7 @@ input[type='checkbox'], input[type='radio'] {
 
 label {
 	font-weight: bold;
+	padding: 5px;
 }
 
 ::-webkit-input-placeholder {
