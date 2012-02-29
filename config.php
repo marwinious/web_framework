@@ -27,9 +27,8 @@ define("JQUERY_FLOWPLAYER",LIB."jquery-flowplayer/");
 define("TEMPLATES",LIB."templates/");
 define("SETTINGS",LIB."settings/");
 
-// PAGE SETUP //
+// DOCTYPE //
 define("DOCTYPE","<!DOCTYPE HTML>\n"); // HTML 5
-define("CHARSET","<meta charset=\"utf-8\">\n"); // CHARACTER SET
 
 // SITE INFORMATION //
 define("SITE_TITLE","[SITE TITLE]");
@@ -41,6 +40,7 @@ define("FAVICON_MOBILE","<link rel='apple-touch-icon' href='".IMAGES."favicon.pn
 define("AUTHOR","A <a href='[AUTHOR URL]'>[AUTHOR]</a>");
 
 // META DATA
+$_metadata['charset'] = "<meta charset=\"utf-8\">";
 $_metadata['description'] = "<meta name=\"description\" content=\"[META DESCRIPTION]\">";
 $_metadata['keywords'] = "<meta name=\"keywords\" content=\"[META KEYWORDS]\">"; // COMMA DELIMITED
 $_metadata['viewport'] = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=0.8, maximum-scale=1.5\">"; // FOR MOBILE VIEWPORTS
@@ -65,48 +65,12 @@ $enable_cache = false;
 $enable_phpcss = true;
 $enable_js_constants = false;
 
-// FILE UPLOAD OPTIONS //
-//
-// USE THIS VARIABLE TO RESTRICT A SMALL NUMBER OF MIME TYPES
-$restricted_file_types = array("image/gif", "image/jpeg", "image/pjpeg");
-// USE THIS VARIABLE TO ALLOW A SMALL NUMBER OF MIME TYPES
-$accepted_file_types = array("application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel");
-// USE THIS VARIABLE TO CONTROL MAX FILE SIZE LIMIT, IN BYTES (I.E. 2000000 = 2MB)
-$max_file_size = 2000000;
-// SPECIFY RESTRICTION OPTION
-$use_restriction_type = "Restricted"; // OPTIONS: "Restricted", "Accepted", "" (ALLOW ALL)
-// SPECIFY UPLOAD DIRECTORY
-$upload_directory = "../../uploads/";
-// SPECIFY CONFIRMATION/COMPLETION REDIRECT PAGE
-$upload_redirect = "../../index.php";
-
-
-// CONTACT FORM DEFAULTS //
-//
-// DEFAULT DESTINATION EMAIL ADDRESS
-$contact_send_to = "";
-// DEFAULT "FROM" EMAIL ADDRESS
-$contact_send_from = "";
-// DEFAULT SUBJECT LINE FOR EMAIL
-$contact_send_subject = "Site feedback for " . SITE_TITLE;
-// DEFAULT CONFIRMATION PAGE
-$contact_confirmation = "contact_confirm.php";
-// DEFAULT CONTACT FORM ERROR PAGE
-$contact_error = "contact_error.php";
-
-
-// BACKUP OPTIONS
-//
-// DEFAULT DIRECTORY SEPARATOR (I.E. C:\DIR\FILE.TXT vs C:/DIR/FILE.TXT);
-$dir_sep = "\\";
-// DEFAULT FILE LOCATION
-$backup_dir = BASEPATH.$dir_sep."lib".$dir_sep."backups".$dir_sep;
-
-
 // SITE-WIDE //
 //
 require(SETTINGS."db.php");
 require(SETTINGS."ftp.php");
+require(SETTINGS."upload_options.php");
+require(SETTINGS."backup_options.php");
 require(CLASSES."class.standards.php");
 require(CLASSES."class.misc.php");
 require(CLASSES."class.database.php");

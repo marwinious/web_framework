@@ -6,9 +6,6 @@
 <title><?PHP echo ucwords(SITE_PRE) . ucwords(PAGE_TITLE);?></title>
 
 <?PHP
-// OUTPUT CHARACTER SET
-echo CHARSET;
-
 // OUTPUT META DATA
 foreach($_metadata as $key=>$value) {
 	echo "{$value}\n";

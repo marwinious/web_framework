@@ -12,7 +12,14 @@ require("header.php");
 ?>
 
 <section id="main">
+	<?PHP misc::debug($_SERVER);?>
 	
+	<?PHP
+	if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE 9")) { echo "IE 9"; }
+	if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE 8")) { echo "IE 8"; }
+	if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE 7")) { echo "IE 7"; }
+	if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE 6")) { echo "IE 6"; }
+	?>
 </section>
 
 <script type="text/javascript">
