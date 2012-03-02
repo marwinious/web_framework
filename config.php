@@ -14,16 +14,16 @@ define("CSS",LIB."css/");
 define("JS",LIB."js/");
 define("_960",LIB."960/");
 define("JQUERY",LIB."jquery/");
-define("JQUERY_UI",LIB."jquery-ui/");
-define("JQUERY_TOOLS",LIB."jquery-tools/");
-define("JQUERY_VALIDATE",LIB."jquery-validate/");
-define("SUPERFISH",LIB."superfish/");
-define("JQUERY_PLACEHOLDER",LIB."jquery-placeholder/");
-define("JQUERY_QRCODE",LIB."jquery-qrcode/");
-define("JQUERY_LITE_ACCORDION",LIB."jquery-lite-accordion/");
-define("JQUERY_NIVO_SLIDER",LIB."jquery-nivo-slider/");
-define("JQUERY_ANYTHING_SLIDER",LIB."jquery-anything-slider/");
-define("JQUERY_FLOWPLAYER",LIB."jquery-flowplayer/");
+define("JQUERY_UI",JQUERY."jquery-ui/");
+define("JQUERY_TOOLS",JQUERY."jquery-tools/");
+define("JQUERY_VALIDATE",JQUERY."jquery-validate/");
+define("SUPERFISH",JQUERY."superfish/");
+define("JQUERY_PLACEHOLDER",JQUERY."jquery-placeholder/");
+define("JQUERY_QRCODE",JQUERY."jquery-qrcode/");
+define("JQUERY_LITE_ACCORDION",JQUERY."jquery-lite-accordion/");
+define("JQUERY_NIVO_SLIDER",JQUERY."jquery-nivo-slider/");
+define("JQUERY_ANYTHING_SLIDER",JQUERY."jquery-anything-slider/");
+define("JQUERY_FLOWPLAYER",JQUERY."jquery-flowplayer/");
 define("TEMPLATES",LIB."templates/");
 define("SETTINGS",LIB."settings/");
 
@@ -53,10 +53,10 @@ $enable_jquery_tools = false; // REQUIRES JQUERY
 $enable_jquery_placeholder = false; // REQUIRES JQUERY
 $enable_jquery_qrcode = false; // REQUIRES JQUERY
 $enable_jquery_lite_accordion = false; // REQUIRES JQUERY
-$enable_jquery_nivo_slider = false; // REQUIRES JQUERY
+$enable_jquery_nivo_slider = true; // REQUIRES JQUERY
 $enable_jquery_anything_slider = false; // REQUIRES JQUERY
 $enable_jquery_flowplayer = false; // REQUIRES JQUERY
-$enable_jsplayer = false;
+$enable_video_js = true;
 $enable_ckeditor = false;
 $enable_960 = true;
 $enable_superfish = false; // REQUIRES JQUERY
@@ -113,7 +113,7 @@ $_stylesheet['ie9'] = CSS."ie9.css";
 $_stylesheet['fonts'] = CSS."fonts.".$css_ext;
 
 // JQUERY
-$_jquery['main'] = JQUERY."jquery-1.6.2.min.js";
+$_jquery['main'] = JQUERY."jquery-1.7.1.min.js";
 $_jquery['ui']['main'] = JQUERY_UI."js/jquery-ui-1.8.16.custom.min.js";
 $_jquery['ui']['theme'] = "ui-lightness";
 $_jquery['ui']['theme_path'] = JQUERY_UI."css/".$_jquery['ui']['theme']."/jquery-ui-1.8.16.custom.css";
@@ -137,7 +137,8 @@ $_jquery['flowplayer']['swf'] = JQUERY_FLOWPLAYER."flowplayer-3.2.7.swf";
 // JAVASCRIPT MISC
 $_js['head'] = JS."head.min.js";
 $_js['auto_complete'] = JS."auto_complete.js";
-$_js['jwplayer'] = JS."jw-player/jwplayer.js";
+$_js['video_js']['main'] = JS."video-js/video.min.js";
+$_js['video_js']['css'] = JS."video-js/video-js.min.css";
 $_js['ckeditor']['main'] = LIB."ckeditor/ckeditor.js";
 
 // 960
@@ -189,8 +190,9 @@ if($enable_jquery_anything_slider) {
 if($enable_jquery_flowplayer) {
 	$_compress['js'][] = $_jquery['flowplayer']['main'];
 }
-if($enable_jsplayer) {
-	$_compress['js'][] = $_js['jwplayer'];
+if($enable_video_js) {
+	$_compress['js'][] = $_js['video_js']['main'];
+	$_compress['css'][] = $_js['video_js']['css'];
 }
 
 // CUSTOM CSS MUST BE LAST IN DECLARATION

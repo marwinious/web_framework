@@ -1,5 +1,14 @@
-Web Framework v4.8.8
+Web Framework v4.9.0
 Created and maintained by Darius Babcock, Greener Web Design
+
+## Version 4.9.0 ##
+	- Tweaks to config.php -> split some settings out into lib/settings for tidyness
+	- IE PHP browser detection for cleaner <head>
+	- Removed jwplayer in favor of video-js for easier integration/HTML5 support
+	- Moved all jquery plugin folders into the jquery folder to clean up lib folder
+	- Updated jquery to v1.7.1
+	- Updated Nivo slider to v2.7.1
+	- Updated 960gs to latest version
 
 ## Version 4.8.8 ##
 	- Added class.social_media.php (in progress) for generating common social network elements. FB only for now

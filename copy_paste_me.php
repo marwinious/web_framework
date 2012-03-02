@@ -1,5 +1,5 @@
 <?PHP
-define("PAGE_TITLE","Home");
+define("PAGE_TITLE","NEW PAGE");
 require("config.php");
 
 if($enable_cache) {

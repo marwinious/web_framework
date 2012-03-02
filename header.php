@@ -28,21 +28,23 @@ define("TOKEN",$security->load());
 <!--[if IE]>
 	<?PHP echo $style_pre . $_stylesheet['ie'] . $style_post . "\n";?>
 <![endif]-->
+<?PHP if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE 6")) {?>
 <!--[if IE 6]>
 	<?PHP echo $style_pre . $_stylesheet['ie6'] . $style_post . "\n";?>
 <![endif]-->
+<?PHP } if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE 7")) {?>
 <!--[if IE 7]>
 	<?PHP echo $style_pre . $_stylesheet['ie7'] . $style_post . "\n";?>
 <![endif]-->
+<?PHP } if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE 8")) {?>
 <!--[if IE 8]>
 	<?PHP echo $style_pre . $_stylesheet['ie8'] . $style_post . "\n";?>
 <![endif]-->
+<?PHP } if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE 9")) {?>
 <!--[if IE 9]>
 	<?PHP echo $style_pre . $_stylesheet['ie9'] . $style_post . "\n";?>
 <![endif]-->
-<!--[if lt IE 9]>
-	<script src="lib/js/html5.js"></script>
-<![endif]-->
+<?PHP }?>
 <!-- END ALTERNATE CSS SECTION -->
 
 <?PHP if($enable_js_constants) {?>
