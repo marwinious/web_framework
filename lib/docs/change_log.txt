@@ -1,5 +1,9 @@
-Web Framework v4.9.0
+Web Framework v4.9.5
 Created and maintained by Darius Babcock, Greener Web Design
+
+## Version 4.9.5 ##
+	- Made the lib/css folder dynamic to allow reading from any CSS/PHP file dropped into it
+	- Moved the IE-specific stylesheets into a separate folder in lib/css
 
 ## Version 4.9.0 ##
 	- Tweaks to config.php -> split some settings out into lib/settings for tidyness

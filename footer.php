@@ -9,9 +9,7 @@
 <script type="text/javascript">
 <!--
 $(document).ready(function() {
-	$("#test").click(function() {
-		$("#mask").show();
-	});
+	
 });
 // -->
 </script>

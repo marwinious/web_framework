@@ -1,0 +1,41 @@
+/* HTML 5 PRESETS */
+header, section, article, footer, nav, aside {
+	display: block;
+}
+/* END HTML 5 PRESETS */
+
+/* MAIN STYLES */
+body {
+	font-family: arial;
+	font-size: 62.5%;
+	color: #5D5D5D;
+	overflow: scroll;
+}
+
+a:link, a:visited {
+	color: #B41216;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #64790D;
+	text-decoration: none;
+}
+
+p {
+	font-size: 1.2em;
+}
+
+#mask {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 99;
+	overflow-x: auto;
+	overflow-y: scroll;
+	background-color: #484848;
+	background-color: rgba(0,0,0,0.3);
+}

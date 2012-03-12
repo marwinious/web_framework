@@ -5,6 +5,9 @@
 // E_ALL (ALL ERRORS), -1 (ALL ERRORS)
 error_reporting(E_ALL);
 
+// LOCALE SETTINGS
+date_default_timezone_set('America/New_York');
+
 // PATH CONSTANTS //
 define("BASEPATH",dirname(__FILE__)."/"); // CHANGE TO HOSTING SUBFOLDER\PATH.
 define("LIB","lib/"); // DEFINE PRIMARY LIBRARY PATH
@@ -87,9 +90,6 @@ if(!isset($_SESSION['user'])) {
 	$_SESSION['user'] = new session();
 }
 
-// LOCALE SETTINGS
-date_default_timezone_set('America/New_York');
-
 // HELPERS
 $style_pre = "<link rel='stylesheet' type='text/css' href='";
 $style_post = "' />";
@@ -98,19 +98,6 @@ $script_post = "'></script>";
 $style_pre_screen = "<link rel='stylesheet' media='screen' href='";
 $style_post_screen = "' />";
 define("SELECTED","selected='selected'");
-
-// STYLESHEETS
-if($enable_phpcss) { $css_ext = "php"; } else { $css_ext = "css"; }
-$_stylesheet['general'] = CSS."style.".$css_ext;
-$_stylesheet['helpers'] = CSS."helpers.css";
-$_stylesheet['print'] = CSS."print.css";
-$_stylehseet['favicon'] = "<link rel='shortcut icon' href='".FAVICON."' type='image/png' />";
-$_stylesheet['ie'] = CSS."ie.css";
-$_stylesheet['ie6'] = CSS."ie6.css";
-$_stylesheet['ie7'] = CSS."ie7.css";
-$_stylesheet['ie8'] = CSS."ie8.css";
-$_stylesheet['ie9'] = CSS."ie9.css";
-$_stylesheet['fonts'] = CSS."fonts.".$css_ext;
 
 // JQUERY
 $_jquery['main'] = JQUERY."jquery-1.7.1.min.js";
@@ -196,10 +183,15 @@ if($enable_video_js) {
 }
 
 // CUSTOM CSS MUST BE LAST IN DECLARATION
-$_compress['css'][] = $_stylesheet['fonts'];
-$_compress['css'][] = $_stylesheet['general'];
-$_compress['css'][] = $_stylesheet['helpers'];
-$_compress['css'][] = $_stylesheet['print'];
+$_stylesheet['custom'] = css::load_css(BASEPATH.CSS); // LOADS CSS FILES FROM CSS DIR
+$_stylesheet['ie'] = CSS."ie/ie.css";
+$_stylesheet['ie6'] = CSS."ie/ie6.css";
+$_stylesheet['ie7'] = CSS."ie/ie7.css";
+$_stylesheet['ie8'] = CSS."ie/ie8.css";
+$_stylesheet['ie9'] = CSS."ie/ie9.css";
+foreach($_stylesheet['custom'] as $key=>$value) {
+	$_compress['css'][] = $value;
+}
 $_compress['js'][] = $_js['head'];
 
 // GENERATE JS TO SET DEFINED PHP VARIABLES WITHIN JS

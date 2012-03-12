@@ -12,7 +12,9 @@ require("header.php");
 ?>
 
 <section id="main">
+	<?PHP
 	
+	?>
 </section>
 
 <script type="text/javascript">

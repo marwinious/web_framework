@@ -1,5 +1,29 @@
 <?PHP
 class css {
+	// LOAD CSS FILES FROM CSS FOLDER
+	static function load_css($path) {
+		GLOBAL $enable_phpcss;
+		
+		$files = scandir($path);
+		$css = array();
+		foreach($files as $key=>$value) {
+			if($value != "." && $value != ".." && $value != "compress_stylesheets.php") {
+				$split = explode('.',$value);
+				if($enable_phpcss) {
+					if(end($split) == "css" || end($split) == "php") {
+						$css[] = CSS.$value;
+					}
+				}
+				else {
+					if(end($split) == "css") {
+						$css[] = CSS.$value;
+					}
+				}
+			}
+		}
+		
+		return $css;
+	}
 	
 	// GRADIENT
 	static function gradient($start,$stop) {
