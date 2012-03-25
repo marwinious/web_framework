@@ -6,5 +6,7 @@ class main {
 	function __construct() {
 		$this->db = new mysql();
 	}
+	
+	
 }
 ?>

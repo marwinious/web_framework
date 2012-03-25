@@ -23,7 +23,7 @@ class mysql {
 		}
 	}
 	
-	// DATABASE QUERY FUNCTION
+	// PERFORM CUSTOM QUERY
 	function query($sql,$load_array=true) {
 		// CREATE CONNECTION
 		$array = array();
@@ -54,6 +54,133 @@ class mysql {
 		else {
 			return $id;
 		}
+	}
+	
+	// PERFORM INSERT
+	function insert($table,$input) {
+		// CLEAN
+		$clean = clean::input($input);
+		$clean['table'] = clean::input($table);
+		$mysql = clean::mysql($clean);
+		
+		// GET COLUMNS FROM TABLE
+		$sql = "
+		SHOW COLUMNS 
+		FROM {$mysql['table']} 
+		WHERE 'Key' != \"PRI\"
+		";
+		$show = $this->query($sql);
+		
+		// LOOP THROUGH COLUMNS AND BUILD COLUMN/VALUE ARRAYS
+		for($i=0;$i<count($show);$i++) {
+			if(isset($mysql[$show[$i]['Field']])) {
+				$columns[] = $show[$i]['Field'];
+				$values[] = "'".$mysql[$show[$i]['Field']]."'";
+			}
+		}
+		
+		// CONVERT ARRAYS INTO DELIMITED STRINGS
+		$columns = implode(', ',$columns);
+		$values = implode(', ',$values);
+		
+		// CREATE INSERTION QUERY
+		$sql = "
+		INSERT INTO {$mysql['table']}
+		({$columns})
+		VALUES({$values})
+		";
+		
+		if($result = $this->query($sql)) { return $result; }
+		else { return false; }
+	}
+	
+	// PERFORM UPDATE
+	function update($table, $input) {
+		// CLEAN
+		$clean = clean::input($input);
+		$clean['table'] = clean::input($table);
+		$mysql = clean::mysql($clean);
+		
+		// GET COLUMNS FROM TABLE
+		$sql = "
+		SHOW COLUMNS 
+		FROM {$mysql['table']}
+		";
+		$show = $this->query($sql);
+		
+		// LOOP THROUGH COLUMNS AND BUILD COLUMN/VALUE ARRAYS
+		for($i=0;$i<count($show);$i++) {
+			if($show[$i]['Key'] != 'PRI' && isset($mysql[$show[$i]['Field']])) {
+				$updates[] = $show[$i]['Field']." = '".$mysql[$show[$i]['Field']]."'";
+			}
+			else if($show[$i]['Key'] == 'PRI') {
+				$primary_key = $show[$i]['Field'];
+			}
+		}
+		
+		// CONVERT ARRAYS INTO DELIMITED STRINGS
+		$updates = implode(', ', $updates);
+		
+		// CREATE UPDATE QUERY
+		$sql = "
+		UPDATE {$mysql['table']}
+		SET {$updates}
+		WHERE {$primary_key} = {$mysql['key']}
+		";
+		
+		if($result = $this->query($sql)) { return $result; }
+		else { return false; }
+	}
+	
+	// PERFORM SELECT
+	function select($table,$key) {
+		// CLEAN
+		$clean['table'] = clean::input($table);
+		$clean['key'] = clean::input($key);
+		$mysql = clean::mysql($clean);
+		
+		// GET PRIMARY KEY COLUMN
+		$sql = "
+		SHOW INDEXES 
+		FROM {$mysql['table']} 
+		WHERE Key_name = \"PRIMARY\"
+		";
+		$show = $this->query($sql);
+		$primary_key = $show[0]['Column_name'];
+		
+		// CREATE SELECT QUERY
+		$sql = "
+		SELECT * FROM {$mysql['table']}
+		WHERE {$primary_key} = '{$mysql['key']}'
+		";
+		
+		return $this->query($sql);
+	}
+	
+	// PERFORM DELETE
+	function delete($table,$key) {
+		// CLEAN
+		$clean['table'] = clean::input($table);
+		$clean['key'] = clean::input($key);
+		$mysql = clean::mysql($clean);
+		
+		// GET PRIMARY KEY COLUMN
+		$sql = "
+		SHOW INDEXES 
+		FROM {$mysql['table']} 
+		WHERE Key_name = \"PRIMARY\"
+		";
+		$show = $this->query($sql);
+		$primary_key = $show[0]['Column_name'];
+		
+		// CREATE DELETION QUERY
+		$sql = "
+		DELETE FROM {$mysql['table']}
+		WHERE {$primary_key} = '{$mysql['key']}'
+		";
+		
+		if($result = $this->query($sql)) { return $result; }
+		else { return false; }
 	}
 	
 	// RETURN PRIVATE VARIABLES

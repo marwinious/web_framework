@@ -82,6 +82,7 @@ require(CLASSES."class.backup.php");
 if($enable_cache) { require(CLASSES."class.performance.php"); }
 require(CLASSES."class.main.php");
 require(CLASSES."class.css.php");
+$main = new main();
 
 // INITIALIZE SESSION
 require(CLASSES."class.session.php");

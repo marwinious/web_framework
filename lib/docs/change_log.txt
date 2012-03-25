@@ -1,5 +1,9 @@
-Web Framework v4.9.5
+Web Framework v5.0.0
 Created and maintained by Darius Babcock, Greener Web Design
+
+## Version 5.0.0 ##
+	- Added insert, update, select, and delete functions to class.database
+	- Initialized $main in config.php to that it can be used immediately
 
 ## Version 4.9.5 ##
 	- Made the lib/css folder dynamic to allow reading from any CSS/PHP file dropped into it
