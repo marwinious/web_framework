@@ -90,7 +90,10 @@ class mysql {
 		VALUES({$values})
 		";
 		
-		if($result = $this->query($sql)) { return $result; }
+		if($result = $this->query($sql)) {
+			$id = mysql_insert_id();
+			return $id; 
+		}
 		else { return false; }
 	}
 	
