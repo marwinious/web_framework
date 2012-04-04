@@ -75,6 +75,8 @@ require(SETTINGS."ftp.php");
 require(SETTINGS."upload_options.php");
 require(SETTINGS."backup_options.php");
 require(CLASSES."class.standards.php");
+require(CLASSES."class.form.php");
+require(CLASSES."class.image.php");
 require(CLASSES."class.misc.php");
 require(CLASSES."class.database.php");
 require(CLASSES."class.security.php");

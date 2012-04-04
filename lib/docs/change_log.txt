@@ -1,5 +1,8 @@
-Web Framework v5.0.0
+Web Framework v5.1.0
 Created and maintained by Darius Babcock, Greener Web Design
+
+## Version 5.1.0 ##
+	- Moved image and form functions to class.image and class.form respectively. Removed from class.standards
 
 ## Version 5.0.0 ##
 	- Added insert, update, select, and delete functions to class.database
