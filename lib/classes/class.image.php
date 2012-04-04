@@ -7,6 +7,10 @@ class image {
 			if($alt != "") { $title = $alt;	}
 			else { $title = $src; }
 		}
+		if(strtoupper($alt) == "NA" || strtoupper($title) == "NA") {
+			$alt = "";
+			$title = "";
+		}
 		
 		$image = "<img src=\"$src\" alt=\"$alt\" title=\"$title\" ";
 		
