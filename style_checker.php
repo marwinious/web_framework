@@ -92,14 +92,14 @@ require("header.php");
 		</tfoot>
 		</table>
 		
-		<?PHP echo standards::image(LOGO,"Image sample w/alt");?>
+		<?PHP echo image::make(LOGO,"Image sample w/alt");?>
 	</div>
 	<div class="grid_8">
 		<div class="grid_header">8 Column Grid</div>
 		
 		<form method="post" action="">
 		
-		<label>Form Label:</label> <?PHP echo standards::input('text','sample_text','Plain text box');?><br /><br />
+		<label>Form Label:</label> <?PHP echo form::input('text','sample_text','Plain text box');?><br /><br />
 		<select name="sample_select1">
 			<option value="">Select box sample</option>
 			<option value="">Select option</option>
@@ -107,8 +107,8 @@ require("header.php");
 			<option value="">Select option</option>
 			<option value="">Select option</option>
 		</select><br /><br />
-		<?PHP echo standards::input('checkbox','sample_check1',1,'checked');?> Checked checkbox <?PHP echo standards::input('checkbox','sample_check2',2);?> Unchecked checkbox<br />
-		<?PHP echo standards::input('radio','sample_radio1',1,'checked');?> Selected radio button <?PHP echo standards::input('radio','sample_radio2',2);?> Empty radio button<br /><br />
+		<?PHP echo form::input('checkbox','sample_check1',1,'checked');?> Checked checkbox <?PHP echo form::input('checkbox','sample_check2',2);?> Unchecked checkbox<br />
+		<?PHP echo form::input('radio','sample_radio1',1,'checked');?> Selected radio button <?PHP echo form::input('radio','sample_radio2',2);?> Empty radio button<br /><br />
 		<textarea name="textarea1" id="textarea1" cols="40" rows="5">Textarea sample</textarea>
 		
 		<br /><br />
@@ -119,18 +119,18 @@ require("header.php");
 		<div class="inform">Informative message</div><br />
 		
 		<div class="grid_4 alpha">
-			<?PHP echo standards::button('button','Default State');?><br />
-			<?PHP echo standards::button('button','Hover State',"class='button_hover'");?><br />
-			<?PHP echo standards::button('button','Active State',"class='button_active'");?><br />
-			<?PHP echo standards::button('button','Busy State',"class='busy'");?><br />
-			<?PHP echo standards::button('button','Disabled State',"disabled='disabled'");?><br />
+			<?PHP echo form::button('button','Default State');?><br />
+			<?PHP echo form::button('button','Hover State',"class='button_hover'");?><br />
+			<?PHP echo form::button('button','Active State',"class='button_active'");?><br />
+			<?PHP echo form::button('button','Busy State',"class='busy'");?><br />
+			<?PHP echo form::button('button','Disabled State',"disabled='disabled'");?><br />
 		</div>
 		<div class="grid_4 omega">
-			<?PHP echo standards::button('button','Default State',"class='dark'");?><br />
-			<?PHP echo standards::button('button','Hover State',"class='button_hover dark'");?><br />
-			<?PHP echo standards::button('button','Active State',"class='button_active dark'");?><br />
-			<?PHP echo standards::button('button','Busy State',"class='busy dark'");?><br />
-			<?PHP echo standards::button('button','Disabled State',"disabled='disabled' class='dark'");?><br />
+			<?PHP echo form::button('button','Default State',"class='dark'");?><br />
+			<?PHP echo form::button('button','Hover State',"class='button_hover dark'");?><br />
+			<?PHP echo form::button('button','Active State',"class='button_active dark'");?><br />
+			<?PHP echo form::button('button','Busy State',"class='busy dark'");?><br />
+			<?PHP echo form::button('button','Disabled State',"disabled='disabled' class='dark'");?><br />
 		</div>
 		
 		</form>
