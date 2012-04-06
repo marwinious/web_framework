@@ -27,6 +27,7 @@ define("JQUERY_LITE_ACCORDION",JQUERY."jquery-lite-accordion/");
 define("JQUERY_NIVO_SLIDER",JQUERY."jquery-nivo-slider/");
 define("JQUERY_ANYTHING_SLIDER",JQUERY."jquery-anything-slider/");
 define("JQUERY_FLOWPLAYER",JQUERY."jquery-flowplayer/");
+define("AJAX",LIB."ajax/");
 define("TEMPLATES",LIB."templates/");
 define("SETTINGS",LIB."settings/");
 
