@@ -1,5 +1,8 @@
-Web Framework v5.1.0
+Web Framework v5.2.0
 Created and maintained by Darius Babcock, Greener Web Design
+
+## Version 5.2.0 ##
+	- Added class.rss for quick RSS processing. Currently only supports Atom 2.0
 
 ## Version 5.1.0 ##
 	- Moved image and form functions to class.image and class.form respectively. Removed from class.standards
