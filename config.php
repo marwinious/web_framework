@@ -30,6 +30,7 @@ define("JQUERY_FLOWPLAYER",JQUERY."jquery-flowplayer/");
 define("AJAX",LIB."ajax/");
 define("TEMPLATES",LIB."templates/");
 define("SETTINGS",LIB."settings/");
+define("CACHE",LIB."cache/");
 
 // DOCTYPE //
 define("DOCTYPE","<!DOCTYPE HTML>\n"); // HTML 5

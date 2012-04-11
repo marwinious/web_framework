@@ -1,7 +1,11 @@
 <?PHP
 class performance {
 	static function cache_load($page) {
-		$cacheme = "lib/cache/".$page.".html";
+		// CLEAN PAGE NAME
+		$page = performance::clean_page_title($page);
+		
+		// SPECIFY CACHE FILE LOCATION/NAME
+		$cacheme = CACHE.$page.".html";
 		
 		// SERVER FROM CACHE IF NOT EXPIRED
 		if(file_exists($cacheme) && (filemtime(BASEPATH.$page.".php") < filemtime(BASEPATH.$cacheme))) {
@@ -17,7 +21,12 @@ class performance {
 	}
 	
 	static function cache_save($page) {
-		$cacheme = "lib/cache/".$page.".html";
+		// CLEAN PAGE NAME
+		$page = performance::clean_page_title($page);
+		
+		// SPECIFY CACHE FILE LOCATION/NAME
+		$cacheme = CACHE.$page.".html";
+		
 		// OPEN CAHCE FILE FOR WRITING
 		$fp = fopen($cacheme, 'w');
 		// SAVE THE CONTENTS OF OUTPUT BUFFER TO THE FILE
@@ -34,6 +43,13 @@ class performance {
 	
 	private function stop_buffer() {
 		ob_end_flush();
+	}
+	
+	private function clean_page_title($string) {
+		$find = array("\"","\'");
+		$replace = "";
+		
+		return strtolower(str_replace($find,$replace,$string));
 	}
 }
 ?>

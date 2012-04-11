@@ -1,4 +1,13 @@
-<?PHP echo DOCTYPE;?>
+<?PHP 
+// CACHING, IF ENABLED
+if($enable_cache) {
+	// CHECK FOR CACHED PAGE
+	$cache_loaded = false;
+	if(performance::cache_load(PAGE_TITLE)) { $cache_loaded = true; exit();}
+}
+
+echo DOCTYPE;
+?>
 <html>
 
 <head>
