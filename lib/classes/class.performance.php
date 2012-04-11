@@ -62,8 +62,16 @@ class performance {
 	}
 	
 	private function clean_page_title($string) {
-		$find = array("\"","\'");
-		$replace = "";
+		$find = array(
+			0 => "\"",
+			1 => "\'",
+			2 => " ",
+		);
+		$replace = array(
+			0 => "",
+			1 => "",
+			2 => "_",
+		);
 		
 		return strtolower(str_replace($find,$replace,$string));
 	}
