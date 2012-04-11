@@ -1,12 +1,7 @@
 <?PHP
-define("PAGE_TITLE","Home");
 require("config.php");
 
-if($enable_cache) {
-	// CHECK FOR CACHED PAGE
-	$cache_loaded = false;
-	if(performance::cache_load("index")) { $cache_loaded = true; exit();}
-}
+define("PAGE_TITLE","Style Checker");
 
 require("header.php");
 ?>
@@ -150,9 +145,4 @@ $(document).ready(function() {
 
 <?PHP 
 require("footer.php");
-
-if($enable_cache) {
-	// SAVE PAGE TO CACHE
-	if(!$cache_loaded) { performance::cache_save("cache"); }
-}
 ?>

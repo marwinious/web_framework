@@ -1,6 +1,6 @@
 <?PHP 
-// CACHING, IF ENABLED
-if($enable_cache) {
+// CACHING, IF ENABLED & NO GET VARIABLES DETECTED
+if($enable_cache && !$_GET) {
 	// CHECK FOR CACHED PAGE
 	$cache_loaded = false;
 	if(performance::cache_load(PAGE_TITLE,$cache_options)) { $cache_loaded = true; exit();}
