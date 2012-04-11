@@ -70,6 +70,9 @@ $enable_cache = false;
 $enable_phpcss = true;
 $enable_js_constants = false;
 
+// CACHE SETTINGS //
+$cache_options['minutes'] = 20; // SET TO 0 TO MAKE CACHE LAST UNTIL ORIGINAL FILE IS MODIFIED
+
 // SITE-WIDE //
 //
 require(SETTINGS."db.php");

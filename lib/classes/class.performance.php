@@ -1,26 +1,42 @@
 <?PHP
 class performance {
-	static function cache_load($page) {
+	static function cache_load($page,$options) {
 		// CLEAN PAGE NAME
 		$page = performance::clean_page_title($page);
 		
 		// SPECIFY CACHE FILE LOCATION/NAME
 		$cacheme = CACHE.$page.".html";
 		
-		// SERVER FROM CACHE IF NOT EXPIRED
-		if(file_exists($cacheme) && (filemtime(BASEPATH.$page.".php") < filemtime(BASEPATH.$cacheme))) {
-			include($cacheme);
-			// ADD COMMENTED CACHE DATA TO PAGE
-			echo "<!-- Cached ".date("H:i",filemtime($cacheme))."-->";
-			return true;
-			exit;
+		// CHECK IF CHACED BY TIME OR BY MODIFICATION
+		if($options['minutes'] != 0) {
+			
+			$time = (time() - 60 * intval($options['minutes']));
+		
+			// SERVE FROM CACHE IF NOT EXPIRED
+			if(file_exists($cacheme) && (filemtime($cacheme) > $time)) {
+				include($cacheme);
+				// ADD COMMENTED CACHE DATA TO PAGE
+				echo "<!-- Cached ".date("H:i",filemtime($cacheme)).", {$options['minutes']}-->";
+				return true;
+				exit;
+			}
+		}
+		else {
+			// SERVE FROM CACHE IF NOT EXPIRED
+			if(file_exists($cacheme) && (filemtime($page.".php") < filemtime($cacheme))) {
+				include($cacheme);
+				// ADD COMMENTED CACHE DATA TO PAGE
+				echo "<!-- Cached ".date("H:i",filemtime($cacheme))."-->";
+				return true;
+				exit;
+			}
 		}
 		
 		// CACHED FILE NOT FOUND OR OUT OF DATE, START OUTPUT BUFFER
 		performance::start_buffer();
 	}
 	
-	static function cache_save($page) {
+	static function cache_save($page,$options) {
 		// CLEAN PAGE NAME
 		$page = performance::clean_page_title($page);
 		

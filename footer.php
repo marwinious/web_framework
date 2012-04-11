@@ -27,6 +27,6 @@ WEB FRAMEWORK COPYRIGHT <?PHP echo date("Y");?> GREENER WEB DESIGN. VARIOUS OPEN
 // CACHING, IF ENABLED
 if($enable_cache) {
 	// SAVE PAGE TO CACHE
-	if(!$cache_loaded) { performance::cache_save(PAGE_TITLE); }
+	if(!$cache_loaded) { performance::cache_save(PAGE_TITLE,$cache_options); }
 }
 ?>
