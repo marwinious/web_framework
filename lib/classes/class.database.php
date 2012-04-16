@@ -91,8 +91,7 @@ class mysql {
 		";
 		
 		if($result = $this->query($sql)) {
-			$id = mysql_insert_id();
-			return $id; 
+			return $result; 
 		}
 		else { return false; }
 	}
