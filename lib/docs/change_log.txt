@@ -1,5 +1,8 @@
-Web Framework v5.2.0
+Web Framework v5.2.1
 Created and maintained by Darius Babcock, Greener Web Design
+
+## Version 5.2.1 ##
+	- Added option for namespace element retrieval in class.rss
 
 ## Version 5.2.0 ##
 	- Added class.rss for quick RSS processing. Currently only supports Atom 2.0
