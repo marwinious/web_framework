@@ -1,5 +1,10 @@
-Web Framework v5.2.1
+Web Framework v5.2.5
 Created and maintained by Darius Babcock, Greener Web Design
+
+## Version 5.2.5 ##
+	- Added 'upload2' function to class.uploader.php for smoother uploads. Will later clean up class
+	- Added ajax.uploader.php file for easy ajax file uploads. Also added sample HTML form in ajax dir
+	- Added a 'file' form type in class.form.php
 
 ## Version 5.2.1 ##
 	- Added option for namespace element retrieval in class.rss

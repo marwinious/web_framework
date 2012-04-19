@@ -32,6 +32,10 @@ class form {
 				$input = "<input type=\"reset\" name=\"$name\" value=\"$value\"";
 				break;
 				
+			case "FILE":
+				$input = "<input type=\"file\" name=\"$name\" value=\"$value\"";
+				break;
+				
 			default:
 				return false;
 				break;

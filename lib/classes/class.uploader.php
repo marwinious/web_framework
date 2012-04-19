@@ -148,5 +148,31 @@ class uploader {
 		
 		//echo "CSV Successfully imported to: $table";
 	}
+	
+	// UPLOADER
+	function upload2($files,$destination) {
+		// ADD GLOBALS
+		global $restricted_file_types;
+		global $accepted_file_types;
+		global $use_restriction_type;
+		global $upload_directory;
+	
+		// INITIALIZE ERROR TRACKER
+		$result = 1;
+	
+		// LOOP THROUGH FILES AND UPLOAD
+		foreach($files as $file) {
+			
+		   $target_path = $destination . basename($file['name']);
+
+		   if(!move_uploaded_file($file['tmp_name'], $target_path)) {
+			  $result = 1;
+		   }
+		   
+		   sleep(1);
+		}
+		
+		return $result;
+	}
 }
 ?>
