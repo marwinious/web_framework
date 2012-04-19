@@ -5,6 +5,8 @@ File: <input type="file" name="file1" />< <br />
 
 <input type="submit" value="Upload file" />
 
+<iframe src="#" frameborder="0" id="upload_target" name="upload_target" style="width:0;height:0;border:none;"></iframe>
+
 <script type="text/javascript">
 <!--
 $(document).ready(function() {
