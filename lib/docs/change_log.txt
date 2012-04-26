@@ -5,6 +5,7 @@ Created and maintained by Darius Babcock, Greener Web Design
 	- Added 'upload2' function to class.uploader.php for smoother uploads. Will later clean up class
 	- Added ajax.uploader.php file for easy ajax file uploads. Also added sample HTML form in ajax dir
 	- Added a 'file' form type in class.form.php
+	- Added a functions_misc.js file in lib/js. Currently has an array debug function only
 
 ## Version 5.2.1 ##
 	- Added option for namespace element retrieval in class.rss

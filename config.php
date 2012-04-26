@@ -135,6 +135,7 @@ $_js['auto_complete'] = JS."auto_complete.js";
 $_js['video_js']['main'] = JS."video-js/video.min.js";
 $_js['video_js']['css'] = JS."video-js/video-js.min.css";
 $_js['ckeditor']['main'] = LIB."ckeditor/ckeditor.js";
+$_js['misc']['main'] = JS."functions_misc.js";
 
 // 960
 $_960['reset'] = _960."code/css/reset.css";
