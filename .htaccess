@@ -1,12 +1,28 @@
+# CLEAN URL OPTIONS
+Options +FollowSymLinks
+Options +Indexes
+RewriteEngine On
+RewriteRule ^$    index.php [L,NC] #ROUTES EMPTY URI TO INDEX.PHP
+#RewriteRule ^([a-z\-\_]+)/?$    $1.php [L,NC] #ROUTES URI TO PHP FILE OF SAME NAME
+#RewriteRule ^([a-z\-\_]+)/?$    index.php?first=$1 [L,NC] #ROUTES TO INDEX.PHP
+#RewriteRule ^([a-z\-\_]+)/([a-z\-\_]+)/?$    index.php?first=$1&second=$2 [L,NC]
+RewriteRule ^lib/images/resize/(px|pct)/([a-z0-9\-\_\.\s]+)/([\dx]+).*$	lib/images/scripts/auto_resize.php?measure=$1&image=$2&size=$3 [L,NC]
+RewriteRule ^media/images/resize/(px|pct)/([a-z0-9\-\_\.\s]+)/([\dx]+).*$	media/images/scripts/auto_resize.php?measure=$1&image=$2&size=$3 [L,NC]
+
 #AddType x-mapp-php5 .php
 #AddHandler x-mapp-php5 .php
-ErrorDocument 400 /lib/error_documents/error400.php
-ErrorDocument 401 /lib/error_documents/error401.php
-ErrorDocument 402 /lib/error_documents/error402.php
-ErrorDocument 403 /lib/error_documents/error403.php
-ErrorDocument 404 /lib/error_documents/error404.php
-ErrorDocument 408 /lib/error_documents/error408.php
-ErrorDocument 500 /lib/error_documents/error500.php
+ErrorDocument 400 /error.php?error_code=400
+ErrorDocument 401 /error.php?error_code=401
+ErrorDocument 402 /error.php?error_code=402
+ErrorDocument 403 /error.php?error_code=403
+ErrorDocument 404 /error.php?error_code=404
+ErrorDocument 408 /error.php?error_code=408
+ErrorDocument 500 /error.php?error_code=500
+
+# Add Media Types
+AddType video/ogg .ogv
+AddType video/mp4 .mp4
+AddType video/webm .webm
 
 #Disable ETags
 #FileETag none
@@ -27,3 +43,9 @@ ErrorDocument 500 /lib/error_documents/error500.php
 #	AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
 #</IfModule>
 # END Gzip
+
+# BLOCK ACCESS TO .HTACCESS FILE (THIS FILE)
+<Files .htaccess>
+	order allow,deny
+	deny from all
+</Files>

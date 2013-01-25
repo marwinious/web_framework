@@ -3,29 +3,27 @@
 	
 </footer>
 
-<!-- CLOSE 960 PRIMARY CONTAINER -->
-</div>
+<?PHP if($enable['960']) { echo "</div><!-- CLOSE 960 PRIMARY CONTAINER -->"; }?>
+<?PHP if($enable['foundation_grid']) { echo "</div><!-- CLOSE FOUNDATION PRIMARY COLUMN -->\n</div><!-- CLOSE FOUNDATION PRIMARY ROW -->\n</div><!-- CLOSE FOUNDATION PRIMARY CONTAINER -->"; }?>
 
 <script type="text/javascript">
 <!--
 $(document).ready(function() {
-	
+	$(".close_overlay").live("click",function() {
+		$("#mask, .overlay").fadeOut(500);
+	});
 });
 // -->
 </script>
 
 <div id="mask"></div>
 
-<!--
-WEB FRAMEWORK COPYRIGHT <?PHP echo date("Y");?> GREENER WEB DESIGN. VARIOUS OPEN SOURCE PLUG-INS HAVE BEEN UTILIZED IN THIS FRAMEWORK AND EACH RETAINS THE COPYRIGHT OF THE CREATORS/PUBLISHERS.
--->
-
 </body>
 
 </html>
 <?PHP
 // CACHING, IF ENABLED & NO GET VARIABLES DETECTED
-if($enable_cache && !$_GET) {
+if($enable['cache'] && !$_GET) {
 	// SAVE PAGE TO CACHE
 	if(!$cache_loaded) { performance::cache_save(PAGE_TITLE,$cache_options); }
 }

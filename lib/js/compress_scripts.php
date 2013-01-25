@@ -14,7 +14,7 @@ function compress($buffer) {
 
 /* your js files */
 include("../../config.php");
-foreach($_compress['js'] as $key => $value) {
+foreach($_SESSION['_header']['js'] as $key => $value) {
 	echo "\r\n";
 	include("../../$value");
 }

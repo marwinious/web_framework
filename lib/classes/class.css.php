@@ -1,30 +1,6 @@
 <?PHP
 class css {
-	// LOAD CSS FILES FROM CSS FOLDER
-	static function load_css($path) {
-		GLOBAL $enable_phpcss;
-		
-		$files = scandir($path);
-		$css = array();
-		foreach($files as $key=>$value) {
-			if($value != "." && $value != ".." && $value != "compress_stylesheets.php") {
-				$split = explode('.',$value);
-				if($enable_phpcss) {
-					if(end($split) == "css" || end($split) == "php") {
-						$css[] = CSS.$value;
-					}
-				}
-				else {
-					if(end($split) == "css") {
-						$css[] = CSS.$value;
-					}
-				}
-			}
-		}
-		
-		return $css;
-	}
-	
+
 	// GRADIENT
 	static function gradient($start,$stop) {
 		// OLD/UNSUPPORTED BROWSERS
@@ -231,22 +207,6 @@ class css {
 		}
 		
 		return $data;	
-	}
-	
-	// FONT-FACE FONTS
-	static function font($family,$path,$file) {
-		$data = "@font-face {\n";
-		$data .= "font-family: '$family';\n";
-		$data .= "src: url('{$path}/{$file}.eot');";
-		$data .= "src: url('{$path}/{$file}.eot?iefix') format('embedded-opentype'),";
-		$data .= "url('{$path}/{$file}.woff') format('woff'),";
-		$data .= "url('{$path}/{$file}.ttf') format('truetype'),";
-		$data .= "url('{$path}/{$file}.svg#{$family}') format('svg');";
-		$data .= "font-weight: normal;\n";
-		$data .= "font-style: normal;\n";
-		$data .= "}\n";
-		
-		return $data;
 	}
 	
 	// ANIMATED TRANSITIONS

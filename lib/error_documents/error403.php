@@ -1,8 +1,3 @@
-<?PHP
-define("PAGE_TITLE","Error 403");
-require("../../config.php");
-require(BASEPATH."header.php");
-?>
 
 <section id="main">
 	<div class="grid_16">
@@ -12,5 +7,3 @@ require(BASEPATH."header.php");
 	</div>
 	<div class="clear"></div>
 </section>
-
-<?PHP require(BASEPATH."footer.php"); ?>

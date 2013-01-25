@@ -11,7 +11,7 @@ function compress($buffer) {
 
 /* your css files */
 include("../../config.php");
-foreach($_compress['css'] as $key => $value) {
+foreach($_SESSION['_header']['css'] as $key => $value) {
 	include("../../$value");
 }
 

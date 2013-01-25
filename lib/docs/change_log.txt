@@ -1,5 +1,42 @@
-Web Framework v5.2.5
-Created and maintained by Darius Babcock, Greener Web Design
+Web Framework v6.6.0
+Created and maintained by Darius Babcock
+
+## Version 6.6.0 ##
+	- Added custom jQuery input validation plugin
+	- Added customer jQuery overlay plugin
+	- Tweaked the .overlay css to be more fluid
+	- Rebuilt class.email to provide better attachment and html support
+
+## Version 6.5.2 ##
+	- Added TinyMCE as a WYSIWYG option
+	- Added custom calendar (class.calendar.php) and CSS presets (core_presets.php/css)
+
+## Version 6.5.1 ##
+	- Modified htaccess error documents to work better and with less modification
+	- Fixed bug in class.email.php (undefined variable)
+	- Added jquery scrollTo plugin
+
+## Version 6.5.0 ##
+	- Renamed all primary stylesheets in lib/css to core_[name] for clarity
+	- Added Foundation Responsive Grid
+	- Added master reset css file
+	- Added master preset css file
+
+## Version 6.0.0 ##
+	- Completely rewrote head loading. Can now more easily add elements in config.php
+	- Tweaked some default CSS values
+	- Completely rewrote class.email. Now has better support for attachments and HTML emails
+	- Added .htaccess security features
+	- Added separate .htaccess files for protect certain dir's in /lib/
+	- Added autoload folders in lib/classes, lib/css, and lib/js
+	- Added auto_load and load_file functions to class.loader
+	- Updated jquery to latest (1.7.2)
+	- Updated jquery-ui to latest(1.8.21)
+	- Updated nivo slider to latest (3.0.1)
+	- Added autoload fonts folder to lib
+	- Added autoload fonts function to class.loader
+	- Normalized css versions of php css files so that everything matches by default
+	- Added helpers.php and print.php versions of the same css files
 
 ## Version 5.2.5 ##
 	- Added 'upload2' function to class.uploader.php for smoother uploads. Will later clean up class
