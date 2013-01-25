@@ -6,6 +6,7 @@ Created and maintained by Darius Babcock
 	- Added customer jQuery overlay plugin
 	- Tweaked the .overlay css to be more fluid
 	- Rebuilt class.email to provide better attachment and html support
+	- Added custom jquery ajax script in js/functions_misc.js for easier ajax callbacks
 
 ## Version 6.5.2 ##
 	- Added TinyMCE as a WYSIWYG option
