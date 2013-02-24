@@ -3,7 +3,7 @@
 if($enable['cache'] && !$_GET) {
 	// CHECK FOR CACHED PAGE
 	$cache_loaded = false;
-	if(performance::cache_load(PAGE_TITLE,$cache_options)) { $cache_loaded = true; exit();}
+	if(performance::cache_load(PAGE_TITLE,$_cache_options)) { $cache_loaded = true; exit();}
 }
 
 // AUTO-LOAD CLASSES
@@ -71,7 +71,7 @@ define("TOKEN",$security->load());
 <body>
 
 <?PHP if($enable['960']) { echo "<div class=\"container_16\"><!-- 960 PRIMARY CONTAINER -->"; }?>
-<?PHP if($enable['foundation_grid']) { echo "<div class=\"container\"><!-- FOUNDATION PRIMARY CONTAINER -->\n<div class=\"row\"><!-- OPEN FOUNDATION PRIMARY ROW -->\n<div class=\"twelve columns\"><!-- OPEN FOUNDATION PRIMARY COLUMN -->"; }?>
+<?PHP if($enable['foundation_grid']) { echo "<div class=\"container\"><!-- FOUNDATION PRIMARY CONTAINER -->\n"; }?>
 
 
 <header>

@@ -1,5 +1,13 @@
-Web Framework v6.6.0
+Web Framework v6.7.0
 Created and maintained by Darius Babcock
+
+## Version 6.7.0 ##
+	- Updated to latest version of Foundation Grid and used unabridged css
+	- Added core_normalize.css (attributed)
+	- Changed core_reset.css to be a true reset (attributed)
+	- Added page expires settings to each page ($_expires['offset'])
+	- Added compression and etags to .htaccess (Went from 42 to 92 on PageSpeed score)
+	- Added .htaccess files to each empty folder for github support and later configuration
 
 ## Version 6.6.0 ##
 	- Added custom jQuery input validation plugin

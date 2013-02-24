@@ -51,13 +51,13 @@ define("FAVICON_MOBILE","<link rel='apple-touch-icon' href='".IMAGES."favicon.pn
 define("AUTHOR","A <a href='[AUTHOR URL]'>[AUTHOR]</a>");
 
 // META DATA
-$_metadata['charset'] = "<meta charset=\"utf-8\">";
+$_metadata['charset'] = "<meta charset=\"UTF-8\">";
 $_metadata['description'] = "<meta name=\"description\" content=\"[META DESCRIPTION]\">";
 $_metadata['keywords'] = "<meta name=\"keywords\" content=\"[META KEYWORDS]\">"; // COMMA DELIMITED
 $_metadata['viewport'] = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=2.0\">"; // FOR MOBILE VIEWPORTS
 
 // FRAMEWORK OPTIONS //
-$enable['compression'] = false; // CHANGE TO TRUE FOR PRODUCTION ENVIRONMENT
+$enable['compression'] = true; // CHANGE TO TRUE FOR PRODUCTION ENVIRONMENT
 $enable['core'] = true; // TOGGLE CORE STYLESHEETS
 $enable['phpcss'] = true; // TOGGLE PHP-ENABLED STYLESHEETS
 $enable['960'] = false; // TOGGLE 960gs GRID
@@ -85,15 +85,13 @@ $enable['misc'] = true;
 $enable['js_constants'] = false;
 $enable['tinymce'] = false;
 
-// CACHE SETTINGS //
-$cache_options['minutes'] = 20; // SET TO 0 TO MAKE CACHE LAST UNTIL ORIGINAL FILE IS MODIFIED
-
 // SITE-WIDE //
 //
-require(SETTINGS."db.php");
-require(SETTINGS."ftp.php");
-require(SETTINGS."upload_options.php");
-require(SETTINGS."backup_options.php");
+require(SETTINGS."db.php"); // DATABASE SETTINGS
+require(SETTINGS."ftp.php"); // FTP SETTINGS
+require(SETTINGS."upload_options.php"); // UPLOAD OPTIONS
+require(SETTINGS."backup_options.php"); // DATABASE BACKUP OPTIONS
+require(SETTINGS."cache_options.php"); // CACHE OPTIONS
 require(CLASSES."class.standards.php");
 require(CLASSES."class.form.php");
 require(CLASSES."class.image.php");
@@ -155,21 +153,19 @@ $_load['misc']['main'] = JS."functions_misc.js";
 $_load['tinymce']['main'] = JS."tinymce/jscripts/tiny_mce/tiny_mce.js";
 
 // 960
-//$_load['960']['reset'] = _960."code/css/reset.css";
-//$_load['960']['text'] = _960."code/css/text.css";
 $_load['960']['main'] = _960."code/css/960.css";
 //$_load['960']['main_24'] = _960."code/css/960_24_col.css"; // UNCOMMENT IF USING 24 COLUMN GRID
 
 // FOUNDATION GRID
-$_load['foundation_grid']['main'] = FOUNDATION_GRID.'foundation-grid.css';
+$_load['foundation_grid']['main'] = FOUNDATION_GRID.'foundation.min.css';
 
 // CUSTOM CSS MUST BE LAST IN DECLARATION
 if($enable['phpcss']) { $ext = 'php'; }
 else { $ext = 'css'; }
 $_stylesheet['core']['resets'] = CSS.'core_resets.css';
+$_stylesheet['core']['normalize'] = CSS.'core_normalize.css';
 $_stylesheet['core']['presets'] = CSS.'core_presets.'.$ext;
 $_stylesheet['core']['fonts'] = CSS.'core_fonts.'.$ext;
-//$_stylesheet['core']['helpers'] = CSS.'core_helpers.'.$ext;
 $_stylesheet['core']['styles'] = CSS.'core_styles.'.$ext;
 $_stylesheet['core']['print'] = CSS.'core_print.'.$ext;
 $_stylesheet['ie']['all'] = CSS."ie/ie.css";

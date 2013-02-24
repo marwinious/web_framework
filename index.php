@@ -5,6 +5,9 @@ require("config.php");
 // PAGE TITLE
 define("PAGE_TITLE","Home");
 
+// PAGE EXPIRES
+$_expires['offset'] = '+1 month';
+
 // LOAD HEADER
 require("header.php");
 ?>

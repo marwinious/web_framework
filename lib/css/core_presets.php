@@ -111,10 +111,50 @@ form label {
 	color: #bebebe;
 }
 
+textarea { height: auto; }
+
+select { width: 100%; }
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+	border: 1px solid #cccccc; 
+	color: rgba(0, 0, 0, 0.75); 
+	display: block; 
+	font-size: 14px; 
+	margin: 0 0 12px 0; 
+	padding: 6px; 
+	height: 32px; 
+	width: 100%;
+	<?PHP echo css::box_shadow('0px','1px','2px','rgba(0, 0, 0, 0.1)');?>
+	<?PHP echo css::transition('all','0.15s');?>
+	<?PHP echo css::border_radius('2px');?>
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus { 
+	background: #fafafa; 
+	outline: none; 
+	border-color: #b3b3b3; 
+}
+
+input[type="text"][disabled], input[type="password"][disabled], input[type="date"][disabled], input[type="datetime"][disabled], input[type="email"][disabled], input[type="number"][disabled], input[type="search"][disabled], input[type="tel"][disabled], input[type="time"][disabled], input[type="url"][disabled], textarea[disabled] { 
+	background-color: #ddd;
+}
+
 .print_break {
 	display: none;
 }
 /* END FORM STYLES */
+
+/* LIST STYLES */
+ul.square, ul.circle, ul.disc { margin-left: 17px; }
+
+ul.square { list-style-type: square; }
+
+ul.circle { list-style-type: circle; }
+
+ul.disc { list-style-type: disc; }
+
+ul.no-bullet { list-style: none; }
+/* END LIST STYLES */
 
 /* BUTTON STYLES */
 	/* LIGHT BUTTON STYLES (DEFAULT) */
@@ -441,3 +481,18 @@ div.day-number {
 	position: relative;
 	top: -30px;
 }
+
+/* Misc ---------------------- */
+.left { float: left; }
+
+.right { float: right; }
+
+.text-left { text-align: left; }
+
+.text-right { text-align: right; }
+
+.text-center { text-align: center; }
+
+.hide { display: none; }
+
+.highlight { background: #ffff99; }

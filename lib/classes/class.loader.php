@@ -137,10 +137,20 @@ class loader {
 	
 	// LOAD METADATA
 	static function load_meta() {
-		GLOBAL $_metadata;
-	
+		GLOBAL $_metadata, $_expires;
+		
+		// LOAD META DATA
 		foreach($_metadata as $key=>$value) {
 			echo "{$value}\n";
+		}
+		
+		// LOAD EXPIRES TAG
+		if(isset($_expires) && !empty($_expires)) {
+			// BUILD EXPIRATION
+			$date = date($_expires['format'],strtotime($_expires['default'].$_expires['offset']));
+			$meta_expire = str_replace('#EXPIRES#',$date,$_expires['template']);
+			
+			echo "{$meta_expire}\n";
 		}
 	}
 	

@@ -2,26 +2,26 @@
 class css {
 
 	// GRADIENT
-	static function gradient($start,$stop) {
+	static function gradient($start,$stop,$type='linear') {
 		// OLD/UNSUPPORTED BROWSERS
-		$data = "background-color: $start;\n";
+		$data = "background-color: {$start};\n";
 	
 		// FIREFOX
-		$data .= "background-image: -moz-linear-gradient(100% 100% 90deg, $stop, $start);\n";
+		$data .= "background-image: -moz-{$type}-gradient(100% 100% 90deg, {$stop}, {$start});\n";
 		
 		// WEBKIT
-		$data .= "background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($start), to($stop));\n"; // OLDER
-		$data .= "background: -webkit-linear-gradient(top, $start 0%,$stop 100%);\n"; //NEWER
+		$data .= "background-image: -webkit-gradient({$type}, 0% 0%, 0% 100%, from({$start}), to({$stop}));\n"; // OLDER
+		$data .= "background: -webkit-{$type}-gradient(top, {$start} 0%,{$stop} 100%);\n"; //NEWER
 		
 		// OPERA
-		$data .= "background: -o-linear-gradient(top, $start 0%,$stop 100%);\n";
+		$data .= "background: -o-{$type}-gradient(top, {$start} 0%,{$stop} 100%);\n";
 		
 		// IE
-		$data .= "background: -ms-linear-gradient(top, $start 0%,$stop 100%);\n"; // 10+
-		$data .= "filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$start', EndColorStr='$stop');\n";
+		$data .= "background: -ms-{$type}-gradient(top, {$start} 0%,{$stop} 100%);\n"; // 10+
+		$data .= "filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='{$start}', EndColorStr='{$stop}');\n";
 		
 		// W3C
-		$data .= "background: linear-gradient(top, $start 0%,$stop 100%);\n";
+		$data .= "background: {$type}-gradient(top, {$start} 0%,{$stop} 100%);\n";
 		
 		return $data;
 	}
@@ -32,83 +32,83 @@ class css {
 		switch(strtoupper($target)) {
 			case "ALL":
 				// FIREFOX
-				$data = "-moz-border-radius: $radius;\n";
+				$data = "-moz-border-radius: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-radius: $radius;\n";
+				$data .= "-webkit-border-radius: {$radius};\n";
 				// W3C
-				$data .= "border-radius: $radius;\n";
+				$data .= "border-radius: {$radius};\n";
 				break;
 				
 			case "TOP":
 				// FIREFOX
-				$data = "-moz-border-radius-topleft: $radius;\n -moz-border-radius-topright: $radius;\n";
+				$data = "-moz-border-radius-topleft: {$radius};\n -moz-border-radius-topright: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-top-left-radius: $radius;\n -webkit-border-top-right-radius: $radius;\n";
+				$data .= "-webkit-border-top-left-radius: {$radius};\n -webkit-border-top-right-radius: {$radius};\n";
 				// W3C
-				$data .= "border-top-left-radius: $radius;\n border-top-right-radius: $radius;\n";
+				$data .= "border-top-left-radius: {$radius};\n border-top-right-radius: {$radius};\n";
 				break;
 				
 			case "TOP-RIGHT":
 				// FIREFOX
-				$data = "-moz-border-radius-topright: $radius;\n";
+				$data = "-moz-border-radius-topright: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-top-right-radius: $radius;\n";
+				$data .= "-webkit-border-top-right-radius: {$radius};\n";
 				// W3C
-				$data .= "border-top-right-radius: $radius;\n";
+				$data .= "border-top-right-radius: {$radius};\n";
 				break;
 				
 			case "TOP-LEFT":
 				// FIREFOX
-				$data = "-moz-border-radius-topleft: $radius;\n";
+				$data = "-moz-border-radius-topleft: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-top-left-radius: $radius;\n";
+				$data .= "-webkit-border-top-left-radius: {$radius};\n";
 				// W3C
-				$data .= "border-top-left-radius: $radius;\n";
+				$data .= "border-top-left-radius: {$radius};\n";
 				break;
 				
 			case "BOTTOM":
 				// FIREFOX
-				$data = "-moz-border-radius-bottomleft: $radius;\n -moz-border-radius-bottomright: $radius;\n";
+				$data = "-moz-border-radius-bottomleft: {$radius};\n -moz-border-radius-bottomright: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-bottom-left-radius: $radius;\n -webkit-border-bottom-right-radius: $radius;\n";
+				$data .= "-webkit-border-bottom-left-radius: {$radius};\n -webkit-border-bottom-right-radius: {$radius};\n";
 				// W3C
-				$data .= "border-bottom-left-radius: $radius;\n border-bottom-right-radius: $radius;\n";
+				$data .= "border-bottom-left-radius: {$radius};\n border-bottom-right-radius: {$radius};\n";
 				break;
 				
 			case "BOTTOM-RIGHT":
 				// FIREFOX
-				$data = "-moz-border-radius-bottomright: $radius;\n";
+				$data = "-moz-border-radius-bottomright: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-bottom-right-radius: $radius;\n";
+				$data .= "-webkit-border-bottom-right-radius: {$radius};\n";
 				// W3C
-				$data .= "border-bottom-right-radius: $radius;\n";
+				$data .= "border-bottom-right-radius: {$radius};\n";
 				break;
 				
 			case "BOTTOM-LEFT":
 				// FIREFOX
-				$data = "-moz-border-radius-bottomleft: $radius;\n";
+				$data = "-moz-border-radius-bottomleft: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-bottom-left-radius: $radius;\n";
+				$data .= "-webkit-border-bottom-left-radius: {$radius};\n";
 				// W3C
-				$data .= "border-bottom-left-radius: $radius;\n";
+				$data .= "border-bottom-left-radius: {$radius};\n";
 				break;
 				
 			case "RIGHT":
 				// FIREFOX
-				$data = "-moz-border-radius-topright: $radius;\n -moz-border-radius-bottomright: $radius;\n";
+				$data = "-moz-border-radius-topright: {$radius};\n -moz-border-radius-bottomright: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-top-right-radius: $radius;\n -webkit-border-bottom-right-radius: $radius;\n";
+				$data .= "-webkit-border-top-right-radius: {$radius};\n -webkit-border-bottom-right-radius: {$radius};\n";
 				// W3C
-				$data .= "border-top-right-radius: $radius;\n border-bottom-right-radius: $radius;\n";
+				$data .= "border-top-right-radius: {$radius};\n border-bottom-right-radius: {$radius};\n";
 				break;
 				
 			case "LEFT":
 				// FIREFOX
-				$data = "-moz-border-radius-topleft: $radius;\n -moz-border-radius-bottomleft: $radius;\n";
+				$data = "-moz-border-radius-topleft: {$radius};\n -moz-border-radius-bottomleft: {$radius};\n";
 				// WEBKIT
-				$data .= "-webkit-border-top-left-radius: $radius;\n -webkit-border-bottom-left-radius: $radius;\n";
+				$data .= "-webkit-border-top-left-radius: {$radius};\n -webkit-border-bottom-left-radius: {$radius};\n";
 				// W3C
-				$data .= "border-top-left-radius: $radius;\n border-bottom-left-radius: $radius;\n";
+				$data .= "border-top-left-radius: {$radius};\n border-bottom-left-radius: {$radius};\n";
 				break;
 		}
 		
@@ -124,13 +124,13 @@ class css {
 		}
 		
 		// FIREFOX
-		$data = "-moz-box-shadow:{$inset} {$x} {$y} {$blur} $color;\n";
+		$data = "-moz-box-shadow:{$inset} {$x} {$y} {$blur} {$color};\n";
 		
 		// WEBKIT
-		$data .= "-webkit-box-shadow:{$inset} {$x} {$y} {$blur} $color;\n";
+		$data .= "-webkit-box-shadow:{$inset} {$x} {$y} {$blur} {$color};\n";
 		
 		// W3C
-		$data .= "box-shadow:{$inset} {$x} {$y} {$blur} $color;\n";
+		$data .= "box-shadow:{$inset} {$x} {$y} {$blur} {$color};\n";
 		
 		return $data;
 	}
@@ -138,7 +138,7 @@ class css {
 	// TEXT SHADOW
 	static function text_shadow($x,$y,$blur,$color) {
 		// W3C
-		$data = "text-shadow: {$x} {$y} {$blur} $color;\n";
+		$data = "text-shadow: {$x} {$y} {$blur} {$color};\n";
 		
 		// IE
 		$data .= "filter: dropshadow(color={$color},offx={$x},offy={$y});\n";
@@ -199,11 +199,11 @@ class css {
 		
 		if(!empty($element)) {
 			if(substr($element,-1) != ":") { $element .= ":"; }
-			$data = "$element #$hex;\n";
-			$data .= "$element rgba($r,$g,$b,$alpha);\n"; 
+			$data = "{$element} #{$hex};\n";
+			$data .= "{$element} rgba({$r},{$g},{$b},{$alpha});\n"; 
 		}
 		else {
-			$data = "rgba($r,$g,$b,$alpha);\n"; 
+			$data = "rgba({$r},{$g},{$b},{$alpha});\n"; 
 		}
 		
 		return $data;	
