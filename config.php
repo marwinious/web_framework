@@ -57,7 +57,7 @@ $_metadata['keywords'] = "<meta name=\"keywords\" content=\"[META KEYWORDS]\">";
 $_metadata['viewport'] = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=2.0\">"; // FOR MOBILE VIEWPORTS
 
 // FRAMEWORK OPTIONS //
-$enable['compression'] = true; // CHANGE TO TRUE FOR PRODUCTION ENVIRONMENT
+$enable['compression'] = false; // CHANGE TO TRUE FOR PRODUCTION ENVIRONMENT
 $enable['core'] = true; // TOGGLE CORE STYLESHEETS
 $enable['phpcss'] = true; // TOGGLE PHP-ENABLED STYLESHEETS
 $enable['960'] = false; // TOGGLE 960gs GRID

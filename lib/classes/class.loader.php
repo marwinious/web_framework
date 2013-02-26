@@ -38,13 +38,21 @@ class loader {
 		// AUTO-LOAD STYLESHEETS
 		$autocss = misc::scan_dir(CSS.'autoload/');
 		foreach($autocss as $file) {
-			$css[] = CSS.'autoload/'.$file;
+			// GET FILE EXTENSION AND TEST
+			$info = pathinfo(CSS.'autoload/'.$file);
+			if($info['extension'] == 'css' || $info['extension'] == 'php') {
+				$css[] = CSS.'autoload/'.$file;
+			}
 		}
 		
 		// AUTO-LOAD JAVASCRIPT
 		$autojs = misc::scan_dir(JS.'autoload/');
 		foreach($autojs as $file) {
-			$js[] = JS.'autoload/'.$file;
+			// GET FILE EXTENSION AND TEST
+			$info = pathinfo(CSS.'autoload/'.$file);
+			if($info['extension'] == 'js') {
+				$js[] = JS.'autoload/'.$file;
+			}
 		}
 		
 		// LOAD CUSTOM STYLESHEETS
@@ -146,8 +154,21 @@ class loader {
 		
 		// LOAD EXPIRES TAG
 		if(isset($_expires) && !empty($_expires)) {
-			// BUILD EXPIRATION
-			$date = date($_expires['format'],strtotime($_expires['default'].$_expires['offset']));
+			// GET FILENAME
+			$filename = FILENAME;
+			
+			// CHECK IF FILE EXISTS
+			if(file_exists($filename)) {
+				// BUILD EXPIRATION FROM FILE MOD TIME
+				$mtime = date('Y-m-d H:i:s',filemtime($filename));
+				$date = date($_expires['format'],strtotime($mtime.$_expires['offset']));
+			}
+			else {
+				// BUILD EXPIRATION FROM TODAY'S DATE
+				$date = date($_expires['format'],strtotime($_expires['default'].$_expires['offset']));
+			}
+			
+			// BUILD EXPIRATION META TAG
 			$meta_expire = str_replace('#EXPIRES#',$date,$_expires['template']);
 			
 			echo "{$meta_expire}\n";

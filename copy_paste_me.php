@@ -5,8 +5,10 @@ require("config.php");
 // PAGE TITLE
 define("PAGE_TITLE","NEW PAGE");
 
-// PAGE EXPIRES
+// PAGE META
 $_expires['offset'] = '+1 month';
+//$_metadata['description'] = "<meta name=\"description\" content=\"[PAGE-SPECIFIC DESCRIPTION]\">";
+//$_metadata['keywords'] = "<meta name=\"keywords\" content=\"[PAGE-SPECIFIC KEYWORDS]\">";
 
 // LOAD HEADER
 require("header.php");

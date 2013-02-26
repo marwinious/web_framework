@@ -1,4 +1,7 @@
 <?PHP 
+// DEFINE THIS PAGE'S FILENAME
+define('FILENAME',basename($_SERVER['PHP_SELF']));
+
 // CACHING, IF ENABLED & NO GET VARIABLES DETECTED
 if($enable['cache'] && !$_GET) {
 	// CHECK FOR CACHED PAGE
