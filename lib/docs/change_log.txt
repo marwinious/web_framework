@@ -8,6 +8,9 @@ Created and maintained by Darius Babcock
 	- Added page expires settings to each page ($_expires['offset'])
 	- Added compression and etags to .htaccess (Went from 42 to 92 on PageSpeed score)
 	- Added .htaccess files to each empty folder for github support and later configuration
+	- Added default php.ini file to support compression on some hosts
+	- Change autoload CSS and JS folders to only look for CSS/PHP and JS files respectively
+	- Added page-level meta data overrides (commented out by default)
 
 ## Version 6.6.0 ##
 	- Added custom jQuery input validation plugin
