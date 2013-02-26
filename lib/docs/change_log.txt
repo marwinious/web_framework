@@ -11,6 +11,9 @@ Created and maintained by Darius Babcock
 	- Added default php.ini file to support compression on some hosts
 	- Change autoload CSS and JS folders to only look for CSS/PHP and JS files respectively
 	- Added page-level meta data overrides (commented out by default)
+	- Changed css load order so that core_resets and core_normalize load first
+	- Changed core_stylesheets to always be PHP files and removed CSS versions for tidyness
+	- Added jquery baseline
 
 ## Version 6.6.0 ##
 	- Added custom jQuery input validation plugin

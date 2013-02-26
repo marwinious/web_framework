@@ -1,0 +1,10 @@
+http://daneden.me/baseline/
+
+// This sets all images on the page to a baseline of 24px
+$('img').baseline(24);
+
+// This sets all images inside .content to a baseline of 30px
+$('.content img').baseline(30);
+
+// This sets all images inside .content to a baseline of 24px, changing to 30px above 700px widths
+$('.content img').baseline({'0px':24, '700px':30});

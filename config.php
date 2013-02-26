@@ -58,6 +58,7 @@ $_metadata['viewport'] = "<meta name=\"viewport\" content=\"width=device-width, 
 
 // FRAMEWORK OPTIONS //
 $enable['compression'] = false; // CHANGE TO TRUE FOR PRODUCTION ENVIRONMENT
+$enable['primary_css'] = true; // TOGGLE "PRIMARY" STYLESHEETS
 $enable['core'] = true; // TOGGLE CORE STYLESHEETS
 $enable['phpcss'] = true; // TOGGLE PHP-ENABLED STYLESHEETS
 $enable['960'] = false; // TOGGLE 960gs GRID
@@ -75,6 +76,7 @@ $enable['anything_slider'] = false; // REQUIRES JQUERY
 $enable['flowplayer'] = false; // REQUIRES JQUERY
 $enable['mediaelement'] = false; // REQUIRES JQUERY
 $enable['scrollto'] = true; // REQUIRES JQUERY
+$enable['baseline'] = false; // REQUIRES JQUERY
 $enable['video_js'] = false;
 $enable['ckeditor'] = false;
 $enable['superfish'] = false; // REQUIRES JQUERY
@@ -116,6 +118,10 @@ if(!isset($_SESSION['user'])) {
 // HELPERS
 define("SELECTED","selected='selected'");
 
+// "PRIMARY" STYLESHEETS
+$_load['primary_css']['resets'] = CSS.'core_resets.css';
+$_load['primary_css']['normalize'] = CSS.'core_normalize.css';
+
 // JQUERY
 $_load['jquery']['ver'] = "1.7.2";
 $_load['jquery']['main'] = JQUERY."jquery-{$_load['jquery']['ver']}.min.js";
@@ -142,6 +148,7 @@ $_load['flowplayer']['swf'] = JQUERY_FLOWPLAYER."flowplayer-3.2.7.swf";
 $_load['mediaelement']['main'] = JQUERY_MEDIAELEMENT."build/mediaelement-and-player.min.js";
 $_load['mediaelement']['css'] = JQUERY_MEDIAELEMENT."build/mediaelementplayer.min.css";
 $_load['scrollto']['main'] = JQUERY."jquery-scrollto/jquery.scrollTo-1.4.3-min.js";
+$_load['baseline']['main'] = JQUERY."jquery-baseline/jquery.baseline.js";
 
 // JAVASCRIPT MISC
 $_load['head'] = JS."head.min.js";
@@ -159,13 +166,11 @@ $_load['960']['main'] = _960."code/css/960.css";
 // FOUNDATION GRID
 $_load['foundation_grid']['main'] = FOUNDATION_GRID.'foundation.min.css';
 
-// CUSTOM CSS MUST BE LAST IN DECLARATION
-if($enable['phpcss']) { $ext = 'php'; }
-else { $ext = 'css'; }
-$_stylesheet['core']['resets'] = CSS.'core_resets.css';
-$_stylesheet['core']['normalize'] = CSS.'core_normalize.css';
+// CORE CSS PRESETS AND OVERRIDES
+$ext = 'php';
 $_stylesheet['core']['presets'] = CSS.'core_presets.'.$ext;
 $_stylesheet['core']['fonts'] = CSS.'core_fonts.'.$ext;
+$_stylesheet['core']['tables'] = CSS.'core_tables.'.$ext;
 $_stylesheet['core']['styles'] = CSS.'core_styles.'.$ext;
 $_stylesheet['core']['print'] = CSS.'core_print.'.$ext;
 $_stylesheet['ie']['all'] = CSS."ie/ie.css";
