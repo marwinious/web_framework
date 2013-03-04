@@ -55,7 +55,7 @@ class loader {
 			}
 		}
 		
-		// LOAD CUSTOM STYLESHEETS
+		// LOAD CORE STYLESHEETS
 		if($enable['core']) {
 			$corecss = $_stylesheet['core'];
 			foreach($corecss as $core) {

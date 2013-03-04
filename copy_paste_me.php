@@ -14,7 +14,7 @@ $_expires['offset'] = '+1 month';
 require("header.php");
 ?>
 
-<section id="main">
+<section id="section_main">
 	
 </section>
 

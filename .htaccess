@@ -1,58 +1,91 @@
-# CLEAN URL OPTIONS
-Options +FollowSymLinks
-Options +Indexes
-RewriteEngine On
-RewriteRule ^$    index.php [L,NC] #ROUTES EMPTY URI TO INDEX.PHP
-#RewriteRule ^([a-z\-\_]+)/?$    $1.php [L,NC] #ROUTES URI TO PHP FILE OF SAME NAME
-#RewriteRule ^([a-z\-\_]+)/?$    index.php?first=$1 [L,NC] #ROUTES TO INDEX.PHP
-#RewriteRule ^([a-z\-\_]+)/([a-z\-\_]+)/?$    index.php?first=$1&second=$2 [L,NC]
+# URL OPTIONS
+	# ENABLE MOD_REWRITE
+	Options +FollowSymLinks
+	Options +Indexes
+	RewriteEngine On
+	
+	# SET REWRITE BASE
+	RewriteBase /
+	
+	# MAKE SURE URL'S WITHOUT "WWW" STILL SHOW CORRECTLY
+	#RewriteCond %{HTTP_HOST}   !^www\.example\.com [NC]
+	#RewriteCond %{HTTP_HOST}   !^$
+	#RewriteRule ^/(.*)         http://www.example.com/$1 [L,R]
+	
+	# ROUTES EMPTY URI TO INDEX.PHP
+	RewriteRule ^$    index.php [L,NC]
+	
+	# ROUTES URI TO PHP FILE OF SAME NAME
+	#RewriteRule ^([a-z\-\_\.]+)/?$    $1.php [L,NC]
+	
+	# ROUTES TO INDEX.PHP WITH SINGLE QUERY STRING VARIABLE
+	#RewriteRule ^([a-z\-\_\.]+)/?$    index.php?first=$1 [L,NC]
+	
+	# ROUTES TO INDEX.PHP WITH TWO QUERY STRING VARIABLES
+	#RewriteRule ^([a-z\-\_\.]+)/([a-z\-\_\.]+)/?$    index.php?first=$1&second=$2 [L,NC]
+	
+	# REDIRECT PAGE(S) TO OTHER ANOTHER PAGE
+	#redirect 301 /old-page.php http://www.yoursite.com/new-page.php
+	
+	#
+	# IMAGE AUTO-RESIZER URL SETTINGS
+	#
+	RewriteRule ^lib/images/resize/(px|pct)/([a-z0-9\-\_\.\s]+)/([\dx]+).*$	lib/images/scripts/auto_resize.php?measure=$1&image=$2&size=$3 [L,NC]
+	RewriteRule ^media/images/resize/(px|pct)/([a-z0-9\-\_\.\s]+)/([\dx]+).*$	media/images/scripts/auto_resize.php?measure=$1&image=$2&size=$3 [L,NC]
+	#
+	# END IMAGE AUTO-RESIZER URL SETTINGS
+	#
+# END URL OPTIONS
 
-# IMAGE AUTO-RESIZER URL SETTINGS
-RewriteRule ^lib/images/resize/(px|pct)/([a-z0-9\-\_\.\s]+)/([\dx]+).*$	lib/images/scripts/auto_resize.php?measure=$1&image=$2&size=$3 [L,NC]
-RewriteRule ^media/images/resize/(px|pct)/([a-z0-9\-\_\.\s]+)/([\dx]+).*$	media/images/scripts/auto_resize.php?measure=$1&image=$2&size=$3 [L,NC]
+# FORCE PHP5 IF NEEDED
+	#AddType x-mapp-php5 .php
+	#AddHandler x-mapp-php5 .php
+# END FORCE PHP5
 
-#AddType x-mapp-php5 .php
-#AddHandler x-mapp-php5 .php
-ErrorDocument 400 /error.php?error_code=400
-ErrorDocument 401 /error.php?error_code=401
-ErrorDocument 402 /error.php?error_code=402
-ErrorDocument 403 /error.php?error_code=403
-ErrorDocument 404 /error.php?error_code=404
-ErrorDocument 408 /error.php?error_code=408
-ErrorDocument 500 /error.php?error_code=500
+# CUSTOM ERROR DOCUMENTS (CHANGE PATH IF NOT ROOT)
+	ErrorDocument 400 /error.php?error_code=400
+	ErrorDocument 401 /error.php?error_code=401
+	ErrorDocument 402 /error.php?error_code=402
+	ErrorDocument 403 /error.php?error_code=403
+	ErrorDocument 404 /error.php?error_code=404
+	ErrorDocument 408 /error.php?error_code=408
+	ErrorDocument 500 /error.php?error_code=500
+# END CUSTOM ERROR DOCUMENTS
 
 # ADD MEDIA TYPES
-AddType video/ogg .ogv
-AddType video/mp4 .mp4
-AddType video/webm .webm
+	AddType video/ogg .ogv
+	AddType video/mp4 .mp4
+	AddType video/webm .webm
+# END MEDIA TYPES
 
 # BEGIN COMPRESSION
-<IfModule mod_deflate.c>
-	AddOutputFilterByType DEFLATE text/plain
-	AddOutputFilterByType DEFLATE text/html
-	AddOutputFilterByType DEFLATE text/xml
-	AddOutputFilterByType DEFLATE text/css
-	AddOutputFilterByType DEFLATE text/javascript
-	AddOutputFilterByType DEFLATE application/xml
-	AddOutputFilterByType DEFLATE application/xhtml+xml
-	AddOutputFilterByType DEFLATE application/rss+xml
-	AddOutputFilterByType DEFLATE application/javascript
-	AddOutputFilterByType DEFLATE application/x-javascript
-</IfModule>
+	<IfModule mod_deflate.c>
+		AddOutputFilterByType DEFLATE text/plain
+		AddOutputFilterByType DEFLATE text/html
+		AddOutputFilterByType DEFLATE text/xml
+		AddOutputFilterByType DEFLATE text/css
+		AddOutputFilterByType DEFLATE text/javascript
+		AddOutputFilterByType DEFLATE application/xml
+		AddOutputFilterByType DEFLATE application/xhtml+xml
+		AddOutputFilterByType DEFLATE application/rss+xml
+		AddOutputFilterByType DEFLATE application/javascript
+		AddOutputFilterByType DEFLATE application/x-javascript
+	</IfModule>
 # END COMPRESSION
 
 # BEGIN ETAGS FOR EXPIRATION
-FileETag MTime Size
-<ifmodule mod_expires.c>
-  <filesmatch "\.(jpg|gif|png|css|js)$">
-       ExpiresActive on
-       ExpiresDefault "access plus 1 month"
-   </filesmatch>
-</ifmodule>
+	FileETag MTime Size
+	<ifmodule mod_expires.c>
+	  <filesmatch "\.(jpg|gif|png|css|js)$">
+		   ExpiresActive on
+		   ExpiresDefault "access plus 1 month"
+	   </filesmatch>
+	</ifmodule>
 # END ETAGS
 
 # BLOCK ACCESS TO .HTACCESS FILE (THIS FILE)
-<Files .htaccess>
-	order allow,deny
-	deny from all
-</Files>
+	<Files .htaccess>
+		order allow,deny
+		deny from all
+	</Files>
+# END BLOCK .HTACCESS

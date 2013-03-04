@@ -18,7 +18,7 @@ echo DOCTYPE;
 
 <head>
 
-<title><?PHP echo ucwords(SITE_PRE) . ucwords(PAGE_TITLE);?></title>
+<title><?PHP echo ucwords(PAGE_TITLE).ucwords(SITE_PRE);?></title>
 
 <?PHP
 // OUTPUT META DATA

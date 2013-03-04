@@ -31,29 +31,24 @@ a { text-decoration: none; }
 	top: 0;
 	right: 0;
 	z-index: 99;
-	overflow-x: auto;
-	overflow-y: scroll;
+	overflow: hidden;
 	<?PHP echo css::hex2rgba('#000','0.3','background-color');?>
 }
 
 .overlay {
 	display: none;
-	position: absolute;
-	top: 75px;
+	position: fixed;
+	top: 25%;
 	left: 50%;
 	z-index: 100;
 	overflow: hidden;
-	padding: 15px 0;
+	padding: 10px;
 	background: #FFFFFF;
-	width: 45em;
-	margin-left: -22.5em;
+	width: 56em;
+	height: 50%;
+	margin-left: -28em;
 	<?PHP echo css::gradient('#FFFFFF','#e5e5e5');?>
 	<?PHP echo css::border_radius('10px');?>
-}
-
-.overlay.big {
-	width: 60em;
-	margin-left: -30em;
 }
 
 .overlay .close_overlay {
@@ -63,80 +58,34 @@ a { text-decoration: none; }
 	width: 30px;
 	z-index: 150;
 	position: absolute;
-	top: 0px;
-	right: 20px;
+	top: 1px;
+	right: 4px;
 	cursor: pointer;
+}
+
+.overlay .overlay_header {
+	display: block;
+	color: inherit;
+	margin: 0;
+	padding: 0;
+	font-size: 2em;
+	border-bottom: dotted 1px #DDDDDD;
+}
+
+.overlay_content {
+	display: block;
+	height: 95%;
+}
+
+.overlay .row {
+	min-width: 0;
 }
 /* END MASK AND OVERLAY STYLES */
 
 /* FORM STYLES */
-input, textarea, select {
-	border: solid 1px #d8d8d8;
-	color: #016c8b;
-	padding: 5px;
-	<?PHP echo css::border_radius('5px');?>
-}
-
-textarea {
-	height: 150px;
-}
-
-input:focus, textarea:focus {
-	/*background: #FFFFCC;*/
-}
-
-input[type='checkbox'], input[type='radio'] {
-	border: none;
-}
-
-label {
-	font-weight: bold;
-	padding: 5px;
-}
-
-form label {
-	float: right;
-}
-
 .form_field {
 	display: block;
 	padding: 5px 0;
-}
-
-::-webkit-input-placeholder {
-	color: #bebebe;
-}
-
-:-moz-placeholder {
-	color: #bebebe;
-}
-
-textarea { height: auto; }
-
-select { width: 100%; }
-
-input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
-	border: 1px solid #cccccc; 
-	color: rgba(0, 0, 0, 0.75); 
-	display: block; 
-	font-size: 14px; 
-	margin: 0 0 12px 0; 
-	padding: 6px; 
-	height: 32px; 
-	width: 100%;
-	<?PHP echo css::box_shadow('0px','1px','2px','rgba(0, 0, 0, 0.1)');?>
-	<?PHP echo css::transition('all','0.15s');?>
-	<?PHP echo css::border_radius('2px');?>
-}
-
-input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus { 
-	background: #fafafa; 
-	outline: none; 
-	border-color: #b3b3b3; 
-}
-
-input[type="text"][disabled], input[type="password"][disabled], input[type="date"][disabled], input[type="datetime"][disabled], input[type="email"][disabled], input[type="number"][disabled], input[type="search"][disabled], input[type="tel"][disabled], input[type="time"][disabled], input[type="url"][disabled], textarea[disabled] { 
-	background-color: #ddd;
 }
 
 .print_break {
@@ -144,144 +93,11 @@ input[type="text"][disabled], input[type="password"][disabled], input[type="date
 }
 /* END FORM STYLES */
 
-/* LIST STYLES */
-ul.square, ul.circle, ul.disc { margin-left: 17px; }
-
-ul.square { list-style-type: square; }
-
-ul.circle { list-style-type: circle; }
-
-ul.disc { list-style-type: disc; }
-
-ul.no-bullet { list-style: none; }
-/* END LIST STYLES */
-
-/* BUTTON STYLES */
-	/* LIGHT BUTTON STYLES (DEFAULT) */
-.button {
-	display: inline;
-	cursor: pointer;
-	line-height: 1em;
-	margin: 3px 0;
-	padding: 5px 10px;
-	border: solid 1px #dbdbdb;
-	color: #4f4f4f;
-	background: #fefefe;
-	outline: none;
-	font-size: 1.2em;
-	font-weight: bold;
-	box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
-	-moz-box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
-	-webkit-box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
-	<?PHP echo css::border_radius('5px');?>
-	<?PHP echo css::text_shadow('0px','1px','0px','#FFFFFF');?>
-	<?PHP echo css::gradient('#eaeaea','#cecece');?>
-}
-
-.button_hover, .button:hover {
-	<?PHP echo css::gradient('#ffffff','#fafafa');?>
-}
-
-.button_active, .button_disabled, .button[disabled="disabled"], .button:active {
-	margin-top: 5px;
-	margin-bottom: 1px;
-	<?PHP echo css::box_shadow('0px','0px','0px','#b6b6b6');?>
-	<?PHP echo css::gradient('#f3f3f3','#ffffff');?>
-}
-
-.button.busy {
-	color: #b42121;
-}
-
-.button_disabled, .button[disabled="disabled"] {
-	color: #d1d1d1;
-}
-	/* DARK BUTTON STYLES */
-.button.dark {
-	color: #FFFFFF;
-	border-color: #959595;
-	box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
-	-moz-box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
-	-webkit-box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
-	<?PHP echo css::text_shadow('0px','-1px','0px','#000000');?>
-	<?PHP echo css::gradient('#9c9c9c','#838483');?>
-}
-
-.dark.button_hover, .dark.button:hover {
-	<?PHP echo css::gradient('#c6c6c6','#adadad');?>
-}
-
-.dark.button_active, .button[disabled="disabled"].dark, .dark.button:active {
-	margin-top: 5px;
-	margin-bottom: 1px;
-	<?PHP echo css::box_shadow('0px','0px','0px','#b6b6b6');?>
-	<?PHP echo css::gradient('#7d7d7d','#949494');?>
-}
-
-.dark.button.busy {
-	color: #ffff80;
-}
-
-.button_disabled, .button[disabled="disabled"].dark {
-	color: #b1b1b1;
-}
-/* END BUTTON STYLES */
-
 /* 960 HELPERS */
 .no_margin {
 	width: 960px !important;
 	margin-left: 0;
 	margin-right: 0;
-}
-
-/* NOTIFICATION BOXES */
-.error, .notice, .inform, .success {
-	padding: 10px;
-	font-size: 1.4em;
-}
-
-.error {
-	background: #FBE3E4;
-	border: solid 3px #FBC2C4;
-	color: #8A1F11;
-}
-
-.error a {
-	text-decoration: underline;
-	color: #8A1F11;
-}
-
-.notice {
-	background: #FFF6BF;
-	border: solid 3px #FFD324;
-	color: #514721;
-}
-
-.notice a {
-	text-decoration: underline;
-	color: #514721;
-}
-
-.inform {
-	background: #D5EDF8;
-	border: solid 3px #92CAE4;
-	color: #205791;
-}
-
-.inform a {
-	text-decoration: underline;
-	color: #205791;
-}
-
-.success {
-	background: #E6EFC2;
-	border: solid 3px #C6D880;
-	color: #264409;
-}
-
-.success a {
-	text-decoration: underline;
-	color: #264409;
 }
 
 /* AUTOCOMPLETE STYLES */
@@ -328,7 +144,7 @@ ul.no-bullet { list-style: none; }
 .nivo-controlNav a {
 	text-indent: -9999px;
 	float: left;
-	background: url('../images/bullets.png') no-repeat -0px -0px;
+	background: url('../images/icons/bullets.png') no-repeat -0px -0px;
 	width: 32px;
 	height: 32px;
 }
@@ -338,66 +154,6 @@ ul.no-bullet { list-style: none; }
 }
 
 /* GENERAL HELPERS */
-.bold {
-	font-weight: bold;
-}
-
-.italic {
-	font-style: italic;
-}
-
-.left {
-	text-align: left;
-}
-
-.right {
-	text-align: right;
-}
-
-.center {
-	text-align: center;
-}
-
-.heading {
-	display: block;
-}
-
-.border_all_5 {
-	<?PHP echo css::border_radius('5px');?>
-}
-
-.border_all_10 {
-	<?PHP echo css::border_radius('10px');?>
-}
-
-.border_all_15 {
-	<?PHP echo css::border_radius('15px');?>
-}
-
-.border_top_5 {
-	<?PHP echo css::border_radius('5px','TOP');?>
-}
-
-.border_bottom_5 {
-	<?PHP echo css::border_radius('5px','BOTTOM');?>
-}
-
-.border_top_10 {
-	<?PHP echo css::border_radius('10px','TOP');?>
-}
-
-.border_bottom_10 {
-	<?PHP echo css::border_radius('10px','BOTTOM');?>
-}
-
-.border_top_15 {
-	<?PHP echo css::border_radius('15px','TOP');?>
-}
-
-.border_bottom_15 {
-	<?PHP echo css::border_radius('15px','BOTTOM');?>
-}
-
 .tooltip:hover:after {
 	content: attr(tooltip);
 	position: relative;
@@ -408,22 +164,6 @@ ul.no-bullet { list-style: none; }
 	padding: 5px;
 	<?PHP echo css::border_radius('5px');?>
 }
-
-.engrave_dark {
-	text-shadow: 1px -1px 1px #000;
-}
-
-.engrave_light{
-	text-shadow: 1px -1px 1px #FFF;
-}
-
-/* BULLETS */
-.bullet_black { background: url('../images/bullets.png') no-repeat -0px -0px; }
-.bullet_yellow { background: url('../images/bullets.png') no-repeat -0px -32px; }
-.bullet_blue { background: url('../images/bullets.png') no-repeat -0px -64px; }
-.bullet_green { background: url('../images/bullets.png') no-repeat -0px -96px; }
-.bullet_red { background: url('../images/bullets.png') no-repeat -0px -128px; }
-.bullet_grey { background: url('../images/bullets.png') no-repeat -0px -160px; }
 
 /* CALENDAR STYLES */
 table.calendar {
@@ -481,18 +221,3 @@ div.day-number {
 	position: relative;
 	top: -30px;
 }
-
-/* Misc ---------------------- */
-.left { float: left; }
-
-.right { float: right; }
-
-.text-left { text-align: left; }
-
-.text-right { text-align: right; }
-
-.text-center { text-align: center; }
-
-.hide { display: none; }
-
-.highlight { background: #ffff99; }

@@ -31,6 +31,7 @@ define("JQUERY_NIVO_SLIDER",JQUERY."jquery-nivo-slider/");
 define("JQUERY_ANYTHING_SLIDER",JQUERY."jquery-anything-slider/");
 define("JQUERY_FLOWPLAYER",JQUERY."jquery-flowplayer/");
 define("JQUERY_MEDIAELEMENT",JQUERY."jquery-mediaelement/");
+define("JQUERY_CUSTOM_SCROLLBAR",JQUERY."jquery-custom-scrollbar/");
 define("AJAX",LIB."ajax/");
 define("TEMPLATES",LIB."templates/");
 define("SETTINGS",LIB."settings/");
@@ -42,7 +43,7 @@ define("DOCTYPE","<!DOCTYPE HTML>\n"); // HTML 5
 // SITE INFORMATION //
 define("SITE_TITLE","[SITE TITLE]");
 define("SITE_SLOGAN","[SITE SLOGAN]");
-define("SITE_PRE",SITE_TITLE." | ");
+define("SITE_PRE",' | '.SITE_TITLE);
 
 define("LOGO",IMAGES."logo.png");
 define("FAVICON","<link rel='shortcut icon' href='".IMAGES."favicon.png' type='image/png' />");
@@ -77,6 +78,7 @@ $enable['flowplayer'] = false; // REQUIRES JQUERY
 $enable['mediaelement'] = false; // REQUIRES JQUERY
 $enable['scrollto'] = true; // REQUIRES JQUERY
 $enable['baseline'] = false; // REQUIRES JQUERY
+$enable['custom_scrollbar'] = true; // REQUIRES JQUERY
 $enable['video_js'] = false;
 $enable['ckeditor'] = false;
 $enable['superfish'] = false; // REQUIRES JQUERY
@@ -149,6 +151,8 @@ $_load['mediaelement']['main'] = JQUERY_MEDIAELEMENT."build/mediaelement-and-pla
 $_load['mediaelement']['css'] = JQUERY_MEDIAELEMENT."build/mediaelementplayer.min.css";
 $_load['scrollto']['main'] = JQUERY."jquery-scrollto/jquery.scrollTo-1.4.3-min.js";
 $_load['baseline']['main'] = JQUERY."jquery-baseline/jquery.baseline.js";
+$_load['custom_scrollbar']['main'] = JQUERY_CUSTOM_SCROLLBAR."jquery.mCustomScrollbar.concat.min.js";
+$_load['custom_scrollbar']['css'] = JQUERY_CUSTOM_SCROLLBAR."jquery.mCustomScrollbar.css";
 
 // JAVASCRIPT MISC
 $_load['head'] = JS."head.min.js";
@@ -171,6 +175,10 @@ $ext = 'php';
 $_stylesheet['core']['presets'] = CSS.'core_presets.'.$ext;
 $_stylesheet['core']['fonts'] = CSS.'core_fonts.'.$ext;
 $_stylesheet['core']['tables'] = CSS.'core_tables.'.$ext;
+$_stylesheet['core']['buttons'] = CSS.'core_buttons.'.$ext;
+$_stylesheet['core']['forms'] = CSS.'core_forms.'.$ext;
+$_stylesheet['core']['notifications'] = CSS.'core_notifications.'.$ext;
+$_stylesheet['core']['helpers'] = CSS.'core_helpers.'.$ext;
 $_stylesheet['core']['styles'] = CSS.'core_styles.'.$ext;
 $_stylesheet['core']['print'] = CSS.'core_print.'.$ext;
 $_stylesheet['ie']['all'] = CSS."ie/ie.css";

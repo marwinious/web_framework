@@ -14,6 +14,8 @@ Created and maintained by Darius Babcock
 	- Changed css load order so that core_resets and core_normalize load first
 	- Changed core_stylesheets to always be PHP files and removed CSS versions for tidyness
 	- Added jquery baseline
+	- Re-designed "style_checker.php" and renamed to "_demo.php"
+	- Changed overlays to be fixed position and tweaked overlay plugin
 
 ## Version 6.6.0 ##
 	- Added custom jQuery input validation plugin
