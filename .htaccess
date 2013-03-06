@@ -5,7 +5,7 @@
 	RewriteEngine On
 	
 	# SET REWRITE BASE
-	RewriteBase /
+	#RewriteBase /
 	
 	# MAKE SURE URL'S WITHOUT "WWW" STILL SHOW CORRECTLY
 	#RewriteCond %{HTTP_HOST}   !^www\.example\.com [NC]

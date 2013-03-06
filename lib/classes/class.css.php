@@ -117,20 +117,20 @@ class css {
 	}
 	
 	// BOX SHADOW
-	static function box_shadow($x,$y,$blur,$color,$inset=false) {
+	static function box_shadow($x,$y,$blur,$spread,$color,$inset=false) {
 		// CHECK FOR INSET
 		if($inset && !empty($inset)) {
 			$inset = "inset";
 		}
 		
 		// FIREFOX
-		$data = "-moz-box-shadow:{$inset} {$x} {$y} {$blur} {$color};\n";
+		$data = "-moz-box-shadow:{$inset} {$x} {$y} {$blur} {$spread} {$color};\n";
 		
 		// WEBKIT
-		$data .= "-webkit-box-shadow:{$inset} {$x} {$y} {$blur} {$color};\n";
+		$data .= "-webkit-box-shadow:{$inset} {$x} {$y} {$blur} {$spread} {$color};\n";
 		
 		// W3C
-		$data .= "box-shadow:{$inset} {$x} {$y} {$blur} {$color};\n";
+		$data .= "box-shadow:{$inset} {$x} {$y} {$blur} {$spread} {$color};\n";
 		
 		return $data;
 	}

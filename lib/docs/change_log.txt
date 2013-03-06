@@ -16,6 +16,7 @@ Created and maintained by Darius Babcock
 	- Added jquery baseline
 	- Re-designed "style_checker.php" and renamed to "_demo.php"
 	- Changed overlays to be fixed position and tweaked overlay plugin
+	- Rewrote validation script to appear cleaner on a page and support more elements
 
 ## Version 6.6.0 ##
 	- Added custom jQuery input validation plugin

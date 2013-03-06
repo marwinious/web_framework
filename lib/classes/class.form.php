@@ -4,40 +4,12 @@ class form {
 	static function input($type,$name,$value="",$options="") {
 		// CHECK TYPE
 		switch(strtoupper($type)) {
-			case "TEXT":
-				$input = "<input type=\"text\" name=\"$name\" id=\"$name\" value=\"$value\"";
+			case "TEXT": case "HIDDEN": case "PASSWORD": case "SUBMIT": case "RESET": case "CHECKBOX": case "RADIO": case "FILE": case "TEL": case "EMAIL":
+				$input = "<input type=\"{$type}\" name=\"{$name}\" id=\"{$name}\" value=\"{$value}\"";
 				break;
 			
-			case "HIDDEN":
-				$input = "<input type=\"hidden\" name=\"$name\" id=\"$name\" value=\"$value\"";
-				break;
-				
-			case "CHECKBOX":
-				$input = "<input type=\"checkbox\" name=\"".$name."\" value=\"$value\"";
-				break;
-				
-			case "PASSWORD":
-				$input = "<input type=\"password\" name=\"$name\" id=\"$name\" value=\"$value\"";
-				break;
-				
-			case "RADIO":
-				$input = "<input type=\"radio\" name=\"$name\" value=\"$value\"";
-				break;
-				
-			case "SUBMIT":
-				$input = "<input type=\"submit\" name=\"$name\" value=\"$value\"";
-				break;
-				
-			case "RESET":
-				$input = "<input type=\"reset\" name=\"$name\" value=\"$value\"";
-				break;
-				
-			case "FILE":
-				$input = "<input type=\"file\" name=\"$name\" value=\"$value\"";
-				break;
-				
 			default:
-				return false;
+				$input = "<input type=\"{$type}\" name=\"{$name}\" id=\"{$name}\" value=\"{$value}\"";
 				break;
 		}
 		
@@ -68,7 +40,7 @@ class form {
 		}
 		
 		// GENERATE BUTTON STRING
-		$button = "<button type=\"$type\" ".$options.">$text</button>";
+		$button = "<button type=\"{$type}\" {$options}>{$text}</button>";
 		return $button;
 	}
 }
