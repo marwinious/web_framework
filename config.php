@@ -46,8 +46,8 @@ define("SITE_SLOGAN","[SITE SLOGAN]");
 define("SITE_PRE",' | '.SITE_TITLE);
 
 define("LOGO",IMAGES."logo.png");
-define("FAVICON","<link rel='shortcut icon' href='".IMAGES."favicon.png' type='image/png' />");
-define("FAVICON_MOBILE","<link rel='apple-touch-icon' href='".IMAGES."favicon.png' />");
+define("FAVICON","<link rel='shortcut icon' href='".IMAGES."icons/favicon.png' type='image/png' />");
+define("FAVICON_MOBILE","<link rel='apple-touch-icon' href='".IMAGES."icons/favicon.png' />");
 
 define("AUTHOR","A <a href='[AUTHOR URL]'>[AUTHOR]</a>");
 
