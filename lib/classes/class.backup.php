@@ -2,21 +2,13 @@
 include_once('class.ftp.php');
 
 class backup {
-	private $dbHost;
-	private $dbUser;
-	private $dbPass;
-	private $dbName;
-
+	private $db;
+	
+	// INIT
 	function __construct() {
-		$db = new database();
-		$db->use_db();
-		
-		$this->dbHost = $db->get_dbhost();
-		$this->dbUser = $db->get_dbuser();
-		$this->dbPass = $db->get_dbpass();
-		$this->dbName = $db->get_dbname();
+		$this->db = new mysql();
 	}
-
+	
 	function backup_mysql($tables = '*') {
 		GLOBAL $backup_dir;
 		GLOBAL $backup_ftp_enable;
@@ -31,53 +23,65 @@ class backup {
 		GLOBAL $backup_email_subject;
 	
 		$return = "";
-		$link = mysql_connect($this->dbHost,$this->dbUser,$this->dbPass);
-		mysql_select_db($this->dbName,$link);
 		
-		//get all of the tables
-		if($tables == '*')
-		{
+		// GET TABLE NAMES
+		if($tables == '*') {
+			// GET ALL TABLE NAMES
 			$tables = array();
-			$result = mysql_query('SHOW TABLES');
-			while($row = mysql_fetch_row($result))
-			{
+			$sql = "
+			SHOW TABLES
+			";
+			
+			$result = $this->db->query($sql,false);
+			while($row = mysql_fetch_row($result)) {
 				$tables[] = $row[0];
 			}
 		}
-		else
-		{
-			$tables = is_array($tables) ? $tables : explode(',',$tables);
+		else {
+			// GET SELECTED TABLE NAMES
+			if(!is_array($tables)) {
+				$tables = explode(',',$tables);
+			}
 		}
 		
-		//cycle through
-		foreach($tables as $table)
-		{
-			$result = mysql_query('SELECT * FROM '.$table);
+		// LOOP THROUGH EACH TABLE
+		foreach($tables as $table) {
+			// GET ALL TABLE DATA
+			$sql = "
+			SELECT *
+			FROM {$table}
+			";
+			
+			$result = $this->db->query($sql,false);
 			$num_fields = mysql_num_fields($result);
 			
+			// ADD "DROP TABLE" PARAM TO BACKUP FILE (ONLY APPLIES ON RESTORING DB)
 			$return .= 'DROP TABLE IF EXISTS '.$table.';';
-			$row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
-			$return.= "\n\n".$row2[1].";\n\n";
 			
-			for ($i = 0; $i < $num_fields; $i++) 
-			{
-				while($row = mysql_fetch_row($result))
-				{
-					$return.= 'INSERT INTO '.$table.' VALUES(';
-					for($j=0; $j<$num_fields; $j++) 
-					{
+			// GET THE "CREATE TABLE" QUERY
+			$sql = "
+			SHOW CREATE TABLE {$table}
+			";
+			$row2 = mysql_fetch_row($this->db->query($sql,false));
+			$return .= "\n\n".$row2[1].";\n\n";
+			
+			// LOOP THROUGH TABLE FIELDS/COLUMNS
+			for ($i=0;$i<$num_fields;$i++) {
+				while($row = mysql_fetch_row($result)) {
+					$return .= 'INSERT INTO '.$table.' VALUES(';
+					for($j=0;$j<$num_fields;$j++) {
 						$row[$j] = addslashes($row[$j]);
 						$row[$j] = str_replace("\n","\\n",$row[$j]);
-						if (isset($row[$j])) { $return.= '"'.$row[$j].'"' ; } else { $return.= '""'; }
-						if ($j<($num_fields-1)) { $return.= ','; }
+						if (isset($row[$j])) { $return .= '"'.$row[$j].'"' ; } else { $return .= '""'; }
+						if ($j<($num_fields-1)) { $return .= ','; }
 					}
-					$return.= ");\n";
+					$return .= ");\n";
 				}
 			}
-			$return.="\n\n\n";
+			$return .= "\n\n\n";
 		}
 		
-		//save file
+		// EXPORT BACKUP AS A FILE
 		$filename = 'db-backup-'.date("Ymd-His").'-'.(md5(implode(',',$tables))).'.sql';
 		$handle = fopen($backup_dir.$filename,'w+');
 		fwrite($handle,$return);
