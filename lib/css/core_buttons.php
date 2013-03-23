@@ -39,7 +39,7 @@ $accent = "";
 .button_active, .button_disabled, .button[disabled="disabled"], .button:active {
 	margin-top: 5px;
 	margin-bottom: 1px;
-	<?PHP echo css::box_shadow('0px','0px','0px','#b6b6b6');?>
+	<?PHP echo css::box_shadow('0px','0px','0px','0px','#b6b6b6');?>
 	<?PHP echo css::gradient('#f3f3f3','#ffffff');?>
 }
 
@@ -69,7 +69,7 @@ $accent = "";
 .dark.button_active, .button[disabled="disabled"].dark, .dark.button:active {
 	margin-top: 5px;
 	margin-bottom: 1px;
-	<?PHP echo css::box_shadow('0px','0px','0px','#b6b6b6');?>
+	<?PHP echo css::box_shadow('0px','0px','0px','0px','#b6b6b6');?>
 	<?PHP echo css::gradient('#7d7d7d','#949494');?>
 }
 
