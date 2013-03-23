@@ -179,6 +179,7 @@ $_stylesheet['core']['buttons'] = CSS.'core_buttons.'.$ext;
 $_stylesheet['core']['forms'] = CSS.'core_forms.'.$ext;
 $_stylesheet['core']['notifications'] = CSS.'core_notifications.'.$ext;
 $_stylesheet['core']['helpers'] = CSS.'core_helpers.'.$ext;
+$_stylesheet['core']['menus'] = CSS.'core_menus.'.$ext;
 $_stylesheet['core']['styles'] = CSS.'core_styles.'.$ext;
 $_stylesheet['core']['print'] = CSS.'core_print.'.$ext;
 $_stylesheet['ie']['all'] = CSS."ie/ie.css";

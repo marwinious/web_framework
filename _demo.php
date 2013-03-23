@@ -14,6 +14,12 @@ require("header.php");
 </style>
 
 <section id="section_main">
+	<div class="demo_header">Menu Sample</div>
+	
+	<nav>
+		<?PHP include(TEMPLATES.'template.sample_menu.php');?>
+	</nav>
+
 	<div class="demo_header">Logo and Headers</div>
 	
 	<?PHP echo image::make(LOGO,"Image sample w/alt");?>(LOGO)<br />
