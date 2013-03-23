@@ -9,6 +9,7 @@ class backup {
 		$this->db = new mysql();
 	}
 	
+	// BACKUP A MYSQL DATABASE
 	function backup_mysql($tables = '*') {
 		GLOBAL $backup_dir;
 		GLOBAL $backup_ftp_enable;
@@ -21,7 +22,7 @@ class backup {
 		GLOBAL $backup_email_to;
 		GLOBAL $backup_email_from;
 		GLOBAL $backup_email_subject;
-	
+		
 		$return = "";
 		
 		// GET TABLE NAMES
@@ -100,6 +101,7 @@ class backup {
 		return true;
 	}
 	
+	// EMAIL THE BACKUP FILE
 	function email_backup($to, $from, $subject, $backup_dir, $filename) {
 		$file = $backup_dir.$filename;
 		$file_size = filesize($file);
@@ -124,13 +126,15 @@ class backup {
 		$header .= $content."\r\n\r\n";
 		$header .= "--".$uid."--";
 		if (mail($to, $subject, "", $header)) {
-			echo "mail send ... OK"; // or use booleans here
-		} else {
-			echo "mail send ... ERROR!";
+			return true;
+		}
+		else {
+			return false;
 		}
 		
 	}
 	
+	// FTP THE BACKUP FILE
 	function ftp_backup($server, $username, $password, $port, $remote_dir, $backup_dir, $filename) {
 		$ftp = new ftp($server, $username, $password, $port);
 		$ftp->connect();

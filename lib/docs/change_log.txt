@@ -1,5 +1,9 @@
-Web Framework v6.7.0
+Web Framework v6.8.0
 Created and maintained by Darius Babcock
+
+## Version 6.8.0 ##
+	- Added a pure css menu via lib/css/core_menus.php. Also added sample template to templates and _demo.php
+	- Updated class.backup.php to work with latest version of framework
 
 ## Version 6.7.0 ##
 	- Updated to latest version of Foundation Grid and used unabridged css
