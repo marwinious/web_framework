@@ -19,6 +19,8 @@ $accent = "";
 	display: inline-block;
     padding: 5px 15px;
 	border: none;
+	font-size: 1em;
+	font-weight: normal;
 	
     -webkit-box-shadow: 0px 4px 0px #79797B, 0px 4px 5px #49494A;
     -moz-box-shadow: 0px 4px 0px #79797B, 0px 4px 5px #49494A;
@@ -147,6 +149,42 @@ button.button {
 
 .button.green.flat:active {
 	background: #17861D;
+}
+
+.share_button:before, .fb_button:before, .twitter_button:before, .linkedin_button:before, .comment_button:before, .email_button:before, .twitter_button:before, .like_button:before, .accept_button:before, .gplus_button:before, .decline_button:before, .rss_button:before, .settings_button:before {
+	font-size: 1.4em;
+	padding-right: 5px;
+	font-family: 'WebSymbolsRegular';
+	vertical-align: middle;
+}
+
+.share_button:before { content: 'i'; }
+
+.fb_button:before {	content: 'f'; }
+
+.twitter_button:before { content: 't'; }
+
+.linkedin_button:before { content: 'l'; }
+
+.comment_button:before { content: 'e'; }
+
+.accept_button:before { content: '.'; }
+
+.decline_button:before { content: '-'; }
+
+.gplus_button:before { content: 'g'; }
+
+.rss_button:before { content: 'r'; }
+
+.settings_button:before { content: 'S'; }
+
+.icon_close:before {
+	font-family: 'ModernPictogramsNormal';
+	content: 'x';
+	display: inline-block;
+	font-size: 2em;
+	width: 24px;
+	height: 24px;
 }
 
 .button[disabled], .button.disabled, .button[disabled].flat, .button.disabled.flat {

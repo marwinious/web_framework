@@ -178,6 +178,29 @@ require("header.php");
 		<?PHP echo form::button('button','Blue Flat Disabled Button','class="button blue flat" disabled');?> 
 	</p>
 	
+	<div class="demo_header">Glyph Buttons</div>
+	<p style="text-align: center;">
+		<?PHP echo form::button('button','Share','class="button share_button"');?> 
+		<?PHP echo form::button('button','Facebook','class="button fb_button"');?> 
+		<?PHP echo form::button('button','Twitter','class="button twitter_button"');?> 
+		<?PHP echo form::button('button','LinkedIn','class="button linkedin_button"');?> 
+		<?PHP echo form::button('button','Accept','class="button accept_button"');?> 
+		<?PHP echo form::button('button','Decline','class="button decline_button"');?> 
+		<?PHP echo form::button('button','Google Plus','class="button gplus_button"');?> 
+		<?PHP echo form::button('button','RSS','class="button rss_button"');?> 
+		<?PHP echo form::button('button','Settings','class="button settings_button"');?> 
+		<br />
+		<?PHP echo form::button('button','Share Flat','class="button flat share_button"');?> 
+		<?PHP echo form::button('button','Facebook Flat','class="button fb_button flat"');?> 
+		<?PHP echo form::button('button','Twitter Flat','class="button twitter_button flat"');?>  
+		<?PHP echo form::button('button','LinkedIn Flat','class="button linkedin_button flat"');?> 
+		<?PHP echo form::button('button','Accept Flat','class="button accept_button flat"');?> 
+		<?PHP echo form::button('button','Decline Flat','class="button decline_button flat"');?> 
+		<?PHP echo form::button('button','Google Plus Flat','class="button gplus_button flat"');?> 
+		<?PHP echo form::button('button','RSS Flat','class="button rss_button flat"');?> 
+		<?PHP echo form::button('button','Settings Flat','class="button settings_button flat"');?> 
+	</p>
+	
 	</form>
 	
 	<div class="demo_header">Enabled Plugins</div>
