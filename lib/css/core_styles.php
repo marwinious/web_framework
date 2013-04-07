@@ -11,7 +11,7 @@ $accent = "";
 /* MAIN STYLES */
 
 body {
-	
+	font-family: 'LuxiSansRegular';
 }
 
 a { color: #0080ff; }

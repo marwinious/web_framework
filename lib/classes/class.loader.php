@@ -253,25 +253,34 @@ class loader {
 	
 	// AUTO-LOAD FONTS
 	static function auto_load_webfonts($path='../fonts/autoload/') {
-		// GET A LIST OF FONTS FROM AUTOLOAD DIRECTORY
-		$fonts = misc::scan_dir($path);
-		// ISOLATE TTF FILES (FOR UNIQUENESS)
+		// INIT
 		$css = '';
-		for($i=0;$i<count($fonts);$i++) {
-			if(strpos($fonts[$i],'.ttf')) {
-				// GET FONT FAMILY NAME
-				$parts = explode('-',$fonts[$i]);
-				$family = '';
-				for($p=0;$p<count($parts);$p++) {
-					if($parts[$p] != 'webfont.ttf') {
-						$family .= $parts[$p];
+		if(substr($path, -1) != '/') { $path .= '/'; }
+		
+		// IF PATH IS AUTOLOAD FOLDER
+		if($path == '../fonts/autoload/') {
+			// GET FOLDER LIST
+			$folders = misc::scan_dir($path);
+			
+			// LOOP THROUGH FOLDERS
+			foreach($folders as $folder) {
+				// DO NOT LOOK AT SYSTEM FOLDERS
+				if($folder != '.' && $folder != '..') {
+					// IF FOLDER IS ACTUALLY A FOLDER
+					if(is_dir($path.$folder)) {
+						// FIX PATHS ON STYLES
+						$stylesheet = file_get_contents($path.$folder.'/stylesheet.css');
+						$css .= str_replace("url('","url('".$path.$folder.'/',$stylesheet);
 					}
 				}
-				// GET FONT FILENAME
-				$filename = str_replace('.ttf','',$fonts[$i]);
-				// LOAD FONT CSS
-				$css .= loader::load_webfont($family,$filename,$path)."\n";
 			}
+			
+		}
+		// IF PATH IS SOMETHING ELSE
+		else {
+			// FIX PATHS ON STYLES
+			$stylesheet = file_get_contents($path.'/stylesheet.css');
+			$css = str_replace("url('","url('".$path,$stylesheet);
 		}
 		
 		return $css;

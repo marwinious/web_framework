@@ -3,12 +3,10 @@ header('Content-type: text/javascript');
 //ob_start('ob_gzhandler');
 ob_start("compress");
 function compress($buffer) {
-	 /* remove comments */
-	//$buffer = preg_replace("/((?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:\/\/.*))/", "", $buffer);
-	/* remove tabs, spaces, newlines, etc. */
-	//$buffer = str_replace(array("\r\n","\r","\t","\n",'  ','    ','     '), '', $buffer);
-	/* remove other spaces before/after ) */
-	//$buffer = preg_replace(array('(( )+\))','(\)( )+)'), ')', $buffer);
+	// REMOVE COMMENTS BLOCKS, TABS
+	$buffer = preg_replace("/\/\*([\s\S]*?)\*\/|\n*|\t+/i","", $buffer);
+	// REMOVE EXTRA SPACES
+	$buffer = preg_replace("/ {2,}/i"," ", $buffer);
 	return $buffer;
 }
 

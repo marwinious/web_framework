@@ -8,77 +8,161 @@ $secondary = "";
 $accent = "";
 ?>
 
-/* BUTTON STYLES */
-
-	/* LIGHT BUTTON STYLES (DEFAULT) */
 .button {
-	display: inline;
 	cursor: pointer;
-	line-height: 1em;
-	margin: 3px 0;
-	padding: 5px 10px;
-	border: solid 1px #dbdbdb;
-	color: #4f4f4f;
-	background: #fefefe;
-	outline: none;
-	font-size: 1.2em;
-	font-weight: bold;
-	box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
-	-moz-box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
-	-webkit-box-shadow: 0px 2px 0px #bfbfbf, 0px 3px 0px #e0e0e0;
-	<?PHP echo css::border_radius('5px');?>
-	<?PHP echo css::text_shadow('0px','1px','0px','#FFFFFF');?>
-	<?PHP echo css::gradient('#eaeaea','#cecece');?>
+	position: relative;
+    color: #4A4A4A;
+    text-decoration: none;
+    background-color: #DB5705;
+	text-align: center;
+	margin: 5px;
+	display: inline-block;
+    padding: 5px 15px;
+	border: none;
+	
+    -webkit-box-shadow: 0px 4px 0px #79797B, 0px 4px 5px #49494A;
+    -moz-box-shadow: 0px 4px 0px #79797B, 0px 4px 5px #49494A;
+    box-shadow: 0px 4px 0px #79797B, 0px 4px 5px #49494A;
+	
+	<?PHP echo css::gradient('#f2f2f2','#dbdbdb');?>
+	<?PHP echo css::border_radius('8px');?>
+	<?PHP echo css::transition('all','.1s');?>
 }
 
-.button_hover, .button:hover {
-	color: #4f4f4f;
-	<?PHP echo css::gradient('#ffffff','#fafafa');?>
+.button:active {
+	top: 3px;
+    -webkit-box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
+    -moz-box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
+    box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
 }
 
-.button_active, .button_disabled, .button[disabled="disabled"], .button:active {
-	margin-top: 5px;
-	margin-bottom: 1px;
-	<?PHP echo css::box_shadow('0px','0px','0px','0px','#b6b6b6');?>
-	<?PHP echo css::gradient('#f3f3f3','#ffffff');?>
+button.button {
+	border: none;
 }
 
-.button.busy {
-	color: #b42121;
+.button.flat {
+	box-shadow: none;
+	border-radius: 0;
+	background: #f2f2f2;
+	border: solid 1px #DDDDDD;
 }
 
-.button_disabled, .button[disabled="disabled"] {
-	color: #d1d1d1;
+.button.flat:active {
+	top: 0;
+	box-shadow: none;
+	background: #dbdbdb;
 }
-	/* DARK BUTTON STYLES */
+
 .button.dark {
 	color: #FFFFFF;
-	border-color: #959595;
-	box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
-	-moz-box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
-	-webkit-box-shadow: 0px 2px 0px #707070, 0px 3px 0px #e0e0e0;
-	<?PHP echo css::text_shadow('0px','-1px','0px','#000000');?>
-	<?PHP echo css::gradient('#9c9c9c','#838483');?>
+	-webkit-box-shadow: 0px 4px 0px #404040, 0px 4px 5px #121212;
+    -moz-box-shadow: 0px 4px 0px #404040, 0px 4px 5px #121212;
+    box-shadow: 0px 4px 0px #404040, 0px 4px 5px #121212;
+	<?PHP echo css::gradient('#858585','#575757');?>
 }
 
-.dark.button_hover, .dark.button:hover {
+.button.dark:active {
+    -webkit-box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
+    -moz-box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
+    box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
+}
+
+.button.dark.flat {
+	background: #6C6C6C;
+	box-shadow: none;
+	border: solid 1px #515151;
+}
+
+.button.dark.flat:active {
+	background: #3E3E3E;
+}
+
+.button.blue {
 	color: #FFFFFF;
-	<?PHP echo css::gradient('#c6c6c6','#adadad');?>
+	-webkit-box-shadow: 0px 4px 0px #2C5996, 0px 4px 5px #121212;
+    -moz-box-shadow: 0px 4px 0px #2C5996, 0px 4px 5px #121212;
+    box-shadow: 0px 4px 0px #2C5996, 0px 4px 5px #121212;
+	<?PHP echo css::gradient('#5C8DCF','#3F78C7');?>
 }
 
-.dark.button_active, .button[disabled="disabled"].dark, .dark.button:active {
-	margin-top: 5px;
-	margin-bottom: 1px;
-	<?PHP echo css::box_shadow('0px','0px','0px','0px','#b6b6b6');?>
-	<?PHP echo css::gradient('#7d7d7d','#949494');?>
+.button.blue:active {
+    -webkit-box-shadow: 0px 1px 0px #2C5996, 0px 3px 3px #2F2F2F;
+    -moz-box-shadow: 0px 1px 0px #2C5996, 0px 3px 3px #2F2F2F;
+    box-shadow: 0px 1px 0px #2C5996, 0px 3px 3px #2F2F2F;
 }
 
-.dark.button.busy {
-	color: #ffff80;
+.button.blue.flat {
+	background: #5C8DCF;
+	box-shadow: none;
+	border: solid 1px #3F78C7;
 }
 
-.button_disabled, .button[disabled="disabled"].dark {
-	color: #b1b1b1;
+.button.blue.flat:active {
+	background: #3F78C7;
 }
 
-/* END BUTTON STYLES */
+.button.red {
+	color: #FFFFFF;
+	-webkit-box-shadow: 0px 4px 0px #8E130D, 0px 4px 5px #121212;
+    -moz-box-shadow: 0px 4px 0px #8E130D, 0px 4px 5px #121212;
+    box-shadow: 0px 4px 0px #8E130D, 0px 4px 5px #121212;
+	<?PHP echo css::gradient('#E91F14','#BE1810');?>
+}
+
+.button.red:active {
+    -webkit-box-shadow: 0px 1px 0px #8E130D, 0px 3px 3px #2F2F2F;
+    -moz-box-shadow: 0px 1px 0px #8E130D, 0px 3px 3px #2F2F2F;
+    box-shadow: 0px 1px 0px #8E130D, 0px 3px 3px #2F2F2F;
+}
+
+.button.red.flat {
+	background: #CF1B12;
+	box-shadow: none;
+	border: solid 1px #BE1810;
+}
+
+.button.red.flat:active {
+	background: #AC160F;
+}
+
+.button.green {
+	color: #FFFFFF;
+	-webkit-box-shadow: 0px 4px 0px #136C17, 0px 4px 5px #121212;
+    -moz-box-shadow: 0px 4px 0px #136C17, 0px 4px 5px #121212;
+    box-shadow: 0px 4px 0px #136C17, 0px 4px 5px #121212;
+	<?PHP echo css::gradient('#1FBA26','#1A9720');?>
+}
+
+.button.green:active {
+    -webkit-box-shadow: 0px 1px 0px #136C17, 0px 3px 3px #2F2F2F;
+    -moz-box-shadow: 0px 1px 0px #136C17, 0px 3px 3px #2F2F2F;
+    box-shadow: 0px 1px 0px #136C17, 0px 3px 3px #2F2F2F;
+}
+
+.button.green.flat {
+	background: #1CA522;
+	box-shadow: none;
+	border: solid 1px #1A9720;
+}
+
+.button.green.flat:active {
+	background: #17861D;
+}
+
+.button[disabled], .button.disabled, .button[disabled].flat, .button.disabled.flat {
+	background: #E5E5E5;
+	color: #BCBCBC;
+	-webkit-box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
+    -moz-box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
+    box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
+}
+
+.button[disabled]:active, .button.disabled:active, .button[disabled].flat:active, .button.disabled.flat:active,
+.button[disabled]:hover, .button.disabled:hover, .button[disabled].flat:hover, .button.disabled.flat:hover {
+	top: 0;
+	background: #E5E5E5;
+}
+
+.button[disabled].flat, .button.disabled.flat {
+	box-shadow: none;
+}

@@ -20,13 +20,10 @@ define("MEDIA","media/");
 define("FOUNDATION_GRID",LIB."foundation_grid/");
 define("JQUERY",LIB."jquery/");
 define("JQUERY_UI",JQUERY."jquery-ui/");
-define("JQUERY_TOOLS",JQUERY."jquery-tools/");
 define("JQUERY_VALIDATE",JQUERY."jquery-validate/");
 define("JQUERY_OVERLAY",JQUERY."jquery-overlay/");
-define("SUPERFISH",JQUERY."superfish/");
 define("JQUERY_PLACEHOLDER",JQUERY."jquery-placeholder/");
 define("JQUERY_QRCODE",JQUERY."jquery-qrcode/");
-define("JQUERY_LITE_ACCORDION",JQUERY."jquery-lite-accordion/");
 define("JQUERY_NIVO_SLIDER",JQUERY."jquery-nivo-slider/");
 define("JQUERY_ANYTHING_SLIDER",JQUERY."jquery-anything-slider/");
 define("JQUERY_FLOWPLAYER",JQUERY."jquery-flowplayer/");
@@ -68,10 +65,8 @@ $enable['jquery'] = true;
 $enable['validate'] = true; // REQUIRES JQUERY
 $enable['overlay'] = true; // REQUIRES JQUERY
 $enable['ui'] = true; // REQUIRES JQUERY
-$enable['tools'] = false; // REQUIRES JQUERY
 $enable['placeholder'] = false; // REQUIRES JQUERY
 $enable['qrcode'] = false; // REQUIRES JQUERY
-$enable['lite_accordion'] = false; // REQUIRES JQUERY
 $enable['nivo_slider'] = true; // REQUIRES JQUERY
 $enable['anything_slider'] = false; // REQUIRES JQUERY
 $enable['flowplayer'] = false; // REQUIRES JQUERY
@@ -81,7 +76,6 @@ $enable['baseline'] = false; // REQUIRES JQUERY
 $enable['custom_scrollbar'] = true; // REQUIRES JQUERY
 $enable['video_js'] = false;
 $enable['ckeditor'] = false;
-$enable['superfish'] = false; // REQUIRES JQUERY
 $enable['cache'] = false;
 $enable['head'] = true;
 $enable['auto_complete'] = false;
@@ -131,15 +125,10 @@ $_load['ui']['ver'] = "1.8.21";
 $_load['ui']['main'] = JQUERY_UI."js/jquery-ui-{$_load['ui']['ver']}.custom.min.js";
 $_load['ui']['theme'] = "ui-lightness";
 $_load['ui']['theme_path'] = JQUERY_UI."css/".$_load['ui']['theme']."/jquery-ui-{$_load['ui']['ver']}.custom.css";
-$_load['superfish']['main'] = SUPERFISH."js/superfish.js";
-$_load['superfish']['css'] = SUPERFISH."css/superfish.css";
-$_load['tools']['main'] = JQUERY_TOOLS."jquery.tools.min.js";
 $_load['validate']['main'] = JQUERY_VALIDATE."jquery.validateInputDB.js";
 $_load['overlay']['main'] = JQUERY_OVERLAY."jquery.overlay.js";
 $_load['placeholder']['main'] = JQUERY_PLACEHOLDER."jquery.placeholder.min.js";
 $_load['qrcode']['main'] = JQUERY_QRCODE."jquery.qrcode.min.js";
-$_load['lite_accordion']['main'] = JQUERY_LITE_ACCORDION."js/liteaccordion.jquery.js";
-$_load['lite_accordion']['css'] = JQUERY_LITE_ACCORDION."css/liteaccordion.css";
 $_load['nivo_slider']['main'] = JQUERY_NIVO_SLIDER."jquery.nivo.slider.js";
 $_load['nivo_slider']['css'] = JQUERY_NIVO_SLIDER."nivo-slider.css";
 $_load['anything_slider']['main'] = JQUERY_ANYTHING_SLIDER."js/jquery.anythingslider.js";

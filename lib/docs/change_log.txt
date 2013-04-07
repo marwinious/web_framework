@@ -1,5 +1,20 @@
-Web Framework v6.8.0
+Web Framework v6.8.5
 Created and maintained by Darius Babcock
+
+## Version 6.8.5 ##
+	- Removed swiftmailer
+	- Removed superfish
+	- Removed lite-accordion
+	- Added a "master_container" wrapper to layout
+	- Removed foundation grid container as it is not needed
+	- Revamped font auto-load script. Now loads fontface font stylesheets directly and "as is"
+	- Font auto-load script now looks only for folders within "lib/fonts/autoload". Loose files won't work
+	- Changed default font to 'LuxiSansRegular' for standardization. Specified in lib/css/core_styles.php
+	- Added 'web-symbols' font for font-based icons/symbols
+	- Added 'modern-pictograms' font for font-based icons/symbols
+	- Added 'heydings-common-icons' font for font-based icons/symbols
+	- Tweaked compress_scripts algorithm to clean scripts better. 5% overall reduction in size
+	- Completely rewrote css buttons and added color variants
 
 ## Version 6.8.0 ##
 	- Added a pure css menu via lib/css/core_menus.php. Also added sample template to templates and _demo.php

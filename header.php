@@ -73,10 +73,12 @@ define("TOKEN",$security->load());
 
 <body>
 
-<?PHP if($enable['960']) { echo "<div class=\"container_16\"><!-- 960 PRIMARY CONTAINER -->"; }?>
-<?PHP if($enable['foundation_grid']) { echo "<div class=\"container\"><!-- FOUNDATION PRIMARY CONTAINER -->\n"; }?>
+<div id="master_container">
+
+	<?PHP if($enable['960']) { echo "<div class=\"container_16\"><!-- 960 PRIMARY CONTAINER -->"; }?>
 
 
-<header>
+	<header>
+		
+	</header>
 	
-</header>

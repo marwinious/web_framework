@@ -1,10 +1,11 @@
 
-<footer>
-	
-</footer>
+	<footer>
+		
+	</footer>
 
-<?PHP if($enable['960']) { echo "</div><!-- CLOSE 960 PRIMARY CONTAINER -->"; }?>
-<?PHP if($enable['foundation_grid']) { echo "</div><!-- CLOSE FOUNDATION PRIMARY CONTAINER -->\n"; }?>
+	<?PHP if($enable['960']) { echo "</div><!-- CLOSE 960 PRIMARY CONTAINER -->"; }?>
+
+</div> <!-- CLOSE MASTER CONTAINER -->
 
 <script type="text/javascript">
 <!--

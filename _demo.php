@@ -123,20 +123,60 @@ require("header.php");
 	<div class="notice">Notification message</div><br />
 	<div class="inform">Informative message</div><br />
 	
-	<div class="grid_4 alpha">
-		<?PHP echo form::button('button','Default State');?><br />
-		<?PHP echo form::button('button','Hover State',"class='button_hover'");?><br />
-		<?PHP echo form::button('button','Active State',"class='button_active'");?><br />
-		<?PHP echo form::button('button','Busy State',"class='busy'");?><br />
-		<?PHP echo form::button('button','Disabled State',"disabled='disabled'");?><br />
-	</div>
-	<div class="grid_4 omega">
-		<?PHP echo form::button('button','Default State',"class='dark'");?><br />
-		<?PHP echo form::button('button','Hover State',"class='button_hover dark'");?><br />
-		<?PHP echo form::button('button','Active State',"class='button_active dark'");?><br />
-		<?PHP echo form::button('button','Busy State',"class='busy dark'");?><br />
-		<?PHP echo form::button('button','Disabled State',"disabled='disabled' class='dark'");?><br />
-	</div>
+	<div class="demo_header">Button Tags w/Dark Background</div>
+	<p style="background-color: #3E3E3E;text-align: center;">
+		<?PHP echo form::button('button','Default Button','class="button"');?> 
+		<?PHP echo form::button('button','Dark Button','class="button dark"');?> 
+		<?PHP echo form::button('button','Green Button','class="button green"');?> 
+		<?PHP echo form::button('button','Red Button','class="button red"');?> 
+		<?PHP echo form::button('button','Blue Button','class="button blue"');?> 
+		<br />
+		<?PHP echo form::button('button','Default Flat Button','class="button flat"');?> 
+		<?PHP echo form::button('button','Dark Flat Button','class="button dark flat"');?> 
+		<?PHP echo form::button('button','Green Flat Button','class="button green flat"');?> 
+		<?PHP echo form::button('button','Red Flat Button','class="button red flat"');?> 
+		<?PHP echo form::button('button','Blue Flat Button','class="button blue flat"');?> 
+		<br />
+		<?PHP echo form::button('button','Default Disabled Button','class="button flat" disabled');?> 
+		<?PHP echo form::button('button','Dark Disabled Button','class="button dark flat" disabled');?> 
+		<?PHP echo form::button('button','Green Disabled Button','class="button green flat" disabled');?> 
+		<?PHP echo form::button('button','Red Disabled Button','class="button red flat" disabled');?> 
+		<?PHP echo form::button('button','Blue Disabled Button','class="button blue flat" disabled');?> 
+		<br />
+		<?PHP echo form::button('button','Default Flat Disabled Button','class="button flat" disabled');?> 
+		<?PHP echo form::button('button','Dark Flat Disabled Button','class="button dark flat" disabled');?> 
+		<?PHP echo form::button('button','Green Flat Disabled Button','class="button green flat" disabled');?> 
+		<?PHP echo form::button('button','Red Flat Disabled Button','class="button red flat" disabled');?> 
+		<?PHP echo form::button('button','Blue Flat Disabled Button','class="button blue flat" disabled');?> 
+		
+	</p>
+	
+	<div class="demo_header">Button Tags w/Light Background</div>
+	<p style="text-align: center;">
+		<?PHP echo form::button('button','Default Button','class="button"');?> 
+		<?PHP echo form::button('button','Dark Button','class="button dark"');?> 
+		<?PHP echo form::button('button','Green Button','class="button green"');?> 
+		<?PHP echo form::button('button','Red Button','class="button red"');?> 
+		<?PHP echo form::button('button','Blue Button','class="button blue"');?> 
+		<br />
+		<?PHP echo form::button('button','Default Flat Button','class="button flat"');?> 
+		<?PHP echo form::button('button','Dark Flat Button','class="button dark flat"');?> 
+		<?PHP echo form::button('button','Green Flat Button','class="button green flat"');?> 
+		<?PHP echo form::button('button','Red Flat Button','class="button red flat"');?> 
+		<?PHP echo form::button('button','Blue Flat Button','class="button blue flat"');?> 
+		<br />
+		<?PHP echo form::button('button','Default Disabled Button','class="button flat" disabled');?> 
+		<?PHP echo form::button('button','Dark Disabled Button','class="button dark flat" disabled');?> 
+		<?PHP echo form::button('button','Green Disabled Button','class="button green flat" disabled');?> 
+		<?PHP echo form::button('button','Red Disabled Button','class="button red flat" disabled');?> 
+		<?PHP echo form::button('button','Blue Disabled Button','class="button blue flat" disabled');?> 
+		<br />
+		<?PHP echo form::button('button','Default Flat Disabled Button','class="button flat" disabled');?> 
+		<?PHP echo form::button('button','Dark Flat Disabled Button','class="button dark flat" disabled');?> 
+		<?PHP echo form::button('button','Green Flat Disabled Button','class="button green flat" disabled');?> 
+		<?PHP echo form::button('button','Red Flat Disabled Button','class="button red flat" disabled');?> 
+		<?PHP echo form::button('button','Blue Flat Disabled Button','class="button blue flat" disabled');?> 
+	</p>
 	
 	</form>
 	
