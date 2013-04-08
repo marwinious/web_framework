@@ -4,7 +4,7 @@ header('Content-type: text/javascript');
 ob_start("compress");
 function compress($buffer) {
 	// REMOVE COMMENTS BLOCKS, TABS
-	$buffer = preg_replace("/\/\*([\s\S]*?)\*\/|\n*|\t+/i","", $buffer);
+	$buffer = preg_replace("/\/\*([\s\S]*?)\*\/|\t+/i","", $buffer);
 	// REMOVE EXTRA SPACES
 	$buffer = preg_replace("/ {2,}/i"," ", $buffer);
 	return $buffer;
