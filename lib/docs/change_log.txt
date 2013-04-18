@@ -16,6 +16,8 @@ Created and maintained by Darius Babcock
 	- Tweaked compress_scripts algorithm to clean scripts better. 5% overall reduction in size
 	- Completely rewrote css buttons and added color variants
 	- Added social button options to core_buttons.php
+	- Changed encoding of emails in class.email to be more html-friendly
+	- Fixed a bug in validation script that prevent accurate detection with "match" parameter
 
 ## Version 6.8.0 ##
 	- Added a pure css menu via lib/css/core_menus.php. Also added sample template to templates and _demo.php
