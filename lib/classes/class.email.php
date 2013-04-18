@@ -40,7 +40,7 @@ class email {
 	
 	// SET "BODY" PARAMETER
 	function body($body) {
-		$this->body = nl2br($body);
+		$this->body = $body;
 	}
 	
 	// ADD AN "ATTACHMENT" FILE
@@ -64,9 +64,9 @@ class email {
 	// CREATE HEADER DATA
 	function create_headers() {
 		// INIT
-		$body_text = $this->body;
-		$body_html = $this->body;
-	
+		$body_text = strip_tags($this->body);
+		$body_html = nl2br($this->body);
+		
 		// CREATE PRIMARY BOUNDARY
 		$primary_boundary = md5(date('r', time()));
 		
@@ -95,18 +95,19 @@ class email {
 		$this->headers .= "--_{$alt_boundary}_".PHP_EOL;
 		
 		// CREATE PLAIN TEXT VERSION OF MESSAGE BODY
-		$this->headers .= "Content-Type: text/plain; charset=\"iso-8859-1\"".PHP_EOL;
-		$this->headers .= "Content-Transfer-Encoding: quoted-printable".PHP_EOL;
+		$this->headers .= "Content-Type: text/plain; charset=\"UTF-8\"".PHP_EOL;
+		$this->headers .= "Content-Transfer-Encoding: 8bit".PHP_EOL;
 		$this->headers .= PHP_EOL.PHP_EOL;
 		$this->headers .= $body_text.PHP_EOL;
 		$this->headers .= PHP_EOL;
 		$this->headers .= "--_{$alt_boundary}_".PHP_EOL;
 		
 		// CREATE HTML VERSION OF MESSAGE BODY
-		$this->headers .= "Content-Type: text/html; charset=\"iso-8859-1\"".PHP_EOL;
-		$this->headers .= "Content-Transfer-Encoding: quoted-printable".PHP_EOL;
-		$this->headers .= PHP_EOL.PHP_EOL;
-		$this->headers .= "<html><head><title>Test</title></head><body>{$body_html}</body></html>".PHP_EOL;
+		$this->headers .= "Content-Type: text/html; charset=\"UTF-8\"".PHP_EOL;
+		$this->headers .= "Content-Transfer-Encoding: 8bit".PHP_EOL;
+		$this->headers .= PHP_EOL;
+		$this->headers .= PHP_EOL;
+		$this->headers .= "{$body_html}".PHP_EOL;
 		$this->headers .= PHP_EOL;
 		$this->headers .= "--_{$alt_boundary}_".PHP_EOL;
 		$this->headers .= PHP_EOL;
@@ -121,22 +122,24 @@ class email {
 	
 	// PROCESS EMAIL ATTACHMENTS
 	function process_attachments($primary_boundary) {
-		foreach($this->attachments as $file) {
-			// GET FILE MIME TYPE
-			$mimetype = mime_content_type($file);
-			// GET FILENAME
-			$filename = explode('/',$file);
-			$filename = end($filename);
-			// ENCODE FILE TO BASE64
-			$file_64 = chunk_split(base64_encode(file_get_contents($file)));
-			
-			// ADD HEADERS
-			$this->headers .= "Content-Type: {$mimetype}".PHP_EOL;
-			$this->headers .= "Content-Transfer-Encoding: base64".PHP_EOL;
-			$this->headers .= "Content-Disposition: attachment; filename=\"{$filename}\"".PHP_EOL;
-			$this->headers .= PHP_EOL;
-			$this->headers .= $file_64.PHP_EOL;
-			$this->headers .= "--_{$primary_boundary}_".PHP_EOL;
+		if(count($this->attachments) > 0) {
+			foreach($this->attachments as $file) {
+				// GET FILE MIME TYPE
+				$mimetype = mime_content_type($file);
+				// GET FILENAME
+				$filename = explode('/',$file);
+				$filename = end($filename);
+				// ENCODE FILE TO BASE64
+				$file_64 = chunk_split(base64_encode(file_get_contents($file)));
+				
+				// ADD HEADERS
+				$this->headers .= "Content-Type: {$mimetype}".PHP_EOL;
+				$this->headers .= "Content-Transfer-Encoding: base64".PHP_EOL;
+				$this->headers .= "Content-Disposition: attachment; filename=\"{$filename}\"".PHP_EOL;
+				$this->headers .= PHP_EOL;
+				$this->headers .= $file_64.PHP_EOL;
+				$this->headers .= "--_{$primary_boundary}_".PHP_EOL;
+			}
 		}
 		
 		return true;
