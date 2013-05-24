@@ -18,6 +18,7 @@ Created and maintained by Darius Babcock
 	- Added social button options to core_buttons.php
 	- Changed encoding of emails in class.email to be more html-friendly
 	- Fixed a bug in validation script that prevent accurate detection with "match" parameter
+	- Added 'mysqli' support in class.database.php
 
 ## Version 6.8.0 ##
 	- Added a pure css menu via lib/css/core_menus.php. Also added sample template to templates and _demo.php
