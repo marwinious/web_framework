@@ -83,7 +83,7 @@ class mysql_i {
 		$this->connect();
 	
 		// CLEAN
-		$mysql = clean_db::mysqli($input, $this->mysqli);
+		$mysqli = clean_db::mysqli($input, $this->mysqli);
 		$mysqli['table'] = clean_db::mysqli($table, $this->mysqli);
 		
 		// DISCONNECT
