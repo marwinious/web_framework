@@ -65,7 +65,7 @@ class email {
 	function create_headers() {
 		// INIT
 		$body_text = strip_tags($this->body);
-		$body_html = nl2br($this->body);
+		$body_html = $this->body;
 		
 		// CREATE PRIMARY BOUNDARY
 		$primary_boundary = md5(date('r', time()));
@@ -80,6 +80,8 @@ class email {
 			$this->headers .= "CC: {$this->cc}".PHP_EOL;
 		}
 		$this->headers .= "Subject: {$this->subject}".PHP_EOL;
+		$this->headers .= "Message-ID: <".time()."-".$this->from['email'].">".PHP_EOL;
+		$this->headers .= "X-Mailer: PHP v".phpversion().PHP_EOL; 
 		
 		// SET MIME-VERSION
 		$this->headers .= "MIME-Version: 1.0".PHP_EOL;
@@ -103,11 +105,11 @@ class email {
 		$this->headers .= "--_{$alt_boundary}_".PHP_EOL;
 		
 		// CREATE HTML VERSION OF MESSAGE BODY
-		$this->headers .= "Content-Type: text/html; charset=\"UTF-8\"".PHP_EOL;
-		$this->headers .= "Content-Transfer-Encoding: 8bit".PHP_EOL;
+		$this->headers .= "Content-Type: text/html; charset=\"iso-8859-1\"".PHP_EOL;
+		$this->headers .= "Content-Transfer-Encoding: 7bit".PHP_EOL;
 		$this->headers .= PHP_EOL;
 		$this->headers .= PHP_EOL;
-		$this->headers .= "{$body_html}".PHP_EOL;
+		$this->headers .= "<html><head></head><body>{$body_html}</body></html>".PHP_EOL;
 		$this->headers .= PHP_EOL;
 		$this->headers .= "--_{$alt_boundary}_".PHP_EOL;
 		$this->headers .= PHP_EOL;
