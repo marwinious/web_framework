@@ -49,7 +49,7 @@ class mysql_i {
 		//$result->close();
 		
 		// CHECK FOR INSERTION ID
-		if(is_bool($result)) { $id = $this->mysqli->insert_id(); }
+		if(is_bool($result)) { $id = $this->mysqli->insert_id; }
 		
 		// CLOSE CONNECTION
 		$this->mysqli->close();
@@ -83,8 +83,8 @@ class mysql_i {
 		$this->connect();
 	
 		// CLEAN
-		$mysql = clean_db::mysqli($input);
-		$mysqli['table'] = clean_db::mysqli($table);
+		$mysql = clean_db::mysqli($input, $this->mysqli);
+		$mysqli['table'] = clean_db::mysqli($table, $this->mysqli);
 		
 		// DISCONNECT
 		$this->mysqli->close();
@@ -128,8 +128,8 @@ class mysql_i {
 		$this->connect();
 	
 		// CLEAN
-		$mysql = clean_db::mysqli($input);
-		$mysqli['table'] = clean_db::mysqli($table);
+		$mysqli = clean_db::mysqli($input, $this->mysqli);
+		$mysqli['table'] = clean_db::mysqli($table, $this->mysqli);
 		
 		// DISCONNECT
 		$this->mysqli->close();
@@ -171,8 +171,8 @@ class mysql_i {
 		$this->connect();
 	
 		// CLEAN
-		$mysqli['table'] = clean_db::mysqli($table,$this->mysqli);
-		$mysqli['key'] = clean_db::mysqli($key,$this->mysqli);
+		$mysqli['table'] = clean_db::mysqli($table, $this->mysqli);
+		$mysqli['key'] = clean_db::mysqli($key, $this->mysqli);
 		
 		// DISCONNECT
 		$this->mysqli->close();
@@ -201,8 +201,8 @@ class mysql_i {
 		$this->connect();
 	
 		// CLEAN
-		$mysqli['table'] = clean_db::mysqli($table);
-		$mysqli['key'] = clean_db::mysqli($key);
+		$mysqli['table'] = clean_db::mysqli($table, $this->mysqli);
+		$mysqli['key'] = clean_db::mysqli($key, $this->mysqli);
 		
 		// DISCONNECT
 		$this->mysqli->close();
