@@ -46,11 +46,18 @@ class json_cacher {
 		else {
 			$temp_json->cache_url_source = 'No source URL available.';
 		}
+		// CHECK IF GOOGLE SPREADSHEET
+		$is_gs = false;
+		if(isset($temp_json->feed->entry)) {
+			$is_gs = true;
+		}
 		// ENCODE OBJECT BACK TO JSON AND SAVE
 		$this->json = json_encode($temp_json);
 		
 		// GATHER ANY SUB-FEEDS
-		$this->load_sub_feeds();
+		if($is_gs) {
+			$this->load_sub_feeds();
+		}
 		
 		// OPEN CACHE FILE FOR WRITING, SAVE, AND CLOSE
 		$fh = fopen($cache_file, 'w');
