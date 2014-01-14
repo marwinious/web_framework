@@ -8,4 +8,7 @@ $_expires['format'] = 'D, j M Y H:i:s O';
 $_expires['template'] = '<meta http-equiv="EXPIRES" content="#EXPIRES#">';
 $_expires['default'] = date($_expires['format']);
 $_expires['offset'] = '+1 month';
+
+// JSON CACHE SETTINGS
+$_json_cache['location'] = '../cache/json/';
 ?>

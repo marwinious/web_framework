@@ -70,23 +70,24 @@ class loader {
 		// SITE FAVICON
 		echo FAVICON . "\n" . FAVICON_MOBILE . "\n";
 		
-		if($enable['compression']) {
-			// LOAD JS
-			echo "<script type='text/javascript' src='".JS."compress_scripts.php'></script>\n";
-			
+		if($enable['compression']) {	
 			// LOAD CSS
 			echo "<link rel='stylesheet' type='text/css' href='".CSS."compress_stylesheets.php' />\n";
+			
+			// LOAD JS
+			echo "<script type='text/javascript' src='".JS."compress_scripts.php'></script>\n";
 			
 			return $elements;
 		}
 		else {
-			// LOAD JS
-			foreach($elements['js'] as $element) {
-				echo "<script type='text/javascript' src='{$element}'></script>\n";
-			}
 			// LOAD CSS
 			foreach($elements['css'] as $element) {
 				echo "<link rel='stylesheet' type='text/css' href='{$element}' />\n";
+			}
+			
+			// LOAD JS
+			foreach($elements['js'] as $element) {
+				echo "<script type='text/javascript' src='{$element}'></script>\n";
 			}
 			
 			return true;

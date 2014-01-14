@@ -10,9 +10,11 @@
 <script type="text/javascript">
 <!--
 $(document).ready(function() {
-	$(".close_overlay").live("click",function() {
-		$("#mask, .overlay").fadeOut(500);
-	});
+	if($(".close_overlay").length > 0) {
+		$(".close_overlay").live("click",function() {
+			$("#mask, .overlay").fadeOut(500);
+		});
+	}
 });
 // -->
 </script>

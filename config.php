@@ -49,7 +49,7 @@ define("FAVICON_MOBILE","<link rel='apple-touch-icon' href='".IMAGES."icons/favi
 define("AUTHOR","A <a href='[AUTHOR URL]'>[AUTHOR]</a>");
 
 // META DATA
-$_metadata['charset'] = "<meta charset=\"UTF-8\">";
+$_metadata['charset'] = "<meta charset=\"UTF-8\" />";
 $_metadata['description'] = "<meta name=\"description\" content=\"[META DESCRIPTION]\">";
 $_metadata['keywords'] = "<meta name=\"keywords\" content=\"[META KEYWORDS]\">"; // COMMA DELIMITED
 $_metadata['viewport'] = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=2.0\">"; // FOR MOBILE VIEWPORTS
@@ -82,6 +82,8 @@ $enable['auto_complete'] = false;
 $enable['misc'] = true;
 $enable['js_constants'] = false;
 $enable['tinymce'] = false;
+$enable['gs_to_json'] = false;
+$enable['modernizr'] = true;
 
 // SITE-WIDE //
 //
@@ -119,9 +121,9 @@ $_load['primary_css']['resets'] = CSS.'core_resets.css';
 $_load['primary_css']['normalize'] = CSS.'core_normalize.css';
 
 // JQUERY
-$_load['jquery']['ver'] = "1.7.2";
+$_load['jquery']['ver'] = "1.10.2";
 $_load['jquery']['main'] = JQUERY."jquery-{$_load['jquery']['ver']}.min.js";
-$_load['ui']['ver'] = "1.8.21";
+$_load['ui']['ver'] = "1.10.3";
 $_load['ui']['main'] = JQUERY_UI."js/jquery-ui-{$_load['ui']['ver']}.custom.min.js";
 $_load['ui']['theme'] = "ui-lightness";
 $_load['ui']['theme_path'] = JQUERY_UI."css/".$_load['ui']['theme']."/jquery-ui-{$_load['ui']['ver']}.custom.css";
@@ -151,6 +153,8 @@ $_load['video_js']['css'] = JS."video-js/video-js.min.css";
 $_load['ckeditor']['main'] = LIB."ckeditor/ckeditor.js";
 $_load['misc']['main'] = JS."functions_misc.js";
 $_load['tinymce']['main'] = JS."tinymce/jscripts/tiny_mce/tiny_mce.js";
+$_load['gs_to_json']['main'] = JS."db_google_spreadsheet_to_simple_json.js";
+$_load['modernizr']['main'] = JS."modernizr.custom.2.7.1.js";
 
 // 960
 $_load['960']['main'] = _960."code/css/960.css";
