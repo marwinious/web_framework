@@ -15,9 +15,7 @@ require("header.php");
 ?>
 
 <section id="section_main">
-	<div class="twelve columns">
-		<p style="background: yellow;">Test</p>
-	</div>
+	
 </section>
 
 <script type="text/javascript">
