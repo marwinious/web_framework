@@ -104,6 +104,7 @@ if($enable['cache']) { require(CLASSES."class.performance.php"); }
 require(CLASSES."class.main.php");
 require(CLASSES."class.css.php");
 require(CLASSES."class.imaging.php");
+require(LIB."simplehtmldom/simple_html_dom.php");
 $main = new main();
 
 // INITIALIZE SESSION

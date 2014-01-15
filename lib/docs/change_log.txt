@@ -5,6 +5,8 @@ Created and maintained by Darius Babcock
 	- Added "Google Spreadsheet to Simple JSON" javascript
 	- Added JSON file caching class and script (class.json_cache.php and cacher.php)
 	- Added Modernizr v2.7.1 and enabled by default
+	- Added SimpleHTMLDom script for jQuery-like PHP dom traversing
+	- Added custom icon font (marwin-mix-icons)
 	- Updated Foundation Grid to v5
 	- Updated jQuery to v1.10.2
 	- Updated jQuery UI to v1.10.3

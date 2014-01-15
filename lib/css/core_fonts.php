@@ -10,6 +10,7 @@ echo loader::auto_load_webfonts('../fonts/Luxi-Sans/');
 echo loader::auto_load_webfonts('../fonts/web-symbols/');
 echo loader::auto_load_webfonts('../fonts/heydings-common-icons/');
 echo loader::auto_load_webfonts('../fonts/modern-pictograms/');
+echo loader::auto_load_webfonts('../fonts/marwin-mix-icons/');
 
 // AUTO-LOAD ADDITIONAL FONTS
 echo loader::auto_load_webfonts();
