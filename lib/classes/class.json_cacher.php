@@ -36,24 +36,6 @@ class json_cacher {
 		// DETERMINE FILENAME FOR CACHING
 		$cache_file = $this->clean_filename($this->filename.'.cache');
 		
-		// DECODE JSON TO OBJECT FOR EDITING
-		$temp_json = $this->json;
-		$temp_json = json_decode($temp_json);
-		// ADD URL TO OBJECT FOR TRACKING
-		if(isset($_GET['source_url'])) {
-			$temp_json->cache_url_source = $_GET['source_url'];
-		}
-		else {
-			$temp_json->cache_url_source = 'No source URL available.';
-		}
-		// CHECK IF GOOGLE SPREADSHEET
-		$is_gs = false;
-		if(isset($temp_json->feed->entry)) {
-			$is_gs = true;
-		}
-		// ENCODE OBJECT BACK TO JSON AND SAVE
-		$this->json = json_encode($temp_json);
-		
 		// GATHER ANY SUB-FEEDS
 		if($is_gs) {
 			$this->load_sub_feeds();
