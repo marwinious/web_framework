@@ -7,11 +7,12 @@ SAMPLE URL TO SAVE CACHE: http://host.coxmediagroup.com/cop/digital/common/cache
 OPTIONAL PARAMETERS: &max_cache_lifetime=15, &force_reload=true
 */
 
-require('../../classes/class.json_cacher.php');
-
 // SET HEADER TO ALLOW CROSS-DOMAIN REQUESTS
 header('Access-Control-Allow-Origin: *');
 header('Content-type: text/javascript');
+
+require('../../../config.php');
+require('../../classes/class.json_cacher.php');
 
 if($_GET['saveas'] && $_GET['json_url']) {
 	// INIT
@@ -19,6 +20,8 @@ if($_GET['saveas'] && $_GET['json_url']) {
 	$json_url = $_GET['json_url'];
 	$force_reload = 'false';
 	$max_cache_lifetime = 15; // IN MINUTES
+	$save_path = dirname(__FILE__).'/';
+	$format = 'json';
 	
 	// SET FORCE_RELOAD, IF SPECIFIED
 	if(isset($_GET['force_reload'])) {
@@ -29,10 +32,18 @@ if($_GET['saveas'] && $_GET['json_url']) {
 	if(isset($_GET['max_cache_lifetime'])) {
 		$max_cache_lifetime = $_GET['max_cache_lifetime'];
 	}
+	
+	// SET FORMAT, IF SPECIFIED
+	if(isset($_GET['format'])) {
+		$format = $_GET['format'];
+	}
 
 	// INSTANTIATE CACHER
-	$cacher = new json_cacher($filename, $json_url, $max_cache_lifetime, $force_reload);
+	$cacher = new json_cacher($filename, $json_url, $max_cache_lifetime, $force_reload, $save_path, $format);
 	// LOAD JSON FROM CACHE
 	$cacher->load_cache();
+}
+else {
+	echo "Error: Did not receive valid query string.";
 }
 ?>

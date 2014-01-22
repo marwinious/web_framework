@@ -84,6 +84,8 @@ $enable['js_constants'] = false;
 $enable['tinymce'] = false;
 $enable['gs_to_json'] = false;
 $enable['modernizr'] = true;
+$enable['swipe_js'] = false;
+$enable['gsap'] = false; // Greensock Animation Platform (GSAP)
 
 // SITE-WIDE //
 //
@@ -156,6 +158,8 @@ $_load['misc']['main'] = JS."functions_misc.js";
 $_load['tinymce']['main'] = JS."tinymce/jscripts/tiny_mce/tiny_mce.js";
 $_load['gs_to_json']['main'] = JS."db_google_spreadsheet_to_simple_json.js";
 $_load['modernizr']['main'] = JS."modernizr.custom.2.7.1.js";
+$_load['gsap']['main'] = JS."greensock/src/minified/TweenMax.min.js";
+$_load['swipe_js']['main'] = JS."swipe-js/swipe.js";
 
 // 960
 $_load['960']['main'] = _960."code/css/960.css";

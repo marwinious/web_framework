@@ -12,20 +12,43 @@ class json_cacher {
 	var $filename;
 	var $max_cache_lifetime;
 	var $force_reload;
+	var $format;
 	
 	// INIT
-	function __construct($filename, $json_url, $max_cache_lifetime=15, $force_reload = 'false') {
+	function __construct($filename, $json_url, $max_cache_lifetime=15, $force_reload = 'false', $save_path = '', $format='json') {
 		// INIT VARIABLES
 		$this->filename = $filename;
 		$this->json_url = $json_url;
 		$this->force_reload = $force_reload;
 		$this->max_cache_lifetime = $max_cache_lifetime; // IN MINUTES
+		$this->save_path = $save_path;
+		$this->format = $format;
 	}
 	
 	// GET JSON CONTENTS FROM URL
 	function get_json() {
-		$this->json = file_get_contents($this->json_url);
+		switch(strToLower($this->format)) {
+			case 'xml': case 'rss':
+				$this->json = $this->get_xml_json($this->json_url);
+				break;
+				
+			case 'json':
+				$this->json = file_get_contents($this->json_url);
+				break;
+		}
+		
 		return true;
+	}
+	
+	// GET XML CONTENTS FROM URL AND CONVERT TO JSON
+	function get_xml_json($url) {
+		$fileContents= file_get_contents($url);
+		$fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+		$fileContents = trim(str_replace('"', "'", $fileContents));
+		$simpleXml = simplexml_load_string($fileContents);
+		$json = json_encode($simpleXml);
+
+		return $json;
 	}
 	
 	// SAVE JSON TO A LOCAL FILE
@@ -39,13 +62,6 @@ class json_cacher {
 		// DECODE JSON TO OBJECT FOR EDITING
 		$temp_json = $this->json;
 		$temp_json = json_decode($temp_json);
-		// ADD URL TO OBJECT FOR TRACKING
-		if(isset($_GET['source_url'])) {
-			$temp_json->cache_url_source = $_GET['source_url'];
-		}
-		else {
-			$temp_json->cache_url_source = 'No source URL available.';
-		}
 		// CHECK IF GOOGLE SPREADSHEET
 		$is_gs = false;
 		if(isset($temp_json->feed->entry)) {
@@ -60,9 +76,16 @@ class json_cacher {
 		}
 		
 		// OPEN CACHE FILE FOR WRITING, SAVE, AND CLOSE
-		$fh = fopen($cache_file, 'w');
-		fwrite($fh, $this->json);
-		fclose($fh);
+		$full_path = $this->save_path.$cache_file;
+		if($fh = fopen($full_path, 'w')) {
+			//echo "Successully opened file '{$cache_file}' for editing!<br />";
+			fwrite($fh, $this->json);
+			fclose($fh);
+		}
+		else {
+			//echo "Could not open/create file: '{$cache_file}' for editing.";
+		}
+		
 		
 		return true;
 	}
@@ -76,7 +99,7 @@ class json_cacher {
 	
 	// RETRIEVE CACHED CONTENT FROM CACHE FILE
 	function load_cache() {
-		$filename_full = $this->filename.'.cache';
+		$filename_full = $this->save_path.$this->filename.'.cache';
 	
 		if(file_exists($filename_full)) {
 			// GET REQUESTED CACHE FILE
