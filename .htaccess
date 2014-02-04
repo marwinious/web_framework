@@ -1,5 +1,6 @@
 # URL OPTIONS
-	# ENABLE MOD_REWRITE
+<IfModule mod_rewrite.c>
+	# MOD_REWRITE SETTINGS
 	Options +FollowSymLinks
 	Options +Indexes
 	RewriteEngine On
@@ -35,6 +36,7 @@
 	#
 	# END IMAGE AUTO-RESIZER URL SETTINGS
 	#
+</IfModule>
 # END URL OPTIONS
 
 # FORCE PHP5 IF NEEDED

@@ -5,6 +5,7 @@ Created and maintained by Darius Babcock
 	- Added GSAP library for faster animation options (disabled by default)
 	- Added SwipeJS gallery plugin for mobile galleries
 	- Added XMLtoJSON support to class.json_cacher.php
+	- Fixed bug in htaccess that didn't first check for mod_rewrite before running rules
 
 ## Version 6.8.6 ##
 	- Added "Google Spreadsheet to Simple JSON" javascript
