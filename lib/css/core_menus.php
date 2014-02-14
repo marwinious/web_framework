@@ -77,12 +77,11 @@ $accent = "";
 /* level 2 list */
 .core_menu ul {
 	display: none;
-
 	margin: 0;
 	padding: 0;
 	width: 185px;
 	position: absolute;
-	top: 32px; /* should be same as 'a' height */
+	top: 30px; /* should be same as 'a' height */
 	left: 0;
 	background: #ddd;
 	border: solid 1px #b4b4b4;
