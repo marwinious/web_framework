@@ -5,21 +5,21 @@ class misc {
 		echo "<pre>";print_r($data);echo "</pre>";
 	}
 
-	// WRITE INFORMATION TO LOG FILE (LIB/PHP/LOG.TXT). EXPECTS $TITLE
-	static function write_log($title) {
+	// WRITE INFORMATION TO LOG FILE (LIB/PHP/LOG.TXT). EXPECTS $ENTRY
+	static function write_log($entry='') {
 		// GET REMOTE IP
 		$ip = $_SERVER['REMOTE_ADDR'];
 		// GET HOST FROM IP
 		$host = gethostbyaddr($ip);
 		// SET DATE/TIME
-		$date = date("m/d/Y H:ia");
+		$date = date("Y-m-d H:i:s");
 		// LOG FILE LOCATION
-		$log_file = "log.txt";
+		$log_file = BASEPATH."lib/logs/log.txt";
 		
 		// LOG ENTRY TEXT
-		$log = "$date - $title\r\n";
-		$log .= "Remote IP: $ip\r\n";
-		$log .= "Host: $host\r\n";
+		$log = "{$date} - {$entry}\r\n";
+		$log .= " | Remote IP: {$ip}\r\n";
+		$log .= " | Host: {$host}\r\n";
 		$log .= "\r\n";
 		
 		// INSERT LOG ENTRY

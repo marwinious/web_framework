@@ -10,6 +10,7 @@ date_default_timezone_set('America/New_York');
 
 // PATH CONSTANTS //
 define("BASEPATH",dirname(__FILE__)."/"); // CHANGE TO HOSTING SUBFOLDER\PATH.
+define("BASEURL",$_SERVER['REQUEST_URI']); // URL-BASED CORE PATH.
 define("LIB","lib/"); // DEFINE PRIMARY LIBRARY PATH
 define("IMAGES",LIB."images/");
 define("CLASSES",LIB."classes/");
@@ -85,6 +86,7 @@ $enable['tinymce'] = false;
 $enable['gs_to_json'] = false;
 $enable['modernizr'] = true;
 $enable['swipe_js'] = false;
+$enable['user_agent_tools'] = true;
 $enable['gsap'] = false; // Greensock Animation Platform (GSAP)
 
 // SITE-WIDE //
@@ -160,6 +162,7 @@ $_load['gs_to_json']['main'] = JS."db_google_spreadsheet_to_simple_json.js";
 $_load['modernizr']['main'] = JS."modernizr.custom.2.7.1.js";
 $_load['gsap']['main'] = JS."greensock/src/minified/TweenMax.min.js";
 $_load['swipe_js']['main'] = JS."swipe-js/swipe.js";
+$_load['user_agent_tools']['main'] = JS."user_agent_tools.js";
 
 // 960
 $_load['960']['main'] = _960."code/css/960.css";

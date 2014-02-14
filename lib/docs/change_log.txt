@@ -6,6 +6,8 @@ Created and maintained by Darius Babcock
 	- Added SwipeJS gallery plugin for mobile galleries
 	- Added XMLtoJSON support to class.json_cacher.php
 	- Fixed bug in htaccess that didn't first check for mod_rewrite before running rules
+	- Updated misc::write_log function and added lib/logs folder for storage
+	- Added user agent detection tools (lib/js/user_agent_tools.js)
 
 ## Version 6.8.6 ##
 	- Added "Google Spreadsheet to Simple JSON" javascript
