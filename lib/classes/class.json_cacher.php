@@ -1,27 +1,25 @@
 <?PHP
-/*
-SCRIPT: JSON CACHER
-AUTHOR: DARIUS BABCOCK
-DESCRIPTION: Caches JSON content to local files. Serves cached files unless they are older than $max_cache_lifetime
-LAST UPDATED: 1/13/2014
-*/
+// SET HEADER TO ALLOW CROSS-DOMAIN REQUESTS
+header('Access-Control-Allow-Origin: *');
+
 class json_cacher {
 	
 	var $json;
 	var $json_url;
 	var $filename;
+	var $domain;
 	var $max_cache_lifetime;
 	var $force_reload;
 	var $format;
 	
 	// INIT
-	function __construct($filename, $json_url, $max_cache_lifetime=15, $force_reload = 'false', $save_path = '', $format='json') {
+	function __construct($filename, $json_url, $domain, $max_cache_lifetime=15, $force_reload = 'false', $format='json') {
 		// INIT VARIABLES
 		$this->filename = $filename;
 		$this->json_url = $json_url;
+		$this->domain = $domain;
 		$this->force_reload = $force_reload;
 		$this->max_cache_lifetime = $max_cache_lifetime; // IN MINUTES
-		$this->save_path = $save_path;
 		$this->format = $format;
 	}
 	
@@ -43,9 +41,10 @@ class json_cacher {
 	// GET XML CONTENTS FROM URL AND CONVERT TO JSON
 	function get_xml_json($url) {
 		$fileContents= file_get_contents($url);
-		$fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+		$fileContents = str_replace(array("\n", "\r"), '', $fileContents);
+		$fileContents = str_replace(array("\t"), ' ', $fileContents);
 		$fileContents = trim(str_replace('"', "'", $fileContents));
-		$simpleXml = simplexml_load_string($fileContents);
+		$simpleXml = simplexml_load_string($fileContents, null, LIBXML_NOCDATA);
 		$json = json_encode($simpleXml);
 
 		return $json;
@@ -60,32 +59,26 @@ class json_cacher {
 		$cache_file = $this->clean_filename($this->filename.'.cache');
 		
 		// DECODE JSON TO OBJECT FOR EDITING
+		/*
 		$temp_json = $this->json;
 		$temp_json = json_decode($temp_json);
-		// CHECK IF GOOGLE SPREADSHEET
-		$is_gs = false;
-		if(isset($temp_json->feed->entry)) {
-			$is_gs = true;
+		// ADD URL TO OBJECT FOR TRACKING
+		if(isset($_GET['source_url'])) {
+			$temp_json->cache_url_source = $_GET['source_url'];
+		}
+		else {
+			$temp_json->cache_url_source = 'No source URL available.';
 		}
 		// ENCODE OBJECT BACK TO JSON AND SAVE
 		$this->json = json_encode($temp_json);
-		
+		*/
 		// GATHER ANY SUB-FEEDS
-		if($is_gs) {
-			$this->load_sub_feeds();
-		}
+		$this->load_sub_feeds();
 		
 		// OPEN CACHE FILE FOR WRITING, SAVE, AND CLOSE
-		$full_path = $this->save_path.$cache_file;
-		if($fh = fopen($full_path, 'w')) {
-			//echo "Successully opened file '{$cache_file}' for editing!<br />";
-			fwrite($fh, $this->json);
-			fclose($fh);
-		}
-		else {
-			//echo "Could not open/create file: '{$cache_file}' for editing.";
-		}
-		
+		$fh = fopen($cache_file, 'w');
+		fwrite($fh, $this->json);
+		fclose($fh);
 		
 		return true;
 	}
@@ -99,7 +92,7 @@ class json_cacher {
 	
 	// RETRIEVE CACHED CONTENT FROM CACHE FILE
 	function load_cache() {
-		$filename_full = $this->save_path.$this->filename.'.cache';
+		$filename_full = $this->filename.'.cache';
 	
 		if(file_exists($filename_full)) {
 			// GET REQUESTED CACHE FILE
@@ -190,11 +183,11 @@ class json_cacher {
 	// CREATE A LIST FROM MEDLEY FEED
 	function create_list($list_type,$source,$item_count=5) {
 		// INIT LIST
-		$list = "<{$list_type}>";
+		$list = "<{$list_type} class='cmPartnerList'>";
 		
 		// POPULATE LIST
 		for($i=0;$i<$item_count;$i++) {
-			$list .= '<li>'.$source[$i]->title.'</li>';
+			$list .= '<li class="sprite iconListBullet"><a href="http://'.$this->domain.$source[$i]->url_path.'">'.$source[$i]->title.'</a></li>';
 		}
 		
 		// CLOSE LIST
