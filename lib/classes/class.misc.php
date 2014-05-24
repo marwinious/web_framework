@@ -5,21 +5,21 @@ class misc {
 		echo "<pre>";print_r($data);echo "</pre>";
 	}
 
-	// WRITE INFORMATION TO LOG FILE (LIB/PHP/LOG.TXT). EXPECTS $ENTRY
-	static function write_log($entry='') {
+	// WRITE INFORMATION TO LOG FILE (LIB/PHP/LOG.TXT). EXPECTS $TITLE
+	static function write_log($title) {
 		// GET REMOTE IP
 		$ip = $_SERVER['REMOTE_ADDR'];
 		// GET HOST FROM IP
 		$host = gethostbyaddr($ip);
 		// SET DATE/TIME
-		$date = date("Y-m-d H:i:s");
+		$date = date("m/d/Y H:ia");
 		// LOG FILE LOCATION
-		$log_file = BASEPATH."lib/logs/log.txt";
+		$log_file = "log.txt";
 		
 		// LOG ENTRY TEXT
-		$log = "{$date} - {$entry}\r\n";
-		$log .= " | Remote IP: {$ip}\r\n";
-		$log .= " | Host: {$host}\r\n";
+		$log = "$date - $title\r\n";
+		$log .= "Remote IP: $ip\r\n";
+		$log .= "Host: $host\r\n";
 		$log .= "\r\n";
 		
 		// INSERT LOG ENTRY
@@ -88,6 +88,27 @@ class misc {
 		}
 		
 		return $clean['data'];
+	}
+
+	// GET TEMPLATE AND OPTIONALLY REPLACE PLACEHOLDERS
+	// EXPECTS "$REPLACEMENTS" TO BE "FIND" => "REPLACE" ASSOCIATIVE ARRAY
+	static function buffer_template($templatePath, $replacements='') {
+		// START OUTPUT BUFFER
+		ob_start();
+
+		// GET TEMPLATE CONTENTS
+		include($templatePath);
+
+		// SAVE BUFFER TO VARIABLE
+		$buffer = ob_get_clean();
+
+		// REPLACE PLACEHOLDERS
+		if($replacements && is_array($replacements)) {
+			$buffer = str_replace(array_keys($replacements), array_values($replacements), $buffer);
+		}
+
+		// OUTPUT BUFFER
+		return $buffer;
 	}
 	
 }
