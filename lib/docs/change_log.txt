@@ -8,6 +8,8 @@ Created and maintained by Darius Babcock
 	- Fixed bug in htaccess that didn't first check for mod_rewrite before running rules
 	- Updated misc::write_log function and added lib/logs folder for storage
 	- Added user agent detection tools (lib/js/user_agent_tools.js)
+	- Added buffer_template function to class.misc for easier template operations
+	- Added a params option for getAjax in functions_misc.js for better ajax flexibility
 
 ## Version 6.8.6 ##
 	- Added "Google Spreadsheet to Simple JSON" javascript
