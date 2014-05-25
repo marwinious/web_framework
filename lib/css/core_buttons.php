@@ -38,6 +38,11 @@ $accent = "";
     box-shadow: 0px 1px 0px #79797B, 0px 3px 3px #2F2F2F;
 }
 
+.button:focus {
+	outline: none;
+}
+
+
 button.button {
 	border: none;
 }
